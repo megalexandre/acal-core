@@ -1,0 +1,9 @@
+spring:
+  application.name: core
+
+  data:
+    mongodb:
+      uri: ${MONGO_DB_DATABASE:mongodb://root:example@localhost:27017/acal}
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
