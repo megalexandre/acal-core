@@ -1,0 +1,28 @@
+package acal.com.core.resouces.repository
+
+import acal.com.core.domain.datasource.CustomerDataSource
+import acal.com.core.domain.entity.Customer
+import acal.com.core.domain.entity.IdentityCard
+import acal.com.core.resouces.CustomerModel
+import acal.com.core.resouces.toDomain
+import acal.com.core.resouces.toEntity
+import org.springframework.data.mongodb.repository.MongoRepository
+import org.springframework.stereotype.Repository
+
+@Repository
+class CustomerRepositoryImp(
+    val customerRepository: CustomerRepository
+): CustomerDataSource {
+
+    override fun findByIdentityCard(identityCard: IdentityCard): Customer? =
+        customerRepository.findByIdentityCard(identityCard.raw)?.firstOrNull()?.toDomain()
+
+    override fun findAll(): List<Customer> = customerRepository.findAll().map { it.toDomain() }
+
+    override fun save(customer: Customer): Customer = customerRepository.save(customer.toEntity()).toDomain()
+
+}
+
+interface CustomerRepository: MongoRepository<CustomerModel, String>{
+    fun findByIdentityCard(identityCard: String): List<CustomerModel>?
+}

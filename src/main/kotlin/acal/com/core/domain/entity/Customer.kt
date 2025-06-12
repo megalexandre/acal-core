@@ -2,36 +2,45 @@ package acal.com.core.domain.entity
 
 import acal.com.core.comons.asCNPJ
 import acal.com.core.comons.asCPF
+import acal.com.core.comons.asPhoneNumber
 import acal.com.core.comons.numbersOnly
 import acal.com.core.domain.enums.DocumentType
 import acal.com.core.domain.enums.DocumentType.CNPJ
 import acal.com.core.domain.enums.DocumentType.CPF
 
-
 data class Customer (
-     val id: String,
-     val auditInfo: AuditInfo,
-     val name: String,
-     val document: Document,
-     val phoneNumber: String? = null,
-     val partnerNumber: String? = null,
-     val isAVoter: Boolean
+    val id: String,
+    val auditInfo: AuditInfo,
+    val name: String,
+    val identityCard: IdentityCard,
+    val phoneNumber: PhoneNumber? = null,
+    val partnerNumber: String? = null,
+    val voter: Boolean
 )
 
-class Document(value: String){
-    private val value: String = value.numbersOnly()
+class IdentityCard(value: String){
+    val raw: String = value.numbersOnly()
     private val type: DocumentType
-        get() = when (value.length){
+        get() = when (raw.length){
             11 -> CPF
             14 -> CNPJ
-            else -> throw IllegalArgumentException("Invalid document length: ${value.length}. Expected 11 for CPF or 14 for CNPJ.")
+            else -> throw IllegalArgumentException("Invalid document length: ${raw.length}. Expected 11 for CPF or 14 for CNPJ.")
         }
 
     val number: String
         get() = when (type){
-            CPF -> value.asCPF()
-            CNPJ -> value.asCNPJ()
+            CPF -> raw.asCPF()
+            CNPJ -> raw.asCNPJ()
         }
+
+}
+
+class PhoneNumber(value: String) {
+
+    val raw = value.numbersOnly()
+
+    val number: String
+        get() = raw.numbersOnly().asPhoneNumber()
 
 }
 

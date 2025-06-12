@@ -3,7 +3,9 @@ spring:
 
   data:
     mongodb:
-      uri: ${MONGO_DB_DATABASE:mongodb://root:example@localhost:27017/acal}
+      uri: mongodb://root:example@localhost:27017/acal?directConnection=true
+      auto-index-creation: true
 
   jackson:
     property-naming-strategy: SNAKE_CASE
+
