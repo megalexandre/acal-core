@@ -45,3 +45,12 @@ jobs:
             ${{ env.IMAGE_NAME }}:${{ github.sha }}
           cache-from: type=registry,ref=${{ env.IMAGE_NAME }}:buildcache
           cache-to: type=registry,ref=${{ env.IMAGE_NAME }}:buildcache,mode=max
+
+      # Notificar o Coolify sobre a nova imagem
+      #- name: Trigger Coolify Deployment
+      #  if: success()
+      #  run: |
+      #    curl -X POST "${{ secrets.COOLIFY_API_URL }}/api/v1/deploy/${{ secrets.COOLIFY_RESOURCE_ID }}" \
+      #    -H "Authorization: Bearer ${{ secrets.COOLIFY_API_KEY }}" \
+      #    -H "Content-Type: application/json" \
+      #    -d '{"forcePull": true, "imageTag": "${{ github.sha }}"}'

@@ -3,7 +3,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://root:example@localhost:27017/acal?authSource=admin
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://root:example@localhost:27017/acal?authSource=admin}
       auto-index-creation: true
       connection-pool:
         max-size: 100
