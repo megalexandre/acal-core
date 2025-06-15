@@ -7,4 +7,3 @@ import org.springframework.stereotype.Component
 class SharedContext {
     var response: Response? = null
 }
-

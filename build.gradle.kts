@@ -21,27 +21,30 @@ repositories {
 
 extra["snippetsDir"] = file("build/generated-snippets")
 
+val uuidVersion = "5.1.0"
+val cucumberVersion = "7.15.0"
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
-    implementation("com.fasterxml.uuid:java-uuid-generator:5.1.0")
+    implementation("com.fasterxml.uuid:java-uuid-generator:$uuidVersion")
 
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    testImplementation("io.cucumber:cucumber-java:7.15.0")
-    testImplementation("io.cucumber:cucumber-junit-platform-engine:7.15.0")
-    testImplementation("io.cucumber:cucumber-spring:7.15.0")
+    testImplementation("io.cucumber:cucumber-java:$cucumberVersion")
+    testImplementation("io.cucumber:cucumber-junit-platform-engine:$cucumberVersion")
+    testImplementation("io.cucumber:cucumber-spring:$cucumberVersion")
 
     testImplementation("org.junit.platform:junit-platform-suite")
     testImplementation("org.junit.jupiter:junit-jupiter")
 
-    testImplementation("io.rest-assured:rest-assured:5.4.0")
+    testImplementation("io.rest-assured:rest-assured")
 
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:mongodb")
@@ -56,10 +59,12 @@ kotlin {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    /*
     systemProperty("cucumber.junit-platform.naming-strategy", "long")
     systemProperty("cucumber.glue", "acal.com.core")
     systemProperty("cucumber.plugin", "pretty")
     systemProperty("junit.jupiter.execution.parallel.enabled", "false")
+    */
 }
 
 tasks.test {

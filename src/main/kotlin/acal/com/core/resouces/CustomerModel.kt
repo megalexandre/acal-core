@@ -20,6 +20,7 @@ class CustomerModel(
     val phoneNumber: String? = null,
     val partnerNumber: String? = null,
     val voter: Boolean
+
 )
 
 fun CustomerModel.toDomain(): Customer = Customer(

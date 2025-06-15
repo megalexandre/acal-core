@@ -3,9 +3,21 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://root:example@localhost:27017/acal?directConnection=true
+      uri: mongodb://root:example@localhost:27017/acal?authSource=admin
       auto-index-creation: true
+      connection-pool:
+        max-size: 100
+        min-size: 0
+        max-wait-time: 120000
+        max-connection-life-time: 0
+      socket:
+        connect-timeout: 10000
+        read-timeout: 10000
+
+  docker:
+    compose:
+      enabled: true
+      file: docker-compose.yaml
 
   jackson:
     property-naming-strategy: SNAKE_CASE
-
