@@ -1,4 +1,4 @@
-package acal.com.core.config
+package acal.com.core.configuration
 
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.context.annotation.Bean

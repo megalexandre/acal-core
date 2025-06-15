@@ -29,7 +29,7 @@ class CustomerController(
 
     @GetMapping
     @ResponseStatus(OK)
-    fun getAll(): List<CustomerResponse> =
+    fun get(): List<CustomerResponse> =
         customerDataSource.findAll().customerResponse()
 
 }

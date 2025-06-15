@@ -8,11 +8,13 @@ import acal.com.core.configuration.CucumberSpringConfiguration
 
 @ContextConfiguration(classes = [CucumberSpringConfiguration::class])
 class DataBaseStep {
+
     @Autowired
     private lateinit var mongoTemplate: MongoTemplate
 
     @Dado("o banco de dados está vazio")
-    fun oBancoDeDadosEstaVazio() {
+    fun `o banco de dados esta vazio`() {
         mongoTemplate.db.drop()
     }
+
 }
