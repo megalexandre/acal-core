@@ -33,7 +33,7 @@ jobs:
 
       # Definir o nome da imagem como uma variável de ambiente
       - name: Set image name
-        run: echo "IMAGE_NAME=megalexandre/core" >> $GITHUB_ENV
+        run: echo "IMAGE_NAME=alexandreqrz/core" >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
