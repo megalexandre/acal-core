@@ -50,7 +50,7 @@ jobs:
       - name: Trigger Coolify Deployment
         if: success()
         run: | 
-          curl -X POST "${{ env.COOLIFY_API_URL }}" \
+          curl -X POST "${{ vars.COOLIFY_API_URL }}" \
           -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}" \
           -H "Content-Type: application/json" \
           -d '{"forcePull": true, "imageTag": "${{ github.sha }}"}'
