@@ -17,10 +17,19 @@ spring:
         connect-timeout: 10000
         read-timeout: 10000
 
-  docker:
-    compose:
-      enabled: true
-      file: docker-compose.yaml
-
   jackson:
     property-naming-strategy: SNAKE_CASE
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: health,prometheus
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+      show-components: always
+    prometheus:
+      enabled: true

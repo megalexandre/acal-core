@@ -1,4 +1,4 @@
-package acal.com.core.domain.usecase
+package acal.com.core.domain.usecase.customer
 
 import acal.com.core.domain.datasource.CustomerDataSource
 import acal.com.core.domain.entity.Customer

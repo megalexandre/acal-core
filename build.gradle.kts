@@ -27,10 +27,14 @@ val cucumberVersion = "7.15.0"
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation("com.fasterxml.uuid:java-uuid-generator:$uuidVersion")
+    implementation("io.micrometer:micrometer-registry-prometheus")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("jakarta.validation:jakarta.validation-api")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
@@ -59,12 +63,6 @@ kotlin {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-    /*
-    systemProperty("cucumber.junit-platform.naming-strategy", "long")
-    systemProperty("cucumber.glue", "acal.com.core")
-    systemProperty("cucumber.plugin", "pretty")
-    systemProperty("junit.jupiter.execution.parallel.enabled", "false")
-    */
 }
 
 tasks.test {

@@ -1,32 +1,36 @@
 package acal.com.core.resouces
 
-import acal.com.core.domain.entity.AuditInfo
 import acal.com.core.domain.entity.Customer
 import acal.com.core.domain.entity.IdentityCard
 import acal.com.core.domain.entity.PhoneNumber
+import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
+import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.mongodb.core.index.Indexed
 import org.springframework.data.mongodb.core.mapping.Document
+import java.time.LocalDateTime
 
 @Document("customer")
 class CustomerModel(
-
     @Id
     val id: String,
-    val auditInfo: AuditInfo,
+    @CreatedDate
+    val createdAt: LocalDateTime?,
+    @LastModifiedDate
+    val updatedAt: LocalDateTime?,
     val name: String,
     @Indexed(unique = true)
     val identityCard: String,
     val phoneNumber: String? = null,
     val partnerNumber: String? = null,
     val voter: Boolean
-
 )
 
 fun CustomerModel.toDomain(): Customer = Customer(
     id = id,
-    auditInfo = auditInfo,
     name = name,
+    createdAt = createdAt,
+    updatedAt = updatedAt,
     identityCard = IdentityCard(identityCard),
     phoneNumber = phoneNumber?.let { PhoneNumber(it) },
     partnerNumber = partnerNumber,
@@ -35,7 +39,8 @@ fun CustomerModel.toDomain(): Customer = Customer(
 
 fun Customer.toEntity(): CustomerModel = CustomerModel(
     id = id,
-    auditInfo = auditInfo,
+    createdAt = createdAt,
+    updatedAt = updatedAt,
     name = name,
     identityCard = identityCard.raw,
     phoneNumber = phoneNumber?.raw,

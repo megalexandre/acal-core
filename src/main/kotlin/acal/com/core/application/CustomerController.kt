@@ -2,9 +2,10 @@ package acal.com.core.application
 
 import CustomerResponse
 import acal.com.core.application.data.`in`.CustomerCreateRequest
+import acal.com.core.application.data.`in`.CustomerUpdateRequest
 import acal.com.core.application.data.out.customerCreateResponse
 import acal.com.core.domain.datasource.CustomerDataSource
-import acal.com.core.domain.usecase.CustomerCreateUseCase
+import acal.com.core.domain.usecase.customer.CustomerCreateUseCase
 import customerResponse
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.OK
@@ -24,8 +25,14 @@ class CustomerController(
 
     @PostMapping
     @ResponseStatus(CREATED)
-    fun create(@RequestBody customerCreateRequest: CustomerCreateRequest) =
-        customerCreateUseCase.execute(customerCreateRequest.toDomain()).customerCreateResponse()
+    fun create(@RequestBody request: CustomerCreateRequest) =
+        customerCreateUseCase.execute(request.toDomain()).customerCreateResponse()
+
+    @PutMapping
+    @ResponseStatus(OK)
+    fun update(@RequestBody request: CustomerUpdateRequest) =
+        customerCreateUseCase.execute(request.toDomain()).customerCreateResponse()
+
 
     @GetMapping
     @ResponseStatus(OK)
