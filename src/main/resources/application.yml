@@ -1,9 +1,12 @@
 spring:
   application.name: core
 
+  profiles:
+    active: dev
+
   data:
     mongodb:
-      uri: ${SPRING_DATA_MONGODB_URI:mongodb://root:example@localhost:27017/acal?authSource=admin}
+      uri: mongodb://root:example@localhost:27017/acal?authSource=admin
       auto-index-creation: true
       connection-pool:
         max-size: 100
