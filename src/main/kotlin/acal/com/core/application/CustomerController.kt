@@ -7,6 +7,7 @@ import acal.com.core.application.data.`in`.toDomain
 import acal.com.core.domain.datasource.CustomerDataSource
 import acal.com.core.domain.usecase.customer.CustomerCreateAllUseCase
 import acal.com.core.domain.usecase.customer.CustomerCreateUseCase
+import acal.com.core.infrastructure.exception.DataNotFoundException
 import customerResponse
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.OK
@@ -37,9 +38,9 @@ class CustomerController(
     fun update(@RequestBody request: CustomerUpdateRequest): CustomerResponse =
         customerCreateUseCase.execute(request.toDomain()).customerResponse()
 
-    @GetMapping
+    @GetMapping("/{id}")
     @ResponseStatus(OK)
-    fun get(): Collection<CustomerResponse> =
-        customerDataSource.findAll().customerResponse()
-
+    fun getById(@PathVariable id: String): CustomerResponse? =
+        customerDataSource.findById(id)?.customerResponse()
+            ?: throw DataNotFoundException("Cliente não encontrado com o ID: $id")
 }

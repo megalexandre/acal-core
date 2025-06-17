@@ -10,7 +10,7 @@ data class CustomerCreateRequest (
     val identityCard: String,
     val phoneNumber: String? = null,
     val partnerNumber: String? = null,
-    val voter: Boolean
+    val voter: Boolean = true,
 ) {
     fun toDomain() = Customer(
         id = Id.random(),

@@ -26,6 +26,8 @@ class CustomerRepositoryImp(
     override fun save(t: Collection<Customer>): Collection<Customer> =
         customerRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
 
+    override fun findById(id: String): Customer? =
+        customerRepository.findById(id).orElse(null)?.toDomain()
 }
 
 interface CustomerRepository: MongoRepository<CustomerModel, String>{

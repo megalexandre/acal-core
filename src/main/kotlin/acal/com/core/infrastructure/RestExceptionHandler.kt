@@ -1,7 +1,10 @@
 package acal.com.core.infrastructure
 
+import acal.com.core.infrastructure.exception.DataNotFoundException
 import com.fasterxml.jackson.databind.exc.MismatchedInputException
+import org.springframework.dao.DuplicateKeyException
 import org.springframework.http.HttpStatus.BAD_REQUEST
+import org.springframework.http.HttpStatus.NO_CONTENT
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -33,5 +36,26 @@ class RestExceptionHandler {
                 path = request.getDescription(false).removePrefix("uri=")
             ), BAD_REQUEST
     )
+
+    @ExceptionHandler(DuplicateKeyException::class)
+    fun handleDuplicateKeyException(ex: DuplicateKeyException): ResponseEntity<Any> {
+        val errorMessage = "Registro duplicado. ${ex.message}"
+        val errorResponse = mapOf(
+            "status" to BAD_REQUEST.value(),
+            "error" to "Duplicate Key",
+            "message" to errorMessage
+        )
+        return ResponseEntity(errorResponse, BAD_REQUEST)
+    }
+
+    @ExceptionHandler(DataNotFoundException::class)
+    fun handleNotFoundException(ex: DataNotFoundException): ResponseEntity<Any> {
+        val errorResponse = mapOf(
+            "status" to NO_CONTENT.value(),
+            "message" to "resources not found",
+        )
+        return ResponseEntity(errorResponse, NO_CONTENT)
+    }
+
 
 }

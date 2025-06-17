@@ -1,6 +1,7 @@
 package acal.com.core.steps
 
 import acal.com.core.configuration.CucumberSpringConfiguration
+import acal.com.core.resouces.repository.CustomerRepository
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.cucumber.java.Before
@@ -25,6 +26,9 @@ class RestStep {
 
     @Autowired
     private lateinit var objectMapper: ObjectMapper
+
+    @Autowired
+    lateinit var customerRepository: CustomerRepository
 
     @Before
     fun setup() {

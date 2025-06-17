@@ -12,17 +12,24 @@ import java.time.LocalDateTime
 
 @Document("customer")
 data class CustomerModel(
+
     @Id
     val id: String,
+
     @CreatedDate
     var createdAt: LocalDateTime? = null,
+
     @LastModifiedDate
     var updatedAt: LocalDateTime? = null,
+
     val name: String,
-    @Indexed(unique = true)
+
     val identityCard: String,
+
     val phoneNumber: String? = null,
+
     val partnerNumber: String? = null,
+
     val voter: Boolean
 )
 
