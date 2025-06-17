@@ -5,11 +5,11 @@ import acal.com.core.domain.entity.Customer
 import org.springframework.stereotype.Component
 
 @Component
-class CustomerCreateUseCase(
+class CustomerCreateAllUseCase(
     val customerDataSource: CustomerDataSource
 ) {
 
-    fun execute(customer: Customer): Customer =
+    fun execute(customer: Collection<Customer>): Collection<Customer> =
         customerDataSource.save(customer)
 
 }

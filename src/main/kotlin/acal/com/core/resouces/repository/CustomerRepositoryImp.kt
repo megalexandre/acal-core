@@ -14,15 +14,19 @@ class CustomerRepositoryImp(
     val customerRepository: CustomerRepository
 ): CustomerDataSource {
 
+    @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
     override fun findByIdentityCard(identityCard: IdentityCard): Customer? =
         customerRepository.findByIdentityCard(identityCard.raw)?.firstOrNull()?.toDomain()
 
-    override fun findAll(): List<Customer> = customerRepository.findAll().map { it.toDomain() }
+    override fun findAll(): Collection<Customer> = customerRepository.findAll().map { it.toDomain() }
 
     override fun save(customer: Customer): Customer = customerRepository.save(customer.toEntity()).toDomain()
+
+    override fun save(t: Collection<Customer>): Collection<Customer> =
+        customerRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
 
 }
 
 interface CustomerRepository: MongoRepository<CustomerModel, String>{
-    fun findByIdentityCard(identityCard: String): List<CustomerModel>?
+    fun findByIdentityCard(identityCard: String): Collection<CustomerModel>?
 }

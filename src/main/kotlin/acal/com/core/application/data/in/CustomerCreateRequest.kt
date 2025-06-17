@@ -14,13 +14,13 @@ data class CustomerCreateRequest (
 ) {
     fun toDomain() = Customer(
         id = Id.random(),
-        createdAt = null,
-        updatedAt = null,
-        name = name,
+        name = name.trimIndent(),
         identityCard = IdentityCard(identityCard),
         phoneNumber = phoneNumber?.let { PhoneNumber(it) },
         partnerNumber = partnerNumber,
         voter = voter
     )
 }
+
+fun Collection<CustomerCreateRequest>.toDomain() =  this.map { it.toDomain() }
 

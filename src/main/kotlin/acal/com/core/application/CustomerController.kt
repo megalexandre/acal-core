@@ -3,40 +3,43 @@ package acal.com.core.application
 import CustomerResponse
 import acal.com.core.application.data.`in`.CustomerCreateRequest
 import acal.com.core.application.data.`in`.CustomerUpdateRequest
-import acal.com.core.application.data.out.customerCreateResponse
+import acal.com.core.application.data.`in`.toDomain
 import acal.com.core.domain.datasource.CustomerDataSource
+import acal.com.core.domain.usecase.customer.CustomerCreateAllUseCase
 import acal.com.core.domain.usecase.customer.CustomerCreateUseCase
 import customerResponse
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.OK
-import org.springframework.http.MediaType.APPLICATION_JSON_VALUE
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping(
     value = ["/customer"],
-    produces = [APPLICATION_JSON_VALUE],
-    consumes = [APPLICATION_JSON_VALUE]
 )
 class CustomerController(
     val customerCreateUseCase: CustomerCreateUseCase,
+    val customerCreateAllUseCase: CustomerCreateAllUseCase,
     val customerDataSource: CustomerDataSource
 ) {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    fun create(@RequestBody request: CustomerCreateRequest) =
-        customerCreateUseCase.execute(request.toDomain()).customerCreateResponse()
+    fun create(@RequestBody request: CustomerCreateRequest): CustomerResponse =
+        customerCreateUseCase.execute(request.toDomain()).customerResponse()
+
+    @PostMapping("all")
+    @ResponseStatus(CREATED)
+    fun createAll(@RequestBody request: Collection<CustomerCreateRequest>): Collection<CustomerResponse> =
+        customerCreateAllUseCase.execute(request.toDomain()).customerResponse()
 
     @PutMapping
     @ResponseStatus(OK)
-    fun update(@RequestBody request: CustomerUpdateRequest) =
-        customerCreateUseCase.execute(request.toDomain()).customerCreateResponse()
-
+    fun update(@RequestBody request: CustomerUpdateRequest): CustomerResponse =
+        customerCreateUseCase.execute(request.toDomain()).customerResponse()
 
     @GetMapping
     @ResponseStatus(OK)
-    fun get(): List<CustomerResponse> =
+    fun get(): Collection<CustomerResponse> =
         customerDataSource.findAll().customerResponse()
 
 }

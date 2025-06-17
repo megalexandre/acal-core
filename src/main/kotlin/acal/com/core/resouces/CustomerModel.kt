@@ -11,13 +11,13 @@ import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 
 @Document("customer")
-class CustomerModel(
+data class CustomerModel(
     @Id
     val id: String,
     @CreatedDate
-    val createdAt: LocalDateTime?,
+    var createdAt: LocalDateTime? = null,
     @LastModifiedDate
-    val updatedAt: LocalDateTime?,
+    var updatedAt: LocalDateTime? = null,
     val name: String,
     @Indexed(unique = true)
     val identityCard: String,

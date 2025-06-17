@@ -12,8 +12,8 @@ import java.time.LocalDateTime
 data class Customer (
     val id: String,
     val name: String,
-    val createdAt: LocalDateTime?,
-    val updatedAt: LocalDateTime?,
+    val createdAt: LocalDateTime? = null,
+    val updatedAt: LocalDateTime? = null,
     val identityCard: IdentityCard,
     val phoneNumber: PhoneNumber? = null,
     val partnerNumber: String? = null,

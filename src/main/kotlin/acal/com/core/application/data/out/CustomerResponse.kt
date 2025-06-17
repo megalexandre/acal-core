@@ -1,8 +1,11 @@
 import acal.com.core.domain.entity.Customer
+import java.time.LocalDateTime
 
 data class CustomerResponse(
     val id: String,
     val name: String,
+    val createdAt: LocalDateTime?,
+    val updatedAt: LocalDateTime?,
     val identityCard: String,
     val phoneNumber: String?,
     val partnerNumber: String?,
@@ -10,12 +13,15 @@ data class CustomerResponse(
 )
 
 fun Customer.customerResponse() = CustomerResponse(
-    id = this.id,
-    name = this.name,
-    identityCard = this.identityCard.number,
-    phoneNumber = this.phoneNumber?.number,
-    partnerNumber = this.partnerNumber,
-    voter = this.voter
+    id = id,
+    name = name,
+    createdAt = createdAt,
+    updatedAt = updatedAt,
+    identityCard = identityCard.number,
+    phoneNumber = phoneNumber?.number,
+    partnerNumber = partnerNumber,
+    voter = voter
 )
 
 fun List<Customer>.customerResponse() = this.map { it.customerResponse() }
+fun Collection<Customer>.customerResponse() =  this.map { it.customerResponse() }
