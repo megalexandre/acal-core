@@ -14,12 +14,13 @@ class CustomerRepositoryImp(
     val customerRepository: CustomerRepository
 ): CustomerDataSource {
 
-    @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
+
     override fun findByIdentityCard(identityCard: IdentityCard): Customer? =
         customerRepository.findByIdentityCard(identityCard.raw)?.firstOrNull()?.toDomain()
 
     override fun findAll(): Collection<Customer> = customerRepository.findAll().map { it.toDomain() }
 
+    @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
     override fun save(customer: Customer): Customer = customerRepository.save(customer.toEntity()).toDomain()
 
     override fun save(t: Collection<Customer>): Collection<Customer> =

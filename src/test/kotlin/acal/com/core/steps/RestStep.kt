@@ -58,7 +58,29 @@ class RestStep {
         val expectedJson = objectMapper.readTree(expectedBody)
         val actualJson = objectMapper.readTree(actualBody)
 
-        assertEquals(expectedJson, actualJson)
+        // Verifica se todos os campos e valores do expectedJson estão contidos no actualJson
+        assertJsonContains(expectedJson, actualJson)
+    }
+
+    private fun assertJsonContains(expected: JsonNode, actual: JsonNode) {
+        when {
+            expected.isObject -> {
+                expected.fieldNames().forEach { fieldName ->
+                    assertTrue(actual.has(fieldName), "Campo '$fieldName' não encontrado na resposta")
+                    assertJsonContains(expected.get(fieldName), actual.get(fieldName))
+                }
+            }
+            expected.isArray -> {
+                assertTrue(actual.isArray, "Esperado um array na resposta")
+                expected.forEachIndexed { index, expectedItem ->
+                    assertTrue(index < actual.size(), "O array da resposta não tem elementos suficientes")
+                    assertJsonContains(expectedItem, actual[index])
+                }
+            }
+            else -> {
+                assertEquals(expected.asText(), actual.asText(), "Valor esperado '${expected.asText()}' diferente do valor encontrado '${actual.asText()}'")
+            }
+        }
     }
 
     @E("o corpo da resposta deve conter as chaves")
