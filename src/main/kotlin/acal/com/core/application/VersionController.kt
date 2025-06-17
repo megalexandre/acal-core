@@ -19,7 +19,7 @@ class VersionController(
         val versionInfo = mapOf(
             "application" to applicationName,
             "version" to version,
-            "buildTime" to Instant.now().atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+            "startedAt" to Instant.now().atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
         )
 
         return ResponseEntity.ok(versionInfo)
