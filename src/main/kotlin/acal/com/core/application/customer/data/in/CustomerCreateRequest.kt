@@ -1,4 +1,4 @@
-package acal.com.core.application.data.`in`
+package acal.com.core.application.customer.data.`in`
 
 import acal.com.core.comons.Id
 import acal.com.core.domain.entity.Customer

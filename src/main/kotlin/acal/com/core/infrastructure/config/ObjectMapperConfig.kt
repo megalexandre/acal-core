@@ -1,5 +1,7 @@
 package acal.com.core.infrastructure.config
 
+import acal.com.core.infrastructure.serializer.BigDecimalDeserializer
+import acal.com.core.infrastructure.serializer.BigDecimalSerializer
 import acal.com.core.infrastructure.serializer.LocalDateTimeDeserializer
 import acal.com.core.infrastructure.serializer.LocalDateTimeSerializer
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -8,6 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.kotlinModule
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import java.math.BigDecimal
 import java.time.LocalDateTime
 
 @Configuration
@@ -21,6 +24,8 @@ class ObjectMapperConfiguration {
             registerModule(JavaTimeModule().apply {
                 addSerializer(LocalDateTime::class.java, LocalDateTimeSerializer())
                 addDeserializer(LocalDateTime::class.java, LocalDateTimeDeserializer())
+                addSerializer(BigDecimal::class.java, BigDecimalSerializer())
+                addDeserializer(BigDecimal::class.java, BigDecimalDeserializer())
             })
         }
 

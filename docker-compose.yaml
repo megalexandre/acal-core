@@ -9,6 +9,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
       MONGO_INITDB_DATABASE: acal
+    networks:
+      - acal
 
   # Serviço Prometheus
   prometheus:
@@ -20,6 +22,8 @@ services:
       - "9090:9090"
     depends_on:
       - mongodb
+    networks:
+      - acal
 
   # Serviço Grafana
   grafana:
@@ -29,3 +33,9 @@ services:
       - "3000:3000"
     depends_on:
       - prometheus
+    networks:
+      - acal
+
+networks:
+  acal:
+    driver: bridge

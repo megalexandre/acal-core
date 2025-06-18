@@ -1,4 +1,4 @@
-package acal.com.core.application.data.`in`
+package acal.com.core.application.customer.data.`in`
 
 import acal.com.core.domain.entity.Customer
 import acal.com.core.domain.entity.IdentityCard

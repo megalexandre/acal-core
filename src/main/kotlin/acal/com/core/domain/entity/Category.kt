@@ -5,7 +5,6 @@ import java.math.BigDecimal
 
 class Category(
     val id: String,
-    val auditInfo: AuditInfo,
     val name: String,
     val price: CategoryPrice,
     val group: Group,
@@ -18,8 +17,8 @@ class Category(
 }
 
 class CategoryPrice(
-    private val waterValue: BigDecimal,
-    private val partnerValue: BigDecimal
+    val waterValue: BigDecimal,
+    val partnerValue: BigDecimal
 ) {
 
     val total: BigDecimal

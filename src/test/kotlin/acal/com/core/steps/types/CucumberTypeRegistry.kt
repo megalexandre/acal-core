@@ -1,5 +1,6 @@
 package acal.com.core.steps.types
 
+import acal.com.core.resouces.AddressModel
 import acal.com.core.resouces.CustomerModel
 import io.cucumber.java.DataTableType
 import java.time.LocalDateTime
@@ -7,8 +8,8 @@ import java.time.LocalDateTime
 class CucumberTypeRegistry {
 
     @DataTableType
-    fun customerModelTransformer(entry: Map<String, String>): CustomerModel {
-        return CustomerModel(
+    fun customerModelTransformer(entry: Map<String, String>): CustomerModel =
+        CustomerModel(
             id = entry["id"] ?: "",
             createdAt = LocalDateTime.now(),
             updatedAt = LocalDateTime.now(),
@@ -18,5 +19,13 @@ class CucumberTypeRegistry {
             partnerNumber = entry["partner_number"],
             voter = entry["voter"]?.toBoolean() ?: false
         )
-    }
+
+
+    @DataTableType
+    fun addressModelTransformer(entry: Map<String, String>): AddressModel =
+        AddressModel(
+            id = entry["id"] ?: "",
+            name = entry["name"] ?: "",
+        )
+
 }

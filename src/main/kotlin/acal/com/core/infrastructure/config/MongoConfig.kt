@@ -1,18 +1,17 @@
 package acal.com.core.infrastructure.config
 
+import org.bson.Document
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Lazy
 import org.springframework.context.event.EventListener
-import org.springframework.data.domain.Sort
 import org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions
-import org.springframework.data.mongodb.core.index.Index
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext
-import org.slf4j.LoggerFactory
 
 @Configuration
 class MongoConfiguration {
@@ -31,41 +30,101 @@ class MongoConfiguration {
         }
 
     @EventListener(ApplicationReadyEvent::class)
-    fun initializeIndexes() {
-        logger.info("Iniciando criação de índices MongoDB")
+    fun initIndexes() {
+        createCustomerIndex()
+        createAddressIndex()
+        createPlaceIndex()
+        createCategoryIndex()
+    }
 
-        try {
-            // Criando índice único para identity_card na coleção customer
-            createCustomerIndexes()
+    private fun createCustomerIndex() {
+        runCatching {
+            val createIndexCommand = Document().apply {
+                put("createIndexes", "customer")
+                put("indexes", listOf(
+                    Document().apply {
+                        put("key", Document().apply {
+                            put("identity_card", 1)
+                        })
+                        put("name", "unique_identity_index")
+                        put("unique", true)
+                    }
+                ))
+            }
 
-            // Adicione aqui a criação de índices para outras coleções
-
-            logger.info("Índices MongoDB criados com sucesso")
-        } catch (e: Exception) {
-            logger.error("Erro ao criar índices MongoDB: ${e.message}", e)
+            val result = mongoTemplate.executeCommand(createIndexCommand)
+            logger.info("Resultado da criação do índice para customer: $result")
+        }.onFailure {
+            logger.error("Erro ao criar índice para customer", it)
         }
     }
 
-    private fun createCustomerIndexes() {
-        if (!mongoTemplate.collectionExists("customer")) {
-            mongoTemplate.createCollection("customer")
-            logger.info("Coleção 'customer' criada")
+    private fun createAddressIndex() {
+        runCatching {
+            val createIndexCommand = Document().apply {
+                put("createIndexes", "address")
+                put("indexes", listOf(
+                    Document().apply {
+                        put("key", Document().apply {
+                            put("name", 1)
+                        })
+                        put("name", "unique_name_index")
+                        put("unique", true)
+                    }
+                ))
+            }
+
+            val result = mongoTemplate.executeCommand(createIndexCommand)
+            logger.info("Resultado da criação do índice para address: $result")
+        }.onFailure {
+            logger.error("Erro ao criar índice para address", it)
         }
+    }
 
-        val indexOps = mongoTemplate.indexOps("customer")
-        if (indexOps.indexInfo.any { it.name == "unique_card_index" }) {
-            logger.info("Índice 'unique_card_index' já existe, nenhuma ação necessária")
-        } else {
-            val index = Index()
-                .on("identity_card", Sort.Direction.ASC)
-                .unique()
-                .named("unique_card_index")
+    private fun createPlaceIndex() {
+        runCatching {
+            val createIndexCommand = Document().apply {
+                put("createIndexes", "places")
+                put("indexes", listOf(
+                    Document().apply {
+                        put("key", Document().apply {
+                            put("number", 1)
+                            put("letter", 1)
+                            put("address._id", 1)
+                        })
+                        put("name", "place_unique_idx")
+                        put("unique", true)
+                    }
+                ))
+            }
 
-            indexOps.createIndex(index)
-            logger.info("Índice único 'unique_card_index' criado para o campo 'identity_card'")
+            val result = mongoTemplate.executeCommand(createIndexCommand)
+            logger.info("Resultado da criação do índice para places: $result")
+        }.onFailure {
+            logger.error("Erro ao criar índice para places", it)
         }
+    }
 
-        // Log dos índices existentes
-        logger.info("Índices na coleção 'customer': ${indexOps.indexInfo.map { it.name }}")
+    private fun createCategoryIndex() {
+        runCatching {
+            val createIndexCommand = Document().apply {
+                put("createIndexes", "category")
+                put("indexes", listOf(
+                    Document().apply {
+                        put("key", Document().apply {
+                            put("name", 1)
+                            put("group", 1)
+                        })
+                        put("name", "unique_name_per_group_idx")
+                        put("unique", true)
+                    }
+                ))
+            }
+
+            val result = mongoTemplate.executeCommand(createIndexCommand)
+            logger.info("Resultado da criação do índice para category: $result")
+        }.onFailure {
+            logger.error("Erro ao criar índice para category", it)
+        }
     }
 }
