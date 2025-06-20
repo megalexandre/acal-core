@@ -24,7 +24,7 @@ extra["snippetsDir"] = file("build/generated-snippets")
 val uuidVersion = "5.1.0"
 val cucumberVersion = "7.15.0"
 val mapstructVersion = "1.5.3.Final"
-val springdocVersion = "2.8.5" // Versão mais recente compatível com Spring Boot 3.5.x
+val springdocVersion = "2.8.5"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")

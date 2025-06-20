@@ -22,6 +22,9 @@ class CategoryRepositoryImp(
     override fun findById(id: String): Category? =
         categoryRepository.findById(id).orElse(null)?.toDomain()
 
+    override fun findAll(): Collection<Category> =
+        categoryRepository.findAll().map { it.toDomain() }
+
     override fun deleteById(id: String) =
         categoryRepository.deleteById(id)
 }
