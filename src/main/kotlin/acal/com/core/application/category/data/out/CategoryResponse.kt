@@ -12,7 +12,7 @@ data class CategoryResponse(
     val partnerValue: BigDecimal,
     val total: BigDecimal,
     val group: Group,
-    val isHydrometer: Boolean
+    val isHydrometer: Boolean,
 )
 
 fun Category.categoryResponse() = CategoryResponse(

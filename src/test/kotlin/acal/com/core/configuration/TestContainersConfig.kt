@@ -13,6 +13,7 @@ class TestContainersConfig {
     companion object {
         val mongoDBContainer = MongoDBContainer("mongo:8.0")
             .apply { start() }
+
     }
 
     @Bean

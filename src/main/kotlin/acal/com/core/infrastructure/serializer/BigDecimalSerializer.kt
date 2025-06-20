@@ -11,7 +11,8 @@ import java.math.BigDecimal
 class BigDecimalSerializer : JsonSerializer<BigDecimal>() {
 
     override fun serialize(value: BigDecimal, gen: JsonGenerator, serializers: SerializerProvider) {
-        gen.writeString(value.toPlainString())
+        val formattedValue = value.setScale(2, java.math.RoundingMode.HALF_EVEN).toPlainString()
+        gen.writeString(formattedValue)
     }
 
 }

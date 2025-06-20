@@ -7,13 +7,10 @@ import acal.com.core.comons.numbersOnly
 import acal.com.core.domain.enums.DocumentType
 import acal.com.core.domain.enums.DocumentType.CNPJ
 import acal.com.core.domain.enums.DocumentType.CPF
-import java.time.LocalDateTime
 
 data class Customer (
     val id: String,
     val name: String,
-    val createdAt: LocalDateTime? = null,
-    val updatedAt: LocalDateTime? = null,
     val identityCard: IdentityCard,
     val phoneNumber: PhoneNumber? = null,
     val partnerNumber: String? = null,

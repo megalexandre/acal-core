@@ -4,8 +4,6 @@ import java.time.LocalDateTime
 data class CustomerResponse(
     val id: String,
     val name: String,
-    val createdAt: LocalDateTime?,
-    val updatedAt: LocalDateTime?,
     val identityCard: String,
     val phoneNumber: String?,
     val partnerNumber: String?,
@@ -15,8 +13,6 @@ data class CustomerResponse(
 fun Customer.customerResponse() = CustomerResponse(
     id = id,
     name = name,
-    createdAt = createdAt,
-    updatedAt = updatedAt,
     identityCard = identityCard.number,
     phoneNumber = phoneNumber?.number,
     partnerNumber = partnerNumber,

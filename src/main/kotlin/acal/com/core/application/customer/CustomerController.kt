@@ -9,6 +9,7 @@ import acal.com.core.domain.usecase.customer.CustomerCreateAllUseCase
 import acal.com.core.domain.usecase.customer.CustomerCreateUseCase
 import acal.com.core.infrastructure.exception.DataNotFoundException
 import customerResponse
+import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.OK
 import org.springframework.web.bind.annotation.*
@@ -22,16 +23,20 @@ class CustomerController(
     val saveAll: CustomerCreateAllUseCase,
     val findById: CustomerByIdUseCase
 ) {
+    private val logger = LoggerFactory.getLogger(CustomerController::class.java)
 
     @PostMapping
     @ResponseStatus(CREATED)
-    fun create(@RequestBody request: CustomerCreateRequest): CustomerResponse =
-        create.execute(request.toDomain()).customerResponse()
+    fun create(@RequestBody request: CustomerCreateRequest): CustomerResponse {
+        logger.info("Iniciando criação de cliente: ${request.name}")
+        return create.execute(request.toDomain()).customerResponse()
+    }
 
     @PutMapping
     @ResponseStatus(OK)
-    fun update(@RequestBody request: CustomerUpdateRequest): CustomerResponse =
-        create.execute(request.toDomain()).customerResponse()
+    fun update(@RequestBody request: CustomerUpdateRequest): CustomerResponse {
+        return create.execute(request.toDomain()).customerResponse()
+    }
 
     @PostMapping("all")
     @ResponseStatus(CREATED)

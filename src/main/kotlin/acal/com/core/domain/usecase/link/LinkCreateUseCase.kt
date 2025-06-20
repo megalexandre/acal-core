@@ -1,0 +1,38 @@
+package acal.com.core.domain.usecase.link
+
+import acal.com.core.comons.Id
+import acal.com.core.domain.datasource.LinkDataSource
+import acal.com.core.domain.entity.Link
+import acal.com.core.domain.valueobject.LinkCreate
+import acal.com.core.domain.usecase.category.CategoryByIdUseCase
+import acal.com.core.domain.usecase.customer.CustomerByIdUseCase
+import acal.com.core.domain.usecase.place.PlaceByIdUseCase
+import org.springframework.stereotype.Component
+
+@Component
+class LinkCreateUseCase(
+    private val linkDataSource: LinkDataSource,
+    private val customerByIdUseCase: CustomerByIdUseCase,
+    private val placeByIdUseCase: PlaceByIdUseCase,
+    private val categoryByIdUseCase: CategoryByIdUseCase
+) {
+    fun execute(linkCreate: LinkCreate): Link = with(linkCreate) {
+        val customer = customerByIdUseCase.execute(customerId) ?: throw RuntimeException()
+        val place = placeByIdUseCase.execute(placeId) ?: throw RuntimeException()
+        val category = categoryByIdUseCase.execute(categoryId) ?: throw RuntimeException()
+
+        linkDataSource.save(
+            Link(
+                id = Id.random(),
+                number = linkCreate.number,
+                customer = customer,
+                place = place,
+                category = category,
+                exclusiveMember = linkCreate.exclusiveMember,
+                active = linkCreate.active,
+            )
+        )
+
+    }
+
+}

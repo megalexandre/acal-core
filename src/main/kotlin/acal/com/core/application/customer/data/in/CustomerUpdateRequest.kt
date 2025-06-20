@@ -25,8 +25,6 @@ data class CustomerUpdateRequest (
 ) {
     fun toDomain() = Customer(
         id = id,
-        createdAt = null,
-        updatedAt = null,
         name = name,
         identityCard = IdentityCard(identityCard),
         phoneNumber = phoneNumber?.let { PhoneNumber(it) },

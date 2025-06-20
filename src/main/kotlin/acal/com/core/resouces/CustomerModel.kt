@@ -6,6 +6,8 @@ import acal.com.core.domain.entity.PhoneNumber
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
+import org.springframework.data.mongodb.core.index.CompoundIndex
+import org.springframework.data.mongodb.core.index.CompoundIndexes
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 
@@ -35,8 +37,6 @@ data class CustomerModel(
 fun CustomerModel.toDomain(): Customer = Customer(
     id = id,
     name = name,
-    createdAt = createdAt,
-    updatedAt = updatedAt,
     identityCard = IdentityCard(identityCard),
     phoneNumber = phoneNumber?.let { PhoneNumber(it) },
     partnerNumber = partnerNumber,
@@ -45,12 +45,9 @@ fun CustomerModel.toDomain(): Customer = Customer(
 
 fun Customer.toEntity(): CustomerModel = CustomerModel(
     id = id,
-    createdAt = createdAt,
-    updatedAt = updatedAt,
     name = name,
     identityCard = identityCard.raw,
     phoneNumber = phoneNumber?.raw,
     partnerNumber = partnerNumber,
     voter = voter
 )
-
