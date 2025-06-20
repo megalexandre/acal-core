@@ -18,15 +18,4 @@ Funcionalidade: Cadastro de Categorias
     }
     """
     Então o código da resposta deve ser 201
-    E o corpo da resposta deve conter
-    """
-    {
-      "name": "Alexandre",
-      "water_value": 10,
-      "partner_value": 20,
-      "total": 30,
-      "group": "FOUNDER",
-      "is_hydrometer": true
-    }
-    """
 

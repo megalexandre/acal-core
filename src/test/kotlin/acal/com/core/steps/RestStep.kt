@@ -81,8 +81,15 @@ class RestStep {
                     assertJsonContains(expectedItem, actual[index])
                 }
             }
+            expected.isNumber && actual.isNumber -> {
+                val expectedValue = expected.asDouble()
+                val actualValue = actual.asDouble()
+                assertEquals(expectedValue, actualValue,
+                    "Valor numérico esperado '$expectedValue' diferente do valor encontrado '$actualValue'")
+            }
             else -> {
-                assertEquals(expected.asText(), actual.asText(), "Valor esperado '${expected.asText()}' diferente do valor encontrado '${actual.asText()}'")
+                assertEquals(expected.asText(), actual.asText(),
+                    "Valor esperado '${expected.asText()}' diferente do valor encontrado '${actual.asText()}'")
             }
         }
     }

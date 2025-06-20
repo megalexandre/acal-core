@@ -7,6 +7,7 @@ import acal.com.core.domain.valueobject.LinkCreate
 import acal.com.core.domain.usecase.category.CategoryByIdUseCase
 import acal.com.core.domain.usecase.customer.CustomerByIdUseCase
 import acal.com.core.domain.usecase.place.PlaceByIdUseCase
+import acal.com.core.infrastructure.exception.DataNotFoundException
 import org.springframework.stereotype.Component
 
 @Component
@@ -17,9 +18,9 @@ class LinkCreateUseCase(
     private val categoryByIdUseCase: CategoryByIdUseCase
 ) {
     fun execute(linkCreate: LinkCreate): Link = with(linkCreate) {
-        val customer = customerByIdUseCase.execute(customerId) ?: throw RuntimeException()
-        val place = placeByIdUseCase.execute(placeId) ?: throw RuntimeException()
-        val category = categoryByIdUseCase.execute(categoryId) ?: throw RuntimeException()
+        val customer = customerByIdUseCase.execute(customerId) ?: throw DataNotFoundException("customer not found: $customerId")
+        val place = placeByIdUseCase.execute(placeId) ?: throw DataNotFoundException("place not found: $placeId")
+        val category = categoryByIdUseCase.execute(categoryId) ?: throw DataNotFoundException("category not found: $categoryId")
 
         linkDataSource.save(
             Link(

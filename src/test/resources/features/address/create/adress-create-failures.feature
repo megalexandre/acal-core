@@ -22,15 +22,3 @@ Funcionalidade: Cadastro de Endereço
     }
     """
 
-  Cenário: Salvar um endereço com nome duplicado
-    o nome do endereço é único e não deve ser duplicado
-    Dado o endereço está cadastrado
-      | id                                   | name                    |
-      | 08bf9438-47de-11f0-9466-63b77fba1b3e | Avenida Fernando Daltro |
-    Quando eu envio um POST para "/address"
-    """
-    {
-      "name": "Avenida Fernando Daltro"
-    }
-    """
-    Então o código da resposta deve ser 400

@@ -24,11 +24,12 @@ extra["snippetsDir"] = file("build/generated-snippets")
 val uuidVersion = "5.1.0"
 val cucumberVersion = "7.15.0"
 val mapstructVersion = "1.5.3.Final"
+val springdocVersion = "2.8.5" // Versão mais recente compatível com Spring Boot 3.5.x
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation("com.fasterxml.uuid:java-uuid-generator:$uuidVersion")
@@ -37,6 +38,7 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.mapstruct:mapstruct:$mapstructVersion")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
 
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
