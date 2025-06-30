@@ -6,5 +6,6 @@ interface DefaultDataSource<T> {
     fun findById(id: String): T?
     fun save(t: T): T
     fun save(t: Collection<T>): Collection<T>
+    fun deleteById(id: String)
 
 }

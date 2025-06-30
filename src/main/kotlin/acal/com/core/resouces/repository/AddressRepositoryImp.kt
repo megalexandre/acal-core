@@ -25,6 +25,10 @@ class CustomerRepositoryImp(
     override fun save(t: Collection<Customer>): Collection<Customer> =
         customerRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
 
+    override fun deleteById(id: String) {
+        customerRepository.deleteById(id)
+    }
+
     override fun findById(id: String): Customer? =
         customerRepository.findById(id).orElse(null)?.toDomain()
 }

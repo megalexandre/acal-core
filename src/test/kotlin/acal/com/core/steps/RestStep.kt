@@ -51,6 +51,13 @@ class RestStep {
             .get(path)
     }
 
+    @Quando("eu envio um DELETE para {string}")
+    fun `eu envio um DELETE para`(path: String) {
+        sharedContext.response = RestAssured.given()
+            .contentType("application/json")
+            .delete(path)
+    }
+
     @Entao("o código da resposta deve ser {int}")
     fun `o código da resposta deve ser`(status: Int) {
         assertEquals(status, sharedContext.response?.statusCode)

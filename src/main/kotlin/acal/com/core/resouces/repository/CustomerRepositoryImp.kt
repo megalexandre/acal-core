@@ -21,6 +21,10 @@ class AddressRepositoryImp(
     override fun save(t: Collection<Address>): Collection<Address> =
         addressRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
 
+    override fun deleteById(id: String) {
+        addressRepository.deleteById(id)
+    }
+
     override fun findById(id: String): Address? =
         addressRepository.findById(id).orElse(null)?.toDomain()
 }
