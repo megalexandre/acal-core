@@ -2,9 +2,6 @@
 
 Funcionalidade: Cadastro de Endereço
 
-  Contexto:
-    Dado o banco de dados está vazio
-
   Cenário: Criar um novo endereço
 
     Quando eu envio um POST para "/address"

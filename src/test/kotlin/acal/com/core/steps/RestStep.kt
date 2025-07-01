@@ -44,6 +44,14 @@ class RestStep {
             .post(endpoint)
     }
 
+    @Quando("eu envio um PUT para {string}")
+    fun `eu envio um PUT para`(endpoint: String, corpo: String) {
+        sharedContext.response = RestAssured.given()
+            .contentType("application/json")
+            .body(corpo)
+            .put(endpoint)
+    }
+
     @Quando("eu envio um GET para {string}")
     fun `eu envio um GET para`(path: String) {
         sharedContext.response = RestAssured.given()
@@ -69,7 +77,6 @@ class RestStep {
         val expectedJson = objectMapper.readTree(expectedBody)
         val actualJson = objectMapper.readTree(actualBody)
 
-        // Verifica se todos os campos e valores do expectedJson estão contidos no actualJson
         assertJsonContains(expectedJson, actualJson)
     }
 

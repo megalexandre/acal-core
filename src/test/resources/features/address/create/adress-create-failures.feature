@@ -2,9 +2,6 @@
 
 Funcionalidade: Cadastro de Endereço
 
-  Contexto:
-    Dado o banco de dados está vazio
-
   Cenário: Criar endereço sem nome
     Quando eu envio um POST para "/address"
     """

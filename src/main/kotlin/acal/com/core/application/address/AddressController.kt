@@ -29,6 +29,7 @@ class AddressController(
         findById.execute(id)?.addressResponse()
             ?: throw DataNotFoundException("Endereço não encontrado com o ID: $id")
 
+    @ResponseStatus(OK)
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: String) {
         deleteUseCase.execute(id)
