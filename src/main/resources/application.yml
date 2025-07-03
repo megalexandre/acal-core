@@ -21,7 +21,7 @@ spring:
     property-naming-strategy: SNAKE_CASE
 
 acal:
-  version: 0.0.0-beta
+  version: 0.0.1-beta
 
 management:
   endpoints:

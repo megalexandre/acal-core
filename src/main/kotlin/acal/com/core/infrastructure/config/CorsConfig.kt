@@ -16,7 +16,7 @@ class CorsConfig {
         val source = UrlBasedCorsConfigurationSource()
         val config = CorsConfiguration()
 
-        config.allowedOrigins = listOf("https://acalapp.shop")
+        config.allowedOriginPatterns = listOf("*")
         config.allowedMethods = listOf("*")
         config.allowedHeaders = listOf("*")
         config.allowCredentials = true
@@ -32,7 +32,7 @@ class CorsConfig {
         return object : WebMvcConfigurer {
             override fun addCorsMappings(registry: CorsRegistry) {
                 registry.addMapping("/**")
-                    .allowedOrigins("https://acalapp.shop")
+                    .allowedOriginPatterns("*")
                     .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                     .allowedHeaders("*")
                     .allowCredentials(true)
