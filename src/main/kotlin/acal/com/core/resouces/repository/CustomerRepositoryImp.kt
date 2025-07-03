@@ -13,7 +13,9 @@ class AddressRepositoryImp(
     val addressRepository: AddressRepository
 ): AddressDataSource {
 
-    override fun findAll(): Collection<Address> = addressRepository.findAll().map { it.toDomain() }
+    override fun findAll(): Collection<Address> = addressRepository.findAll()
+        .sortedBy { it.name }
+        .map { it.toDomain() }
 
     @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
     override fun save(address: Address): Address = addressRepository.save(address.toEntity()).toDomain()
