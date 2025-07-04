@@ -1,0 +1,43 @@
+name: Update Version on Tag
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get tag name
+        id: get_tag
+        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Update version in application.yml
+        run: |
+          # Substitui a versão no application.yml
+          sed -i "s/acal:\n  version: .*/acal:\n  version: ${{ env.TAG_NAME }}/" src/main/resources/application.yml
+          
+          # Verifica se há mudanças
+          if [[ -n $(git status -s) ]]; then
+            echo "Versão atualizada para ${{ env.TAG_NAME }}"
+          else
+            echo "Nenhuma alteração necessária"
+            exit 0
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/main/resources/application.yml
+          git commit -m "chore: atualiza versão para ${{ env.TAG_NAME }}"
+          git push
