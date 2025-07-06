@@ -21,7 +21,7 @@ class AddressController(
     private val saveAll: AddressCreateAllUseCase,
     private val findById: AddressByIdUseCase,
     private val findAll: AddressFindAllUseCase,
-    private val deleteUseCase: AddressDeleteUseCase
+    private val delete: AddressDeleteUseCase
 ) {
     private val logger = LoggerFactory.getLogger(AddressController::class.java)
 
@@ -33,6 +33,7 @@ class AddressController(
             logger.info("Found {} addresses", it.size)
         }
     }
+
     @GetMapping("/{id}")
     @ResponseStatus(OK)
     fun getById(@PathVariable id: String): AddressResponse =
@@ -48,7 +49,7 @@ class AddressController(
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: String) {
         logger.info("Deleting address with ID: {}", id)
-        deleteUseCase.execute(id)
+        delete.execute(id)
         logger.info("Address with ID: {} deleted successfully", id)
     }
 

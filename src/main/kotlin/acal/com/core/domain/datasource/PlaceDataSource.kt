@@ -7,4 +7,5 @@ interface PlaceDataSource {
     fun saveAll(places: Collection<Place>): Collection<Place>
     fun findById(id: String): Place?
     fun deleteById(id: String)
+    fun findAll(): Collection<Place>
 }

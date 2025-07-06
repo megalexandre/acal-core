@@ -24,6 +24,10 @@ class PlaceRepositoryImp(
 
     override fun deleteById(id: String) =
         placeRepository.deleteById(id)
+
+    override fun findAll(): Collection<Place> =
+        placeRepository.findAll().map { it.toDomain() }
+
 }
 
 interface PlaceRepository: MongoRepository<PlaceModel, String>

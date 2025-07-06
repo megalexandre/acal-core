@@ -11,7 +11,7 @@ data class PlaceCreateRequest(
     @field:NotBlank(message = "Letter is required.")
     val letter: String,
 
-    @field:NotBlank(message = "Letter is required.")
+    @field:NotBlank(message = "Address is required.")
     val address: String
 ) {
     fun toDomain() = Place(
