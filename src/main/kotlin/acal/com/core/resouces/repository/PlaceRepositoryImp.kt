@@ -26,8 +26,10 @@ class PlaceRepositoryImp(
         placeRepository.deleteById(id)
 
     override fun findAll(): Collection<Place> =
-        placeRepository.findAll().map { it.toDomain() }
-
+        placeRepository.findAll()
+            .sortedWith(compareBy(
+                { it.address }, { it.number }, { it.letter })
+            ).map { it.toDomain() }
 }
 
 interface PlaceRepository: MongoRepository<PlaceModel, String>
