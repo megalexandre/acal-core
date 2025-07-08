@@ -1,6 +1,9 @@
 package acal.com.core.resouces
 
+import acal.com.core.domain.entity.Category
+import acal.com.core.domain.entity.Customer
 import acal.com.core.domain.entity.Link
+import acal.com.core.domain.entity.Place
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
@@ -13,20 +16,19 @@ data class LinkModel(
 
     val exclusiveMember: Boolean,
 
-    val customer: CustomerModel,
-    val place: PlaceModel,
-    val category: CategoryModel,
-
+    val customerId: String,
+    val placeId: String,
+    val categoryId: String,
 
     val active: Boolean,
 )
 
-fun LinkModel.toDomain(): Link = Link(
+fun LinkModel.toDomain(customer: Customer, place: Place, category: Category): Link = Link(
     id = id,
     number = number,
-    customer = customer.toDomain(),
-    place = place.toDomain(),
-    category = category.toDomain(),
+    customer = customer,
+    place = place,
+    category = category,
     exclusiveMember = exclusiveMember,
     active = active
 )
@@ -34,9 +36,9 @@ fun LinkModel.toDomain(): Link = Link(
 fun Link.toEntity(): LinkModel = LinkModel(
     id = id,
     number = number,
-    customer = customer.toEntity(),
-    place = place.toEntity(),
-    category = category.toEntity(),
+    customerId = customer.id,
+    placeId = place.id,
+    categoryId = category.id,
     exclusiveMember = exclusiveMember,
     active = active
 )

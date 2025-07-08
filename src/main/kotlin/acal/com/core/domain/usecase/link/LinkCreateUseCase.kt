@@ -18,6 +18,7 @@ class LinkCreateUseCase(
     private val categoryByIdUseCase: CategoryByIdUseCase
 ) {
     fun execute(linkCreate: LinkCreate): Link = with(linkCreate) {
+
         val customer = customerByIdUseCase.execute(customerId) ?: throw DataNotFoundException("customer not found: $customerId")
         val place = placeByIdUseCase.execute(placeId) ?: throw DataNotFoundException("place not found: $placeId")
         val category = categoryByIdUseCase.execute(categoryId) ?: throw DataNotFoundException("category not found: $categoryId")
