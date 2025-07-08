@@ -11,40 +11,14 @@ import org.springframework.stereotype.Repository
 @Repository
 class LinkRepositoryImp(
     private val linkRepository: LinkRepository,
-    private val categoryRepository: CategoryRepository,
-    private val placeRepository: PlaceRepository,
-    private val customerRepository: CustomerRepository
 ): LinkDataSource {
 
     override fun save(link: Link): Link =
-        linkRepository.save(link.toEntity()).toDomain(
-            customer = link.customer,
-            place = link.place,
-            category = link.category
-        )
+        linkRepository.save(link.toEntity()).toDomain()
 
-    override fun findById(id: String): Link? {
-
-        val linkModel = linkRepository.findById(id).orElse(null) ?: return null
-
-        val customer = customerRepository.findById(linkModel.customerId)
-            .map { it.toDomain() }
-            .orElse(null) ?: return null
-
-        val category = categoryRepository.findById(linkModel.categoryId)
-            .map { it.toDomain() }
-            .orElse(null) ?: return null
-
-        val place = placeRepository.findById(linkModel.placeId)
-            .map { it.toDomain() }
-            .orElse(null) ?: return null
-
-        return linkModel.toDomain(
-            customer = customer,
-            category = category,
-            place = place
-        )
-    }
+    override fun findById(id: String): Link? =
+        linkRepository.findById(id).orElse(null)
+            ?.toDomain()
 
 }
 

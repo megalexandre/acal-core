@@ -1,6 +1,5 @@
 package acal.com.core.resouces.interfaces
 
-import acal.com.core.resouces.repository.DefaultModel
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.data.repository.NoRepositoryBean
 import java.time.LocalDateTime

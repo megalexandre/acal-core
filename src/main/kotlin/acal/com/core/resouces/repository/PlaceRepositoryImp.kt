@@ -5,12 +5,13 @@ import acal.com.core.domain.entity.Place
 import acal.com.core.resouces.PlaceModel
 import acal.com.core.resouces.toDomain
 import acal.com.core.resouces.toEntity
+import org.springframework.data.domain.Sort
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 
 @Repository
 class PlaceRepositoryImp(
-    val placeRepository: PlaceRepository
+    private val placeRepository: PlaceRepository
 ): PlaceDataSource {
 
     override fun save(place: Place): Place =
@@ -26,10 +27,13 @@ class PlaceRepositoryImp(
         placeRepository.deleteById(id)
 
     override fun findAll(): Collection<Place> =
-        placeRepository.findAll()
-            .sortedWith(compareBy(
-                { it.address }, { it.number }, { it.letter })
-            ).map { it.toDomain() }
+        placeRepository.findAll(
+            Sort.by(
+                Sort.Order.asc("address"),
+                Sort.Order.asc("number"),
+                Sort.Order.asc("letter")
+            )
+        ).map { it.toDomain() }
 }
 
 interface PlaceRepository: MongoRepository<PlaceModel, String>
