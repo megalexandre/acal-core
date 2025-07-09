@@ -1,0 +1,207 @@
+curl --location 'http://localhost:8080/category/all' \
+--header 'Content-Type: application/json' \
+--data '[{
+		"name" : "Sócio Fundador",
+		"group" : "FOUNDER",
+		"water_value" : 30.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Sócio Contribuinte efetivo",
+		"group" : "EFFECTIVE",
+		"water_value" : 27.00,
+		"partner_value" : 3.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Sócio Contribuinte Efetivo (Hidrômetro) A",
+		"group" : "EFFECTIVE",
+		"water_value" : 27.00,
+		"partner_value" : 3.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "(Contribuinte Efetivo (dupla residencia))...",
+		"group" : "EFFECTIVE",
+		"water_value" : 54.00,
+		"partner_value" : 6.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Socio Não Residente",
+		"group" : "EFFECTIVE",
+		"water_value" : 9.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Contribuinte efetivo ",
+		"group" : "EFFECTIVE",
+		"water_value" : 30.00,
+		"partner_value" : 3.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "(Sócio Contribuinte efetivo)",
+		"group" : "EFFECTIVE",
+		"water_value" : 9.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "((CONTRIBUINTE EFETIVO)",
+		"group" : "EFFECTIVE",
+		"water_value" : 30.00,
+		"partner_value" : 3.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Sócio Contribuinte Efetivo (hidrometro) B",
+		"group" : "EFFECTIVE",
+		"water_value" : 43.92,
+		"partner_value" : 4.88,
+		"is_hydrometer" : "TRUE"
+	},
+	{
+		"name" : "SÓCIO CONTRIBUINTE EFETIVO (Hidrômetro) C",
+		"group" : "EFFECTIVE",
+		"water_value" : 27.00,
+		"partner_value" : 3.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "SÓCIO EFETIVO(Hidrômetro comercial)",
+		"group" : "EFFECTIVE",
+		"water_value" : 43.92,
+		"partner_value" : 4.88,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Sócio Contribuinte Temporário",
+		"group" : "TEMPORARY",
+		"water_value" : 30.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Sócio Contribuinte Temporario (Hidrômetro)",
+		"group" : "TEMPORARY",
+		"water_value" : 30.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Hidrômetro Associado Desligado",
+		"group" : "TEMPORARY",
+		"water_value" : 24.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : " Contribuinte Temporario",
+		"group" : "TEMPORARY",
+		"water_value" : 30.00,
+		"partner_value" : 3.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Dupla Residencia Socio Temporário",
+		"group" : "TEMPORARY",
+		"water_value" : 60.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Restaurante",
+		"group" : "TEMPORARY",
+		"water_value" : 48.80,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "FAZENDA",
+		"group" : "TEMPORARY",
+		"water_value" : 24.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Prefeitura",
+		"group" : "TEMPORARY",
+		"water_value" : 97.60,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Hidrômetro temporario ",
+		"group" : "TEMPORARY",
+		"water_value" : 30.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Hidrômetro taxa minina 12",
+		"group" : "TEMPORARY",
+		"water_value" : 30.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "sitio ...",
+		"group" : "TEMPORARY",
+		"water_value" : 48.80,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "sitio....",
+		"group" : "TEMPORARY",
+		"water_value" : 48.80,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Contribuiente Temporario..",
+		"group" : "TEMPORARY",
+		"water_value" : 39.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "categoria Exclusiva",
+		"group" : "TEMPORARY",
+		"water_value" : 30.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Contribuinte temporario",
+		"group" : "TEMPORARY",
+		"water_value" : 39.00,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Hidrômetro - Prefeitura ",
+		"group" : "TEMPORARY",
+		"water_value" : 97.60,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "Socio abril a dezembro 2013",
+		"group" : "TEMPORARY",
+		"water_value" : 3.90,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	},
+	{
+		"name" : "SÓCIO TEMPORARIO (Hidrômetro)",
+		"group" : "TEMPORARY",
+		"water_value" : 48.80,
+		"partner_value" : 0.00,
+		"is_hydrometer" : "FALSE"
+	}
+]
+'

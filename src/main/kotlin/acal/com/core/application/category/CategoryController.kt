@@ -29,6 +29,13 @@ class CategoryController(
     fun create(@RequestBody request: CategoryCreateRequest): CategoryResponse =
         create.execute(request.toDomain()).categoryResponse()
 
+    @PostMapping("/all")
+    @ResponseStatus(CREATED)
+    fun create(@RequestBody request: List<CategoryCreateRequest>)=
+        request.forEach {
+            create.execute(it.toDomain())
+        }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(OK)
     fun delete(@PathVariable id: String) =
