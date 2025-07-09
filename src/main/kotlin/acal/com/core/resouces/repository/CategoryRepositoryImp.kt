@@ -30,9 +30,6 @@ class CategoryRepositoryImp(
         return categoryRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
     }
 
-    override fun saveAll(t: Collection<Category>): Collection<Category> =
-        categoryRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
-
     override fun findById(id: String): Category? =
         categoryRepository.findById(id).orElse(null)?.toDomain()
 

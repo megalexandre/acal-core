@@ -25,13 +25,9 @@ class CustomerRepositoryImp(
 
     override fun save(t: Customer): Customer = customerRepository.save(t.toEntity()).toDomain()
 
-    override fun saveAll(t: Collection<Customer>): Collection<Customer> {
-        return customerRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
-    }
-
     override fun update(t: Customer): Customer {
         return save(t).also {
-            publisher.publishEvent(CustomerEvent(eventType = EventType.UPDATE,customer = it))
+            publisher.publishEvent(CustomerEvent(eventType = EventType.UPDATE, customer = it))
         }
     }
 

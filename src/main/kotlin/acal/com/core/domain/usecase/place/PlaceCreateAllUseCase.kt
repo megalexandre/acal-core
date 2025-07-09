@@ -9,5 +9,5 @@ class PlaceCreateAllUseCase(
     val placeDataSource: PlaceDataSource
 ) {
     fun execute(places: Collection<Place>): Collection<Place> =
-        placeDataSource.saveAll(places)
+        placeDataSource.save(places)
 }

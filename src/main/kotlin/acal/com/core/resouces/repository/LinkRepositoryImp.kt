@@ -18,8 +18,18 @@ class LinkRepositoryImp(
     private val linkRepository: LinkRepository,
 ): LinkDataSource {
 
-    override fun save(link: Link): Link =
-        linkRepository.save(link.toEntity()).toDomain()
+    override fun save(t: Collection<Link>): Collection<Link> {
+        return linkRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
+    }
+
+    override fun save(t: Link): Link =
+        linkRepository.save(t.toEntity()).toDomain()
+
+    override fun deleteById(id: String) {
+        findById(id)?.let {
+            save(it.copy(active = false))
+        }
+    }
 
     override fun findById(id: String): Link? =
         linkRepository.findById(id).orElse(null)

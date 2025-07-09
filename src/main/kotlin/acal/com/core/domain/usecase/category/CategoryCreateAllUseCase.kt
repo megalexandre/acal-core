@@ -9,5 +9,5 @@ class CategoryCreateAllUseCase(
     val categoryDataSource: CategoryDataSource
 ) {
     fun execute(categories: Collection<Category>): Collection<Category> =
-        categoryDataSource.saveAll(categories)
+        categoryDataSource.save(categories)
 }

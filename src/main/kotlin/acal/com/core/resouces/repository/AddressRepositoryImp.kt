@@ -23,10 +23,6 @@ class AddressRepositoryImp(
 
     override fun save(t: Address): Address = addressRepository.save(t.toEntity()).toDomain()
 
-    override fun saveAll(t: Collection<Address>): Collection<Address> {
-        return addressRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
-    }
-
     override fun update(t: Address): Address {
        return save(t)
     }

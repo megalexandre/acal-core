@@ -21,9 +21,6 @@ class PlaceRepositoryImp(
     override fun save(t: Place): Place =
         placeRepository.save(t.toEntity()).toDomain()
 
-    override fun saveAll(t: Collection<Place>): Collection<Place> =
-        placeRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
-
     override fun update(t: Place): Place {
         return save(t).also {
            publisher.publishEvent(PlaceEvent(eventType = EventType.UPDATE, place = it))
