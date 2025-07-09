@@ -6,6 +6,7 @@ import acal.com.core.application.category.data.out.CategoryResponse
 import acal.com.core.application.category.data.out.categoryResponse
 import acal.com.core.domain.datasource.CategoryDataSource
 import acal.com.core.domain.usecase.category.CategoryByIdUseCase
+import acal.com.core.domain.usecase.category.CategoryUpdateUseCase
 import acal.com.core.domain.usecase.category.CategoryCreateAllUseCase
 import acal.com.core.domain.usecase.category.CategoryCreateUseCase
 import acal.com.core.infrastructure.exception.DataNotFoundException
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*
 class CategoryController(
     private val create: CategoryCreateUseCase,
     private val saveAll: CategoryCreateAllUseCase,
+    private val update: CategoryUpdateUseCase,
     private val findById: CategoryByIdUseCase,
     private val dataSource: CategoryDataSource
 ) {
@@ -32,7 +34,7 @@ class CategoryController(
     @PutMapping
     @ResponseStatus(OK)
     fun update(@RequestBody request: CategoryUpdateRequest): CategoryResponse =
-        create.execute(request.toDomain()).categoryResponse()
+        update.execute(request.toDomain()).categoryResponse()
 
     @GetMapping
     @ResponseStatus(OK)

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class CustomerRepositoryImp(
-    val customerRepository: CustomerRepository
+    private val customerRepository: CustomerRepository
 ): CustomerDataSource {
 
     override fun findByIdentityCard(identityCard: IdentityCard): Customer? =

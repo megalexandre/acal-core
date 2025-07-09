@@ -10,15 +10,14 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class AddressRepositoryImp(
-    val addressRepository: AddressRepository
+    private val addressRepository: AddressRepository
 ): AddressDataSource {
 
     override fun findAll(): Collection<Address> = addressRepository.findAll()
         .sortedBy { it.name }
         .map { it.toDomain() }
 
-    @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
-    override fun save(address: Address): Address = addressRepository.save(address.toEntity()).toDomain()
+    override fun save(t: Address): Address = addressRepository.save(t.toEntity()).toDomain()
 
     override fun save(t: Collection<Address>): Collection<Address> =
         addressRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }

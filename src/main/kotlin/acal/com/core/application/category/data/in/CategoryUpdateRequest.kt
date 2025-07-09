@@ -13,13 +13,16 @@ data class CategoryUpdateRequest(
     @field:NotBlank(message = "Name is required.")
     val name: String,
 
+    @field:NotBlank(message = "Water Value is required.")
     val waterValue: BigDecimal,
 
+    @field:NotBlank(message = "Parter value is required.")
     val partnerValue: BigDecimal,
 
     @field:NotBlank(message = "Group is required.")
     val group: Group,
 
+    @field:NotBlank(message = "is Hydrometer is required.")
     val isHydrometer: Boolean
 ) {
     fun toDomain() = Category(
