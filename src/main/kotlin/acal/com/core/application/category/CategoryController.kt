@@ -5,10 +5,7 @@ import acal.com.core.application.category.data.`in`.CategoryUpdateRequest
 import acal.com.core.application.category.data.out.CategoryResponse
 import acal.com.core.application.category.data.out.categoryResponse
 import acal.com.core.domain.datasource.CategoryDataSource
-import acal.com.core.domain.usecase.category.CategoryByIdUseCase
-import acal.com.core.domain.usecase.category.CategoryUpdateUseCase
-import acal.com.core.domain.usecase.category.CategoryCreateAllUseCase
-import acal.com.core.domain.usecase.category.CategoryCreateUseCase
+import acal.com.core.domain.usecase.category.*
 import acal.com.core.infrastructure.exception.DataNotFoundException
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.OK
@@ -20,16 +17,22 @@ import org.springframework.web.bind.annotation.*
 )
 class CategoryController(
     private val create: CategoryCreateUseCase,
+    private val delete: CategoryDeleteUseCase,
     private val saveAll: CategoryCreateAllUseCase,
     private val update: CategoryUpdateUseCase,
     private val findById: CategoryByIdUseCase,
-    private val dataSource: CategoryDataSource
+    private val dataSource: CategoryDataSource,
 ) {
 
     @PostMapping
     @ResponseStatus(CREATED)
     fun create(@RequestBody request: CategoryCreateRequest): CategoryResponse =
         create.execute(request.toDomain()).categoryResponse()
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(OK)
+    fun delete(@PathVariable id: String) =
+        delete.execute(id)
 
     @PutMapping
     @ResponseStatus(OK)
