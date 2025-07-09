@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class CustomerCreateAllUseCase(
-    val customerDataSource: CustomerDataSource
+    private val customerDataSource: CustomerDataSource
 ) {
 
     fun execute(customer: Collection<Customer>): Collection<Customer> =

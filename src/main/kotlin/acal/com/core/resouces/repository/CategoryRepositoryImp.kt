@@ -14,20 +14,24 @@ import org.springframework.stereotype.Repository
 @Repository
 class CategoryRepositoryImp(
     private val categoryRepository: CategoryRepository,
-    private val eventPublisher: ApplicationEventPublisher
+    private val publisher: ApplicationEventPublisher
 ): CategoryDataSource {
 
-    override fun save(category: Category): Category =
-        categoryRepository.save(category.toEntity()).toDomain()
+    override fun save(t: Category): Category =
+        categoryRepository.save(t.toEntity()).toDomain()
 
-    override fun update(category: Category): Category {
-        return categoryRepository.save(category.toEntity()).toDomain().also {
-            eventPublisher.publishEvent(CategoryEvent(eventType = EventType.UPDATE, category = it))
+    override fun update(t: Category): Category {
+        return save(t).also {
+            publisher.publishEvent(CategoryEvent(eventType = EventType.UPDATE, category = it))
         }
     }
 
-    override fun saveAll(categories: Collection<Category>): Collection<Category> =
-        categoryRepository.saveAll(categories.map { it.toEntity() }).map { it.toDomain() }
+    override fun save(t: Collection<Category>): Collection<Category> {
+        return categoryRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
+    }
+
+    override fun saveAll(t: Collection<Category>): Collection<Category> =
+        categoryRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
 
     override fun findById(id: String): Category? =
         categoryRepository.findById(id).orElse(null)?.toDomain()

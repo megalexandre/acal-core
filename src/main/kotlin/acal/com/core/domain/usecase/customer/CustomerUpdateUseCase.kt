@@ -5,12 +5,12 @@ import acal.com.core.domain.entity.Customer
 import org.springframework.stereotype.Component
 
 @Component
-class CustomerByIdUseCase(
+class CustomerUpdateUseCase(
     private val customerDataSource: CustomerDataSource
 ) {
 
-    fun execute(id: String): Customer? =
-        customerDataSource.findById(id)
+    fun execute(customer: Customer): Customer =
+        customerDataSource.update(customer)
 
 }
 
