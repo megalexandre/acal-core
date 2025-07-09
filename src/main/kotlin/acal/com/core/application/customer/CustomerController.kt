@@ -7,6 +7,8 @@ import acal.com.core.application.customer.data.`in`.toDomain
 import acal.com.core.domain.usecase.customer.CustomerByIdUseCase
 import acal.com.core.domain.usecase.customer.CustomerCreateAllUseCase
 import acal.com.core.domain.usecase.customer.CustomerCreateUseCase
+import acal.com.core.domain.usecase.customer.CustomerDeleteUseCase
+import acal.com.core.domain.usecase.customer.CustomerFindAllUseCase
 import acal.com.core.infrastructure.exception.DataNotFoundException
 import customerResponse
 import org.slf4j.LoggerFactory
@@ -19,17 +21,24 @@ import org.springframework.web.bind.annotation.*
     value = ["/customer"],
 )
 class CustomerController(
-    val create: CustomerCreateUseCase,
-    val saveAll: CustomerCreateAllUseCase,
-    val findById: CustomerByIdUseCase
+    private val create: CustomerCreateUseCase,
+    private val saveAll: CustomerCreateAllUseCase,
+    private val findById: CustomerByIdUseCase,
+    private val findAll: CustomerFindAllUseCase,
+    private val delete: CustomerDeleteUseCase,
 ) {
     private val logger = LoggerFactory.getLogger(CustomerController::class.java)
 
     @PostMapping
     @ResponseStatus(CREATED)
     fun create(@RequestBody request: CustomerCreateRequest): CustomerResponse {
-        logger.info("Iniciando criação de cliente: ${request.name}")
         return create.execute(request.toDomain()).customerResponse()
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(OK)
+fun delete(@PathVariable id: String) {
+        delete.execute(id)
     }
 
     @PutMapping
@@ -48,4 +57,9 @@ class CustomerController(
     fun getById(@PathVariable id: String): CustomerResponse? =
         findById.execute(id)?.customerResponse()
             ?: throw DataNotFoundException("Cliente não encontrado com o ID: $id")
+
+    @GetMapping
+    @ResponseStatus(OK)
+    fun get(): Collection<CustomerResponse> =
+        findAll.execute().customerResponse()
 }
