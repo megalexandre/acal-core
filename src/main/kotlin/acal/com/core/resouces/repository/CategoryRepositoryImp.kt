@@ -8,6 +8,7 @@ import acal.com.core.resouces.CategoryModel
 import acal.com.core.resouces.toDomain
 import acal.com.core.resouces.toEntity
 import org.springframework.context.ApplicationEventPublisher
+import org.springframework.data.domain.Sort
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 
@@ -34,7 +35,14 @@ class CategoryRepositoryImp(
         categoryRepository.findById(id).orElse(null)?.toDomain()
 
     override fun findAll(): Collection<Category> =
-        categoryRepository.findAll().map { it.toDomain() }
+        categoryRepository.findAll(
+            Sort.by(
+                Sort.Order.asc("group"),
+                Sort.Order.asc("name"),
+            )
+        ).map { it.toDomain() }
+
+
 
     override fun deleteById(id: String) =
         categoryRepository.deleteById(id)

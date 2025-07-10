@@ -35,6 +35,11 @@ class CustomerController(
         return create.execute(request.toDomain()).customerResponse()
     }
 
+    @PostMapping("all")
+    @ResponseStatus(CREATED)
+    fun createAll(@RequestBody request: Collection<CustomerCreateRequest>): Collection<CustomerResponse> =
+        saveAll.execute(request.toDomain()).customerResponse()
+
     @DeleteMapping("/{id}")
     @ResponseStatus(OK)
 fun delete(@PathVariable id: String) {
@@ -47,10 +52,6 @@ fun delete(@PathVariable id: String) {
         return create.execute(request.toDomain()).customerResponse()
     }
 
-    @PostMapping("all")
-    @ResponseStatus(CREATED)
-    fun createAll(@RequestBody request: Collection<CustomerCreateRequest>): Collection<CustomerResponse> =
-        saveAll.execute(request.toDomain()).customerResponse()
 
     @GetMapping("/{id}")
     @ResponseStatus(OK)

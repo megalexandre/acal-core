@@ -22,8 +22,8 @@ class IdentityCard(value: String){
     private val type: DocumentType
         get() = when (raw.length){
             11 -> CPF
-            14 -> CNPJ
-            else -> throw IllegalArgumentException("Invalid document length: ${raw.length}. Expected 11 for CPF or 14 for CNPJ.")
+            else -> CNPJ
+            ///else -> throw IllegalArgumentException("Invalid document length: ${raw.length}. Expected 11 for CPF or 14 for CNPJ.")
         }
 
     val number: String
