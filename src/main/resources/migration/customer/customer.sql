@@ -1,5 +1,5 @@
 SELECT
-    nome,
+    MIN(nome) AS name,
     CASE
         WHEN COALESCE(REPLACE(REPLACE(REPLACE(cpf, '.', ''), '-', ''), ' ', ''), '') = ''
         THEN COALESCE(REPLACE(REPLACE(REPLACE(REPLACE(cnpj, '.', ''), '-', ''), ' ', ''), '/',''),'')
@@ -7,9 +7,5 @@ SELECT
     END AS identity_card,
     'true' AS voter
 FROM pessoa
-	where cnpj not like "%141975860001"
-
-order by nome
-
-
-;
+GROUP BY identity_card
+ORDER BY name;

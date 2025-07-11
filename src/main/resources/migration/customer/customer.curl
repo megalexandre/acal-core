@@ -1,6 +1,4 @@
-curl --location 'http://localhost:8080/customer/all' \
---header 'Content-Type: application/json' \
---data '
+
 [
 	{
 		"name" : "Acrisio Jose Cezar ",
@@ -5318,4 +5316,3 @@ curl --location 'http://localhost:8080/customer/all' \
 		"voter" : "true"
 	}
 ]
-'
