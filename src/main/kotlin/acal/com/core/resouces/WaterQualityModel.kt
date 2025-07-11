@@ -12,7 +12,7 @@ data class WaterQualityModel(
     val reference: String,
     val analysis: Collection<WaterAnalysisModel>
 )
-
+@Document("water_analysis")
 data class WaterAnalysisModel(
     val name: String,
     val required: String,

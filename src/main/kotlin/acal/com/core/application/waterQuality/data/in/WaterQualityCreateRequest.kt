@@ -6,7 +6,6 @@ import acal.com.core.domain.entity.WaterQuality
 
 data class WaterQualityRequest(
     val reference: String,
-    val name: String,
     val analysis: Collection<WaterAnalysisRequest>
 ) {
     fun toDomain() = WaterQuality(
