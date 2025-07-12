@@ -51,6 +51,6 @@ jobs:
         if: success()
         run: | 
           curl -X POST "${{ vars.COOLIFY_API_URL }}" \
-          -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}" \
+          -H "Authorization: Bearer ${{ vars.COOLIFY_TOKEN }}" \
           -H "Content-Type: application/json" \
           -d '{"forcePull": true, "imageTag": "${{ github.sha }}"}'
