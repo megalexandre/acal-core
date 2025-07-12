@@ -3,6 +3,7 @@ package acal.com.core.application.waterQuality.data.`in`
 import acal.com.core.comons.Id
 import acal.com.core.domain.entity.WaterAnalysis
 import acal.com.core.domain.entity.WaterQuality
+import acal.com.core.domain.entity.Reference
 
 data class WaterQualityRequest(
     val reference: String,
@@ -10,7 +11,7 @@ data class WaterQualityRequest(
 ) {
     fun toDomain() = WaterQuality(
         id = Id.random(),
-        reference = reference.trim(),
+        reference = Reference.of(reference.trim()),
         analysis = analysis.map { it.toDomain() }
     )
 }

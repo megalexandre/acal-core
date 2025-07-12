@@ -1,12 +1,12 @@
 package acal.com.core.domain.entity
 
-class WaterQuality(
+data class WaterQuality(
     val id: String,
-    val reference: String,
+    val reference: Reference,
     val analysis: Collection<WaterAnalysis>
 )
 
-class WaterAnalysis(
+data class WaterAnalysis(
     val name: String,
     val required: String,
     val analyzed: String,

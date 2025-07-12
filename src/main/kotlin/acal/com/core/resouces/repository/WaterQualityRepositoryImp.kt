@@ -5,6 +5,7 @@ import acal.com.core.domain.entity.WaterQuality
 import acal.com.core.resouces.WaterQualityModel
 import acal.com.core.resouces.toDomain
 import acal.com.core.resouces.toEntity
+import org.springframework.data.domain.Sort
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 
@@ -14,7 +15,16 @@ class WaterQualityRepositoryImp(
 ): WaterQualityDataSource {
 
     override fun findAll(): Collection<WaterQuality> {
-        return repository.findAll().map { it.toDomain() }
+        return repository.findAll(
+            Sort.by(
+                Sort.Order.desc("reference"),
+            )
+        ).map { entity ->
+            val domain = entity.toDomain()
+            domain.copy(
+                analysis = domain.analysis.sortedBy { it.name }
+            )
+        }
     }
 
     override fun findById(id: String): WaterQuality? {

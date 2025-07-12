@@ -4,6 +4,7 @@ import acal.com.core.domain.entity.WaterQuality
 import acal.com.core.domain.entity.WaterAnalysis
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
+import acal.com.core.domain.entity.Reference
 
 @Document("water_quality")
 data class WaterQualityModel(
@@ -36,12 +37,12 @@ fun WaterAnalysis.toEntity(): WaterAnalysisModel = WaterAnalysisModel(
 
 fun WaterQualityModel.toDomain(): WaterQuality = WaterQuality(
     id = id,
-    reference = reference,
+    reference = Reference.of( reference),
     analysis = analysis.map { it.toDomain() }
 )
 
 fun WaterQuality.toEntity(): WaterQualityModel = WaterQualityModel(
     id = id,
-    reference = reference,
+    reference = reference.toString(),
     analysis = analysis.map { it.toEntity() }
 )

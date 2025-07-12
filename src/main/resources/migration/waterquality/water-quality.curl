@@ -1,0 +1,316 @@
+curl --location 'http://localhost:8080/water-quality/all' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: SESSION=ZGQwNGY0MDYtZjllYy00MGUzLThhYjAtYWRkYmJkY2Q2ZDA2' \
+--data ' [
+    {
+      "reference": "2022-06",
+      "analysis": [
+        {"name": "Cor aparente - 15UH", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Eschirichia Coli", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Coliformes Totais", "analyzed": "10", "required": "10", "conformity": "10"}
+      ]
+    },
+    {
+      "reference": "2022-07",
+      "analysis": [
+        {"name": "Cor aparente - 15UH", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Eschirichia Coli", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Coliformes Totais", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "10", "required": "10", "conformity": "10"}
+      ]
+    },
+    {
+      "reference": "2022-08",
+      "analysis": [
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Coliformes Totais", "analyzed": "10", "required": "10", "conformity": "9"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Eschirichia Coli", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Cor aparente - 15UH", "analyzed": "10", "required": "10", "conformity": "10"}
+      ]
+    },
+    {
+      "reference": "2022-09",
+      "analysis": [
+        {"name": "Coliformes Totais", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Cor aparente - 15UH", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "10", "required": "10", "conformity": "10"},
+        {"name": "Eschirichia Coli", "analyzed": "10", "required": "10", "conformity": "10"}
+      ]
+    },
+    {
+      "reference": "2022-10",
+      "analysis": [
+        {"name": "Coliformes Totais", "analyzed": "07", "required": "07", "conformity": "07"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "07", "required": "07", "conformity": "07"},
+        {"name": "Cor aparente - 15UH", "analyzed": "07", "required": "07", "conformity": "07"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "07", "required": "07", "conformity": "07"},
+        {"name": "Eschirichia Coli", "analyzed": "07", "required": "07", "conformity": "07"}
+      ]
+    },
+    {
+      "reference": "2022-11",
+      "analysis": [
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2022-12",
+      "analysis": [
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-01",
+      "analysis": [
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-02",
+      "analysis": [
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-03",
+      "analysis": [
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-04",
+      "analysis": [
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-05",
+      "analysis": [
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-06",
+      "analysis": [
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-07",
+      "analysis": [
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-08",
+      "analysis": [
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-09",
+      "analysis": [
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-10",
+      "analysis": [
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-11",
+      "analysis": [
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "05"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2023-12",
+      "analysis": [
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-01",
+      "analysis": [
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-02",
+      "analysis": [
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-03",
+      "analysis": [
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-04",
+      "analysis": [
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-05",
+      "analysis": [
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-06",
+      "analysis": [
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-07",
+      "analysis": [
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-08",
+      "analysis": [
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-09",
+      "analysis": [
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-10",
+      "analysis": [
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-11",
+      "analysis": [
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    },
+    {
+      "reference": "2024-12",
+      "analysis": [
+        {"name": "Eschirichia Coli", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cor aparente - 15UH", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Coliformes Totais", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Cloro - Min 0,2 mg/l", "analyzed": "06", "required": "06", "conformity": "06"},
+        {"name": "Turbidez - 5.0 UT", "analyzed": "06", "required": "06", "conformity": "06"}
+      ]
+    }
+  ]
+'

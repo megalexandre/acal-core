@@ -2,6 +2,8 @@ package acal.com.core.application.waterQuality.data.out
 
 import acal.com.core.domain.entity.WaterAnalysis
 import acal.com.core.domain.entity.WaterQuality
+import acal.com.core.domain.entity.Reference
+
 import kotlin.String
 
 data class WaterQualityResponse(
@@ -19,7 +21,7 @@ data class WaterAnalysisResponse(
 
 fun WaterQuality.response() = WaterQualityResponse(
     id = id,
-    reference = reference,
+    reference = reference.toString(),
     analysis = analysis.map { it.response() }
 )
 
