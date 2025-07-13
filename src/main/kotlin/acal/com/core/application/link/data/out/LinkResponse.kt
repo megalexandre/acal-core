@@ -3,6 +3,7 @@ import acal.com.core.application.category.data.out.categoryResponse
 import acal.com.core.application.place.data.out.PlaceResponse
 import acal.com.core.application.place.data.out.placeResponse
 import acal.com.core.domain.entity.Link
+import org.springframework.data.domain.Page
 import java.math.BigDecimal
 
 data class LinkResponse(
@@ -16,7 +17,7 @@ data class LinkResponse(
     val active: Boolean,
 )
 
-fun Link.linkResponse() = LinkResponse(
+fun Link.response() = LinkResponse(
     id = id,
     number = number,
     customer = customer.customerResponse(),
@@ -27,5 +28,6 @@ fun Link.linkResponse() = LinkResponse(
     active = active,
 )
 
-fun List<Link>.linkResponse() = this.map { it.linkResponse() }
-fun Collection<Link>.linkResponse() =  this.map { it.linkResponse() }
+fun Page<Link>.response() = this.map { it.response() }
+fun List<Link>.response() = this.map { it.response() }
+fun Collection<Link>.response() =  this.map { it.response() }

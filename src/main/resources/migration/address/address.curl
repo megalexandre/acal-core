@@ -1,0 +1,381 @@
+curl --location 'http://localhost:8080/address/all' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: SESSION=ZGQwNGY0MDYtZjllYy00MGUzLThhYjAtYWRkYmJkY2Q2ZDA2' \
+--data '[	{
+		"id" : "d4405735-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Avenida Dilson Barbosa Av Nº 6 Bairro Pedro Henriqe Ferreira"
+	},
+    {
+        "id" : "d44021ed-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Avenida Fernando Daltro"
+	},
+	{
+		"id" : "d44022b0-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Avenida Flavio Mesquita"
+	},
+	{
+		"id" : "d4405bad-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Avenida Genézio José de Miranda Av 3 Bairro Loteamento Pedro Henrique"
+	},
+	{
+		"id" : "d4405505-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Avenida Givaldo Avelino da Mota Av 4 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d4405a8a-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Avenida Mário Alves de Amorim, Av Nº 5  Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d4405d52-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Avenida Raul Mangabeira  Av 2 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d44032eb-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda 2 Irmãos"
+	},
+	{
+		"id" : "d440365c-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Água Nova"
+	},
+	{
+		"id" : "d44031e2-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Água Nova"
+	},
+	{
+		"id" : "d4405f09-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Água Nova -Sítio Morada dos Pássaros - zona rural"
+	},
+	{
+		"id" : "d4405ec0-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Água Nova -Sitio Terra Prometida - zona rural"
+	},
+	{
+		"id" : "d440312a-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Bela Vista"
+	},
+	{
+		"id" : "d44033f6-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Bom sossego"
+	},
+	{
+		"id" : "d440370a-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Brauna"
+	},
+	{
+		"id" : "d4402fd5-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Cajueiro"
+	},
+	{
+		"id" : "d4403294-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Caratiu"
+	},
+	{
+		"id" : "d4403604-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Edvaldo Nunes"
+	},
+	{
+		"id" : "d4403185-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Eliege e Geraldo"
+	},
+	{
+		"id" : "d440302d-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Gonçalves"
+	},
+	{
+		"id" : "d4403341-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Halane"
+	},
+	{
+		"id" : "d440323c-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Lages do Contorno"
+	},
+	{
+		"id" : "d44030cb-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Poços"
+	},
+	{
+		"id" : "d4405f97-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Riacho das Flores"
+	},
+	{
+		"id" : "d440349c-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Saco"
+	},
+	{
+		"id" : "d4405fe3-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Santo Antônio"
+	},
+	{
+		"id" : "d4405f4f-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda São José"
+	},
+	{
+		"id" : "d4403760-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Sitio J Padre Cícero"
+	},
+	{
+		"id" : "d440339b-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Fazenda Umbaumba -Tombador"
+	},
+	{
+		"id" : "d44025f5-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Praça João Carneiro"
+	},
+	{
+		"id" : "d4402ba9-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Praça Rinaldo Magalhães"
+	},
+	{
+		"id" : "d4402a9c-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Praça Sé"
+	},
+	{
+		"id" : "d4402c05-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rodovia Assent. Alagoinhas"
+	},
+	{
+		"id" : "d44037b9-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rodovia Tombador\/Lages do Batata"
+	},
+	{
+		"id" : "d4401e82-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua ACM"
+	},
+	{
+		"id" : "d4401359-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Alegria"
+	},
+	{
+		"id" : "d4405661-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Ana Pinto Barbosa Rua 12 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d44056cd-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Antonio Batista de Carvalho Rua 13 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d440205e-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Bom Sucesso"
+	},
+	{
+		"id" : "d4403554-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Conj. Hab. Jacobina3"
+	},
+	{
+		"id" : "d4402124-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Coronel S. Nogueira"
+	},
+	{
+		"id" : "d4405c41-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Cravo- Bairro Vila Pamponet"
+	},
+	{
+		"id" : "d4402ec7-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Direita"
+	},
+	{
+		"id" : "d4405c89-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua dos Evangelicos - Bairro Vila Pamponet"
+	},
+	{
+		"id" : "d440218d-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Edivaldo Nunes de Carvalho"
+	},
+	{
+		"id" : "d4402f7f-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Flavio Mesquita"
+	},
+	{
+		"id" : "d440236d-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Flores"
+	},
+	{
+		"id" : "d440578c-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Francisco Fidélix da Silva, Rua 22 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d44057e8-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Francisco Matos Rua 7 do Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d440242e-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Gilberto Miranda"
+	},
+	{
+		"id" : "d4405842-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Hostilo  Quintino Alves Rua Nº 16 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d44034f9-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Humildes Jacobina-BA"
+	},
+	{
+		"id" : "d44024e3-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua João Neres"
+	},
+	{
+		"id" : "d4405e2b-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua José  Correia da Silva Rua 11 Bairro Loteamento Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d44058a0-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua José Carneiro da Silva, Rua 10 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d4402486-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Jose Facho"
+	},
+	{
+		"id" : "d4405e78-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua José Ferreira Filho Rua 17 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d44058f8-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua José Moura de Souza Rua 19 do Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d44059f7-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua José Severino Neto Rua 15 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d440264f-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Liberdade"
+	},
+	{
+		"id" : "d44035ac-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Lot. Pedro H. Ferreira"
+	},
+	{
+		"id" : "d44026a9-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Manoel C. de Souza"
+	},
+	{
+		"id" : "d4405a41-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Manoel Nogueira da Silva Rua 23 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d4402704-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Manoel Novaes"
+	},
+	{
+		"id" : "d4405d9e-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Maria Brito de Souza Rua 18 Bairro Loteamento Pedro Henrique"
+	},
+	{
+		"id" : "d4405bf7-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Medeiros- Bairro Vila Pamponet"
+	},
+	{
+		"id" : "d44028cf-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Morro do Chapéu"
+	},
+	{
+		"id" : "d440298c-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Nova"
+	},
+	{
+		"id" : "d4405cd3-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Otaciana Benícia de Jesus Rua Nº 20 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d44029eb-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Padre Alfredo"
+	},
+	{
+		"id" : "d440253f-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Primeiro de Janeiro"
+	},
+	{
+		"id" : "d4402af8-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Quintino Alves"
+	},
+	{
+		"id" : "d44036b3-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Roberto Maia"
+	},
+	{
+		"id" : "d4402e15-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Santo Antonio"
+	},
+	{
+		"id" : "d4405b20-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua São Francisco Rua 21 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d4402d65-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua São José"
+	},
+	{
+		"id" : "d4402c5c-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Saudade"
+	},
+	{
+		"id" : "d4402d0f-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Senhor do Bomfim"
+	},
+	{
+		"id" : "d4402dbd-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Sete de Setembro"
+	},
+	{
+		"id" : "d4405de5-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Terezinha Soares da Silva Rua 16 Bairro Pedro Henrique Ferreira"
+	},
+	{
+		"id" : "d4402e6d-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Rua Usina"
+	},
+	{
+		"id" : "d4401ff1-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa ACM"
+	},
+	{
+		"id" : "d4401dbe-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Alegria"
+	},
+	{
+		"id" : "d44020c1-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Bom Sucesso"
+	},
+	{
+		"id" : "d4402250-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Fernando Daltro"
+	},
+	{
+		"id" : "d440230f-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Flavio Mesquita"
+	},
+	{
+		"id" : "d44023d1-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Flores"
+	},
+	{
+		"id" : "d4402f21-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Florisvaldo M. de Freitas"
+	},
+	{
+		"id" : "d4402762-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Manoel Novaes"
+	},
+	{
+		"id" : "d4402932-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Morro do Chapéu"
+	},
+	{
+		"id" : "d4402a42-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Padre Alfredo"
+	},
+	{
+		"id" : "d4402599-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Primeiro de Janeiro"
+	},
+	{
+		"id" : "d4402b51-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Quintino Alves"
+	},
+	{
+		"id" : "d4402cb8-5f7a-11f0-afe4-a20d12156e59",
+		"name" : "Travessa Saudade"
+	}
+]
+'

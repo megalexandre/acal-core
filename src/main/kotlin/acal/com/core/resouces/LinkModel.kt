@@ -10,14 +10,10 @@ data class LinkModel(
     @Id
     val id: String,
     val number: String,
-
     val exclusiveMember: Boolean,
-
     val customer: CustomerModel,
     val place: PlaceModel,
     val category: CategoryModel,
-
-
     val active: Boolean,
 )
 

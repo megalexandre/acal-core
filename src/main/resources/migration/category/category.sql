@@ -1,4 +1,18 @@
-SELECT 
+ALTER TABLE categoriasocio
+ADD COLUMN uuid CHAR(36);
+
+UPDATE categoriasocio
+SET uuid = UUID()
+WHERE uuid IS NULL;
+
+ALTER TABLE categoriasocio
+MODIFY uuid CHAR(36) NOT NULL;
+
+ALTER TABLE categoriasocio
+ADD CONSTRAINT unique_uuid UNIQUE (uuid);
+
+SELECT
+	uuid as id,
   cs.nome AS name,
   CASE 
     WHEN g.id = 1 THEN 'FOUNDER'

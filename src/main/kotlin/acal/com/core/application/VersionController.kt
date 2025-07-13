@@ -2,6 +2,7 @@ package acal.com.core.application
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.ResponseEntity
+import org.springframework.http.ResponseEntity.ok
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 import java.time.Instant
@@ -14,15 +15,19 @@ class VersionController(
     @Value("\${acal.version:development}") private val version: String
 ) {
 
+    private val startedAt: String = Instant.now()
+        .atZone(ZoneId.systemDefault())
+        .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+
     @GetMapping("/version")
     fun getVersion(): ResponseEntity<Map<String, Any>> {
         val versionInfo = mapOf(
             "application" to applicationName,
             "version" to version,
-            "startedAt" to Instant.now().atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+            "startedAt" to startedAt,
         )
 
-        return ResponseEntity.ok(versionInfo)
+        return ok(versionInfo)
     }
 
 }

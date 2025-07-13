@@ -1,9 +1,12 @@
 package acal.com.core.application.link.data.`in`
 
+import acal.com.core.comons.Id
 import acal.com.core.domain.valueobject.LinkCreate
 import jakarta.validation.constraints.NotBlank
 
 data class LinkCreateRequest (
+
+    val id: String?,
 
     @field:NotBlank(message = "Number is required.")
     val number: String,
@@ -21,6 +24,7 @@ data class LinkCreateRequest (
 
 ) {
     fun toDomain() = LinkCreate(
+        id = id ?: Id.random(),
         number = number,
         customerId = customerId,
         placeId = placeId,

@@ -4,25 +4,25 @@ import acal.com.core.domain.entity.Place
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
-@Document(collection = "places")
+@Document(collection = "place")
 data class PlaceModel(
     @Id
     val id: String,
     val number: String,
     val letter: String,
-    val address: String
+    val address: String,
 )
 
 fun PlaceModel.toDomain() = Place(
     id = id,
     number = number,
     letter = letter,
-    address = address
+    address = address,
 )
 
 fun Place.toEntity() = PlaceModel(
     id = id,
     number = number,
     letter = letter,
-    address = address
+    address = address,
 )

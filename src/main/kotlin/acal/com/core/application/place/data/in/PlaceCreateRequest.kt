@@ -5,6 +5,8 @@ import acal.com.core.domain.entity.Place
 import jakarta.validation.constraints.NotBlank
 
 data class PlaceCreateRequest(
+    val id: String?,
+
     @field:NotBlank(message = "Number is required.")
     val number: String,
 
@@ -12,10 +14,11 @@ data class PlaceCreateRequest(
     val letter: String,
 
     @field:NotBlank(message = "Address is required.")
-    val address: String
+    val address: String,
+
 ) {
     fun toDomain() = Place(
-        id = Id.random(),
+        id = id ?: Id.random(),
         number = number.trim(),
         letter = letter.trim(),
         address = address

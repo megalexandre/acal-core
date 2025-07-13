@@ -7,6 +7,7 @@ import acal.com.core.domain.enums.Group
 import java.math.BigDecimal
 
 data class CategoryCreateRequest(
+    val id: String,
     val name: String,
     val waterValue: BigDecimal,
     val partnerValue: BigDecimal,
@@ -14,7 +15,7 @@ data class CategoryCreateRequest(
     val isHydrometer: Boolean = false
 ) {
     fun toDomain() = Category(
-        id = Id.random(),
+        id = id ?: Id.random(),
         name = name.trimIndent(),
         price = CategoryPrice(
             waterValue = waterValue,

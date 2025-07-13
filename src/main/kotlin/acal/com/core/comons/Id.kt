@@ -5,7 +5,9 @@ import com.fasterxml.uuid.Generators
 class Id {
 
     companion object {
-        fun random(): String = Generators.timeBasedGenerator().generate().toString()
+        fun random(): String =
+            Generators.timeBasedGenerator()
+                .generate().toString()
     }
 
 }

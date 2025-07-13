@@ -4,10 +4,11 @@ import acal.com.core.comons.Id
 import acal.com.core.domain.entity.Address
 
 data class AddressCreateRequest (
+    val id: String?,
     val name: String
 ) {
     fun toDomain() = Address(
-        id = Id.random(),
+        id = id ?: Id.random(),
         name = name.trimIndent()
     )
 }

@@ -6,6 +6,7 @@ import acal.com.core.domain.entity.IdentityCard
 import acal.com.core.domain.entity.PhoneNumber
 
 data class CustomerCreateRequest (
+    val id: String?,
     val name: String,
     val identityCard: String,
     val phoneNumber: String? = null,
@@ -13,7 +14,7 @@ data class CustomerCreateRequest (
     val voter: Boolean = true,
 ) {
     fun toDomain() = Customer(
-        id = Id.random(),
+        id = id ?:  Id.random(),
         name = name.trimIndent(),
         identityCard = IdentityCard(identityCard),
         phoneNumber = phoneNumber?.let { PhoneNumber(it) },

@@ -2,6 +2,7 @@ package acal.com.core.resouces.repository
 
 import acal.com.core.domain.datasource.LinkDataSource
 import acal.com.core.domain.entity.Link
+import acal.com.core.domain.valueobject.LinkFilter
 import acal.com.core.infrastructure.event.CategoryEvent
 import acal.com.core.infrastructure.event.CustomerEvent
 import acal.com.core.infrastructure.event.EventType.UPDATE
@@ -10,6 +11,9 @@ import acal.com.core.resouces.LinkModel
 import acal.com.core.resouces.toDomain
 import acal.com.core.resouces.toEntity
 import org.springframework.context.event.EventListener
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 
@@ -17,6 +21,11 @@ import org.springframework.stereotype.Repository
 class LinkRepositoryImp(
     private val linkRepository: LinkRepository,
 ): LinkDataSource {
+
+    override fun paginate(filter: LinkFilter): Page<Link> {
+        val pageable = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "createdAt"))
+        return linkRepository.findAll(pageable).map { it.toDomain() }
+    }
 
     override fun save(t: Collection<Link>): Collection<Link> {
         return linkRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
@@ -31,9 +40,11 @@ class LinkRepositoryImp(
         }
     }
 
+
     override fun findById(id: String): Link? =
         linkRepository.findById(id).orElse(null)
             ?.toDomain()
+
 
     @EventListener
     fun categoryListener(event: CategoryEvent) {
