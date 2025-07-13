@@ -1,4 +1,13 @@
 package acal.com.core.domain.valueobject
 
-class LinkFilter {
-}
+data class SortOrder(
+    val property: String,
+    val direction: String
+)
+
+data class LinkFilter(
+    val page: Int,
+    val size: Int,
+    val name: String? = null,
+    val sortOrders: List<SortOrder>? = null
+)

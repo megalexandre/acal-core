@@ -23,10 +23,10 @@ class LinkController(
     private val linkPaginateUseCase: LinkPaginateUseCase,
 ) {
 
-    @GetMapping
+    @PostMapping("/paginate")
     @ResponseStatus(HttpStatus.OK)
-    fun get(): Page<LinkResponse> =
-        linkPaginateUseCase.execute(LinkFilter()).response()
+    fun get(@RequestBody filter: LinkFilter): Page<LinkResponse> =
+        linkPaginateUseCase.execute(filter).response()
 
     @PostMapping
     @ResponseStatus(CREATED)

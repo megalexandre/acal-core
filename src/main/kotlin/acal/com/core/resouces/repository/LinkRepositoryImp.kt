@@ -8,24 +8,42 @@ import acal.com.core.infrastructure.event.CustomerEvent
 import acal.com.core.infrastructure.event.EventType.UPDATE
 import acal.com.core.infrastructure.event.PlaceEvent
 import acal.com.core.resouces.LinkModel
+import acal.com.core.resouces.repository.query.LinkQuery
 import acal.com.core.resouces.toDomain
 import acal.com.core.resouces.toEntity
 import org.springframework.context.event.EventListener
 import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
+import org.springframework.data.mongodb.core.MongoTemplate
+import org.springframework.data.mongodb.core.query.Criteria
+import org.springframework.data.mongodb.core.query.Query
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 
 @Repository
 class LinkRepositoryImp(
     private val linkRepository: LinkRepository,
+    private val mongoTemplate: MongoTemplate,
 ): LinkDataSource {
 
     override fun paginate(filter: LinkFilter): Page<Link> {
-        val pageable = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "createdAt"))
-        return linkRepository.findAll(pageable).map { it.toDomain() }
+
+        val query = LinkQuery().query(filter)
+
+        val pageable = PageRequest.of(filter.page, filter.size)
+
+        val total = mongoTemplate.count(Query.of(query)
+            .limit(-1).skip(-1), LinkModel::class.java)
+
+        query.with(pageable)
+
+        val content = mongoTemplate.find(query, LinkModel::class.java).map { it.toDomain() }
+
+        return PageImpl(content, pageable, total)
     }
+
 
     override fun save(t: Collection<Link>): Collection<Link> {
         return linkRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
@@ -89,4 +107,3 @@ interface LinkRepository: MongoRepository<LinkModel, String>{
     fun findByCustomerId(customerId: String): Collection<LinkModel>
 
 }
-

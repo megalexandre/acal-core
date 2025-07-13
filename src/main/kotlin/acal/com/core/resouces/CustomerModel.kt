@@ -1,13 +1,12 @@
 package acal.com.core.resouces
 
+import acal.com.core.comons.normalize
 import acal.com.core.domain.entity.Customer
 import acal.com.core.domain.entity.IdentityCard
 import acal.com.core.domain.entity.PhoneNumber
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
-import org.springframework.data.mongodb.core.index.CompoundIndex
-import org.springframework.data.mongodb.core.index.CompoundIndexes
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 
@@ -24,13 +23,10 @@ data class CustomerModel(
     var updatedAt: LocalDateTime? = null,
 
     val name: String,
-
+    val normalizedName: String?,
     val identityCard: String,
-
     val phoneNumber: String? = null,
-
     val partnerNumber: String? = null,
-
     val voter: Boolean
 )
 
@@ -46,6 +42,7 @@ fun CustomerModel.toDomain(): Customer = Customer(
 fun Customer.toEntity(): CustomerModel = CustomerModel(
     id = id,
     name = name,
+    normalizedName = name.normalize(),
     identityCard = identityCard.raw,
     phoneNumber = phoneNumber?.raw,
     partnerNumber = partnerNumber,
