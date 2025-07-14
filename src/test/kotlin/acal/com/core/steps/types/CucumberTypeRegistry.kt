@@ -1,5 +1,6 @@
 package acal.com.core.steps.types
 
+import acal.com.core.comons.normalize
 import acal.com.core.resouces.AddressModel
 import acal.com.core.resouces.CustomerModel
 import io.cucumber.java.DataTableType
@@ -17,7 +18,8 @@ class CucumberTypeRegistry {
             identityCard = entry["identity_card"] ?: "",
             phoneNumber = entry["phone_number"],
             partnerNumber = entry["partner_number"],
-            voter = entry["voter"]?.toBoolean() ?: false
+            voter = entry["voter"]?.toBoolean() ?: false,
+            normalizedName = (entry["name"] ?: "").normalize()
         )
 
 

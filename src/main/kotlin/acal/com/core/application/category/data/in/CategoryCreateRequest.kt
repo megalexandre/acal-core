@@ -7,7 +7,7 @@ import acal.com.core.domain.enums.Group
 import java.math.BigDecimal
 
 data class CategoryCreateRequest(
-    val id: String,
+    val id: String?,
     val name: String,
     val waterValue: BigDecimal,
     val partnerValue: BigDecimal,
