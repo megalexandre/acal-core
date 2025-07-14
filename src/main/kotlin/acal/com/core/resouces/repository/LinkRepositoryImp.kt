@@ -15,9 +15,7 @@ import org.springframework.context.event.EventListener
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.PageRequest
-import org.springframework.data.domain.Sort
 import org.springframework.data.mongodb.core.MongoTemplate
-import org.springframework.data.mongodb.core.query.Criteria
 import org.springframework.data.mongodb.core.query.Query
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
@@ -34,7 +32,8 @@ class LinkRepositoryImp(
 
         val pageable = PageRequest.of(filter.page, filter.size)
 
-        val total = mongoTemplate.count(Query.of(query)
+        val total = mongoTemplate.count(
+            Query.of(query)
             .limit(-1).skip(-1), LinkModel::class.java)
 
         query.with(pageable)

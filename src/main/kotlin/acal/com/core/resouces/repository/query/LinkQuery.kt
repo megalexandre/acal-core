@@ -11,7 +11,15 @@ class LinkQuery {
         val criteria = Criteria()
 
         filter.name?.takeIf { it.isNotBlank() }?.let {
-            criteria.and("customer.normalizedName").regex(it, "i")
+            criteria.and("customer.normalizedName").regex(it.trim(), "i")
+        }
+
+        filter.category?.takeIf { it.isNotBlank() }?.let {
+            criteria.and("category.name").regex(it.trim(), "i")
+        }
+
+        filter.address?.takeIf { it.isNotBlank() }?.let {
+            criteria.and("place.address").regex(it.trim(), "i")
         }
 
         val query = Query(criteria)
