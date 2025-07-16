@@ -23,7 +23,6 @@ class IdentityCard(value: String){
         get() = when (raw.length){
             11 -> CPF
             else -> CNPJ
-            ///else -> throw IllegalArgumentException("Invalid document length: ${raw.length}. Expected 11 for CPF or 14 for CNPJ.")
         }
 
     val number: String
