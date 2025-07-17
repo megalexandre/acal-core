@@ -2,6 +2,7 @@ package acal.com.core.resouces.repository
 
 import acal.com.core.domain.datasource.LinkDataSource
 import acal.com.core.domain.entity.Link
+import acal.com.core.domain.entity.Reference
 import acal.com.core.domain.valueobject.LinkFilter
 import acal.com.core.infrastructure.event.CategoryEvent
 import acal.com.core.infrastructure.event.CustomerEvent
@@ -19,6 +20,7 @@ import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.query.Query
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
+import org.springframework.data.mongodb.repository.Query as QueryAnnotation
 
 @Repository
 class LinkRepositoryImp(
@@ -43,6 +45,8 @@ class LinkRepositoryImp(
         return PageImpl(content, pageable, total)
     }
 
+    override fun findActiveLinksWithoutReference(reference: Reference): Collection<Link> =
+        linkRepository.findActiveLinksWithoutReference(reference.toString()).map { it.toDomain() }
 
     override fun save(t: Collection<Link>): Collection<Link> {
         return linkRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
@@ -56,7 +60,6 @@ class LinkRepositoryImp(
             save(it.copy(active = false))
         }
     }
-
 
     override fun findById(id: String): Link? =
         linkRepository.findById(id).orElse(null)
@@ -105,4 +108,6 @@ interface LinkRepository: MongoRepository<LinkModel, String>{
     fun findByPlaceId(placeId: String): Collection<LinkModel>
     fun findByCustomerId(customerId: String): Collection<LinkModel>
 
+    @QueryAnnotation("{ 'active': true, 'references': { \$not: { \$in: [?0] } } }")
+    fun findActiveLinksWithoutReference(reference: String): Collection<LinkModel>
 }

@@ -1,6 +1,7 @@
 package acal.com.core.domain.datasource
 
 import acal.com.core.domain.entity.Link
+import acal.com.core.domain.entity.Reference
 import acal.com.core.domain.valueobject.LinkFilter
 import org.springframework.data.domain.Page
 
@@ -11,4 +12,5 @@ interface LinkDataSource {
     fun deleteById(id: String)
     fun findById(id: String): Link?
     fun paginate(filter: LinkFilter): Page<Link>
+    fun findActiveLinksWithoutReference(reference: Reference): Collection<Link>
 }

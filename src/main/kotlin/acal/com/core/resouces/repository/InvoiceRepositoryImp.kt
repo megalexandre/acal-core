@@ -2,6 +2,7 @@ package acal.com.core.resouces.repository
 
 import acal.com.core.domain.datasource.InvoiceDataSource
 import acal.com.core.domain.entity.Invoice
+import acal.com.core.domain.entity.Reference
 import acal.com.core.domain.valueobject.InvoiceFilter
 import acal.com.core.resouces.InvoiceModel
 import acal.com.core.resouces.repository.query.InvoiceQuery
@@ -56,6 +57,12 @@ class InvoiceRepositoryImp(
         return PageImpl(content, pageable, total)
     }
 
+    override fun countByReferencesContaining(reference: Reference): Long {
+        return repository.countByReferenceContaining(reference.toString())
+    }
+
 }
 
-interface InvoiceRepository: MongoRepository<InvoiceModel, String>
+interface InvoiceRepository: MongoRepository<InvoiceModel, String>{
+    fun countByReferenceContaining(reference: String): Long
+}

@@ -8,7 +8,6 @@ class Invoice (
     val id: String,
     val reference: Reference,
     val number: String,
-
     val waterMeter: WaterMeter?,
 
     val customer: Customer,
@@ -29,10 +28,15 @@ class Invoice (
     val waterValue: BigDecimal
         get() = waterMeter?.value ?: BigDecimal.ZERO
 
-    val values: List<BigDecimal>
+    val values: List<invoiceValue>
         get() = listOf(
-            category.price.waterValue,
-            category.price.partnerValue,
-            waterValue
+            invoiceValue("Água", category.price.waterValue) ,
+            invoiceValue("Categoria", category.price.partnerValue),
+            invoiceValue("Hidrômetro",waterValue)
         )
 }
+
+class invoiceValue(
+    val name: String,
+    val value: BigDecimal
+)

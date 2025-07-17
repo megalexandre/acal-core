@@ -10,6 +10,7 @@ data class Link (
      val place: Place,
      val category: Category,
      val exclusiveMember: Boolean,
+     val references: Collection<Reference>?,
      val active: Boolean,
 ){
      val total: BigDecimal

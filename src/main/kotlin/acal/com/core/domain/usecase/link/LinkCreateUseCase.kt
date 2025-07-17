@@ -35,6 +35,7 @@ class LinkCreateUseCase(
             category = category,
             exclusiveMember = linkCreate.exclusiveMember,
             active = linkCreate.active,
+            references = null,
         )
 
         if(link.place.letter.contains("inativo")){
@@ -42,7 +43,6 @@ class LinkCreateUseCase(
         }
 
         linkDataSource.save(link)
-
     }
 
 }

@@ -8,15 +8,13 @@ import org.springframework.data.mongodb.core.mapping.Document
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.Month
-import java.time.Year
 
 @Document("invoice")
 data class InvoiceModel (
 
     @Id
     val id: String,
-    val reference: ReferenceModel,
+    val reference: String,
     val number: String,
 
     val waterMeter: WaterMeterModel?,
@@ -36,23 +34,6 @@ data class WaterMeterModel(
     val value: BigDecimal
 )
 
-@Document("reference")
-data class ReferenceModel(
-    val value: String
-)
-
-fun ReferenceModel.toDomain(): Reference {
-    val parts = value.split("-")
-    val month = Month.valueOf(parts[0])
-    val year = Year.of(parts[1].toInt())
-    return Reference(year, month)
-}
-
-fun Reference.toEntity(): ReferenceModel {
-    val referenceValue = "${month}-${year.value}"
-    return ReferenceModel(value = referenceValue)
-}
-
 fun WaterMeterModel.toDomain(): WaterMeter = WaterMeter(
     start = start,
     end = end,
@@ -67,7 +48,7 @@ fun WaterMeter.toEntity(): WaterMeterModel = WaterMeterModel(
 
 fun InvoiceModel.toDomain(): Invoice = Invoice(
     id = id,
-    reference = reference.toDomain(),
+    reference = Reference.of(reference),
     number = number,
     waterMeter = waterMeter?.toDomain(),
     customer = customer.toDomain(),
@@ -80,7 +61,7 @@ fun InvoiceModel.toDomain(): Invoice = Invoice(
 fun Invoice.toEntity(): InvoiceModel = InvoiceModel(
     id = id,
     number = number,
-    reference = reference.toEntity(),
+    reference = reference.toString(),
     waterMeter = waterMeter?.toEntity(),
     customer = customer.toEntity(),
     place = place.toEntity(),
