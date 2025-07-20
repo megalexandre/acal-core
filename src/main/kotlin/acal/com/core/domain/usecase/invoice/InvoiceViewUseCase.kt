@@ -5,7 +5,9 @@ import acal.com.core.domain.datasource.InvoiceDataSource
 import acal.com.core.domain.datasource.LinkDataSource
 import acal.com.core.domain.entity.Invoice
 import acal.com.core.domain.entity.Reference
+import acal.com.core.domain.entity.WaterMeter
 import org.springframework.stereotype.Component
+import java.math.BigDecimal
 import java.time.LocalDate
 
 @Component
@@ -18,12 +20,17 @@ class InvoiceViewUseCase(
 
         var countByReferencesContaining = dataSource.countByReferencesContaining(reference)
 
+        val waterMeter = WaterMeter(
+            start = 0.0,
+            end = 1000.0,
+            value = BigDecimal(0.04)
+        )
         return findActiveLinksWithoutReference.map {
             Invoice(
                 id = Id.random(),
                 reference = reference,
                 number = reference.toString() + "-" + (++countByReferencesContaining),
-                waterMeter = null,
+                waterMeter = waterMeter,
                 customer = it.customer,
                 place = it.place,
                 category = it.category,

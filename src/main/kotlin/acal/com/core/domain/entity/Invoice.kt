@@ -18,25 +18,29 @@ class Invoice (
     val paidAt: LocalDateTime?,
 
 ){
-
     val value: BigDecimal
         get() = category.total.plus(waterValue)
 
     val consumption: Double
-        get() = waterMeter?.consumption ?: 0.0
+        get() = waterMeter?.calculatedConsumption ?: 0.0
 
     val waterValue: BigDecimal
-        get() = waterMeter?.value ?: BigDecimal.ZERO
+        get() = waterMeter?.total ?: BigDecimal.ZERO
 
-    val values: List<invoiceValue>
+    val values: List<InvoiceValue>
         get() = listOf(
-            invoiceValue("Água", category.price.waterValue) ,
-            invoiceValue("Categoria", category.price.partnerValue),
-            invoiceValue("Hidrômetro",waterValue)
+            InvoiceValue("Água", category.price.waterValue) ,
+            InvoiceValue("Categoria", category.price.partnerValue),
+            InvoiceValue("Hidrômetro", waterValue)
         )
+
+    val total: BigDecimal
+        get() = values
+            .map { it.value }
+            .reduce { acc, value -> acc.add(value)  }
 }
 
-class invoiceValue(
+class InvoiceValue(
     val name: String,
     val value: BigDecimal
 )
