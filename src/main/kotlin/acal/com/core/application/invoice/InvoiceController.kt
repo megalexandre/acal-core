@@ -3,7 +3,7 @@ package acal.com.core.application.invoice
 import acal.com.core.domain.entity.Invoice
 import acal.com.core.domain.entity.Reference
 import acal.com.core.domain.usecase.invoice.InvoicePaginateUseCase
-import acal.com.core.domain.usecase.invoice.InvoiceViewUseCase
+import acal.com.core.domain.usecase.invoice.InvoicePreviewUseCase
 import acal.com.core.domain.valueobject.InvoiceFilter
 import org.springframework.data.domain.Page
 import org.springframework.http.HttpStatus
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*
 )
 class InvoiceController(
     private val paginate: InvoicePaginateUseCase,
-    private val invoiceView: InvoiceViewUseCase,
+    private val preViewInvoice: InvoicePreviewUseCase,
 ) {
 
     @PostMapping("/paginate")
@@ -23,9 +23,9 @@ class InvoiceController(
     fun get(@RequestBody filter: InvoiceFilter): Page<Invoice> =
         paginate.execute(filter)
 
-    @GetMapping("/view/{reference}")
+    @GetMapping("/preview/{reference}")
     fun view(@PathVariable reference: Reference): Collection<Invoice> {
-        return invoiceView.execute(reference)
+        return preViewInvoice.execute(reference)
     }
 
     /*

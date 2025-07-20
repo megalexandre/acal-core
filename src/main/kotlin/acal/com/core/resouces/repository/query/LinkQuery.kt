@@ -4,6 +4,7 @@ import acal.com.core.domain.valueobject.LinkFilter
 import org.springframework.data.domain.Sort
 import org.springframework.data.mongodb.core.query.Criteria
 import org.springframework.data.mongodb.core.query.Query
+import kotlin.and
 
 class LinkQuery {
 
@@ -15,7 +16,7 @@ class LinkQuery {
         }
 
         filter.category?.takeIf { it.isNotBlank() }?.let {
-            criteria.and("category.name").regex(it.trim(), "i")
+            criteria.and("category.id").`is`(it)
         }
 
         filter.address?.takeIf { it.isNotBlank() }?.let {

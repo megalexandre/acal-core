@@ -11,7 +11,7 @@ import java.math.BigDecimal
 import java.time.LocalDate
 
 @Component
-class InvoiceViewUseCase(
+class InvoicePreviewUseCase(
     private val dataSource: InvoiceDataSource,
     private val linkDataSource: LinkDataSource,
 ) {
