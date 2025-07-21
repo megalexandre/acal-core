@@ -13,6 +13,10 @@ data class LinkFilter(
     val name: String? = null,
     val category: String? = null,
     val address: String? = null,
+
+    val letter: String? = null,
+    val number: String? = null,
+
     val total: BigDecimal? = null,
     val sortOrders: List<SortOrder>? = null
 )
