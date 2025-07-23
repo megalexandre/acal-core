@@ -2,6 +2,7 @@ package acal.com.core.infrastructure.config
 
 import acal.com.core.domain.entity.Reference
 import acal.com.core.infrastructure.serializer.*
+import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SNAKE_CASE
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
@@ -19,6 +20,8 @@ class ObjectMapperConfiguration {
     fun objectMapper(): ObjectMapper =
         ObjectMapper().apply {
             propertyNamingStrategy = SNAKE_CASE
+            configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+
             registerModule(kotlinModule())
             registerModule(JavaTimeModule().apply {
                 addSerializer(LocalDateTime::class.java, LocalDateTimeSerializer())

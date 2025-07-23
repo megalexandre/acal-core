@@ -1,5 +1,8 @@
 package acal.com.core.application.invoice.data.`in`
 
+import acal.com.core.application.category.data.`in`.CategoryRequest
+import acal.com.core.application.customer.data.`in`.CustomerRequest
+import acal.com.core.application.place.data.`in`.PlaceRequest
 import acal.com.core.comons.Id
 import acal.com.core.domain.entity.*
 import jakarta.validation.constraints.NotBlank
@@ -18,29 +21,30 @@ data class InvoiceCreateRequest (
     val waterMeter: WaterMeter?,
 
     @field:NotBlank
-    val customer: Customer,
-
-    @field:NotBlank
-    val place: Place,
-
-    @field:NotBlank
-    val category: Category,
-
-    @field:NotBlank
     val dueDate: LocalDate,
 
-) {
+    @field:NotBlank
+    val category: CategoryRequest,
+
+    @field:NotBlank
+    val customer: CustomerRequest,
+
+    @field:NotBlank
+    val place: PlaceRequest,
+){
     fun toDomain() = Invoice(
         id = id ?: Id.random(),
-        number = number,
         reference = reference,
+        number = number,
         waterMeter = waterMeter,
-        customer = customer,
-        place = place,
-        category = category,
         dueDate = dueDate,
+        category = category.toDomain(),
+        customer = customer.toDomain(),
+        place = place.toDomain(),
         paidAt = null,
     )
+
 }
 
+fun Collection<InvoiceCreateRequest>.toDomain(): List<Invoice> = this.map { it.toDomain() }
 

@@ -40,8 +40,12 @@ class CustomerRepositoryImp(
 
     override fun findById(id: String): Customer? =
         customerRepository.findById(id).orElse(null)?.toDomain()
+
+    override fun findByIdIn(id: Collection<String>): Collection<Customer> =
+        customerRepository.findByIdIn(id).map { it.toDomain() }
 }
 
 interface CustomerRepository: MongoRepository<CustomerModel, String>{
     fun findByIdentityCard(identityCard: String): Collection<CustomerModel>?
+    fun findByIdIn(ids: Collection<String>): Collection<CustomerModel>
 }
