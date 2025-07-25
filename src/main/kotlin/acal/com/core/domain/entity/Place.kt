@@ -4,5 +4,5 @@ data class Place (
     val id: String,
     val number: String,
     val letter: String,
-    val address: String,
+    val name: String,
 )

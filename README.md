@@ -91,3 +91,5 @@ Pull requests são bem-vindos!
 ## Licença
 MIT
 
+
+docker exec -it mongo-db-acal mongosh --username root --password example --authenticationDatabase admin

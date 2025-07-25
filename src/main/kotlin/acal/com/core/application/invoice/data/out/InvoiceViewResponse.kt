@@ -9,6 +9,7 @@ import acal.com.core.domain.entity.Invoice
 import acal.com.core.domain.entity.InvoiceValue
 import acal.com.core.domain.entity.Reference
 import acal.com.core.domain.entity.WaterMeter
+import acal.com.core.domain.enums.InvoiceStatus
 import customerResponse
 import org.springframework.data.domain.Page
 import java.math.BigDecimal
@@ -30,6 +31,7 @@ class InvoiceViewResponse (
     val values: List<InvoiceValue>,
     val consumption: Double,
     val waterValue: BigDecimal,
+    val status: InvoiceStatus
 )
 
 fun Invoice.toView(): InvoiceViewResponse = InvoiceViewResponse(
@@ -45,7 +47,8 @@ fun Invoice.toView(): InvoiceViewResponse = InvoiceViewResponse(
     total = totalValue,
     values = values,
     consumption = consumption,
-    waterValue  = waterValue
+    waterValue  = waterValue,
+    status = status
 )
 
 fun Collection<Invoice>.toView(): List<InvoiceViewResponse> = this.map { it.toView() }

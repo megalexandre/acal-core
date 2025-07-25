@@ -1,5 +1,6 @@
 package acal.com.core.domain.entity
 
+import acal.com.core.domain.enums.InvoiceStatus
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -18,6 +19,14 @@ class Invoice (
     val paidAt: LocalDateTime?,
 
     ){
+
+    val status: InvoiceStatus
+        get() = when {
+            paidAt != null -> InvoiceStatus.PAID
+            dueDate.isBefore(LocalDate.now()) -> InvoiceStatus.OVERDUE
+            else -> InvoiceStatus.PENDING
+        }
+
 
     val totalValue: BigDecimal
         get() = values

@@ -13,15 +13,15 @@ data class PlaceCreateRequest(
     @field:NotBlank(message = "Letter is required.")
     val letter: String,
 
-    @field:NotBlank(message = "Address is required.")
-    val address: String,
+    @field:NotBlank(message = "Name is required.")
+    val name: String,
 
 ) {
     fun toDomain() = Place(
         id = id ?: Id.random(),
         number = number.trim(),
         letter = letter.trim(),
-        address = address
+        name = name
     )
 }
 
