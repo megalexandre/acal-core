@@ -1,14 +1,14 @@
 # language: pt
 
-Funcionalidade: Cadastro de Local
+Funcionalidade: Cadastro de Residencia
 
-  Cenário: Criar um novo Local
+  Cenário: Criar um novo Residencia
 
     Quando eu envio um POST para "/place"
     """
     {
       "number": "1",
-      "letter": "a"
+      "letter": "a",
       "name": "Avenida Fernando Daltro"
     }
     """

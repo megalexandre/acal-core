@@ -17,22 +17,22 @@ WITH dados AS (
 	    IFNULL(NULLIF(REGEXP_SUBSTR(ep.numero, '^[0-9]+'), ''), '1000') AS number,
 	    IFNULL(NULLIF(TRIM(REGEXP_REPLACE(ep.numero, '^[0-9]+[- ]*', '')), ''), 'A') AS letter,
 	    e.uuid AS id,
-	    CONCAT(TRIM(tipo), ' ', TRIM(nome)) AS address
+	    CONCAT(TRIM(tipo), ' ', TRIM(nome)) AS name
   	FROM enderecopessoa ep
 	INNER JOIN endereco e ON e.id = ep.idEndereco
 ),
 numerados AS (
   SELECT
     d.*,
-    ROW_NUMBER() OVER (PARTITION BY address, number, letter ORDER BY id) AS rn
+    ROW_NUMBER() OVER (PARTITION BY name, number, letter ORDER BY id) AS rn
   FROM dados d
 )
 SELECT
   id,
-  address,
+  name,
   number,
   -- adiciona 'A' a mais de acordo com o número de ocorrência
   CONCAT(letter, REPEAT('A', rn - 1)) AS letter
 FROM numerados
-ORDER BY address, number;
+ORDER BY name, number;
 
