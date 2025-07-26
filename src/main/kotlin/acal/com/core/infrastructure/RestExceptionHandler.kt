@@ -41,6 +41,7 @@ class RestExceptionHandler {
     fun handleDuplicateKeyException(ex: DuplicateKeyException): ResponseEntity<Any> {
         val errorMessage = "Registro duplicado. ${ex.message}"
         val errorResponse = mapOf(
+            "code" to ErrorCode.DUPLICATE_KEY,
             "status" to BAD_REQUEST.value(),
             "error" to "Duplicate Key",
             "message" to errorMessage
@@ -59,3 +60,5 @@ class RestExceptionHandler {
 
 
 }
+
+

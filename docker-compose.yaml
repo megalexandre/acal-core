@@ -11,16 +11,11 @@ services:
       MONGO_INITDB_DATABASE: acal
     volumes:
       - ./docker/mongodb/init:/docker-entrypoint-initdb.d
-      - mongodb-data:/data/db
     networks:
       - acal
 networks:
   acal:
     driver: bridge
-
-volumes:
-  mongodb-data:
-    driver: local
 
 
 

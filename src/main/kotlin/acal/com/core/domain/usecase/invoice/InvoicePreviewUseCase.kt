@@ -39,7 +39,7 @@ class InvoicePreviewUseCase(
             )
         }.sortedWith(
             compareBy(
-                { it.place.address },
+                { it.place.name },
                 { it.place.number },
             )
         )

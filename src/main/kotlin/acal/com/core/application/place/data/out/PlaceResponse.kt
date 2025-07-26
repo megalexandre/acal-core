@@ -6,14 +6,14 @@ data class PlaceResponse(
     val id: String,
     val number: String,
     val letter: String,
-    val address: String,
+    val name: String,
 )
 
 fun Place.placeResponse() = PlaceResponse(
     id = id,
     number = number,
     letter = letter,
-    address = address,
+    name = name,
 )
 
 fun List<Place>.placeResponse() = this.map { it.placeResponse() }
