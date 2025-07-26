@@ -5,6 +5,7 @@ import acal.com.core.domain.entity.Address
 import acal.com.core.resouces.AddressModel
 import acal.com.core.resouces.toDomain
 import acal.com.core.resouces.toEntity
+import org.springframework.dao.DuplicateKeyException
 import org.springframework.data.domain.Sort
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository

@@ -11,9 +11,9 @@ MODIFY uuid CHAR(36) NOT NULL;
 ALTER TABLE endereco
 ADD CONSTRAINT unique_uuid UNIQUE (uuid);
 
-select
-	uuid as id,
-	concat(trim(tipo),' ',trim(nome)) as name
-from endereco
-order by tipo, nome
-
+SELECT
+  MIN(uuid) as id,
+  CONCAT(TRIM(tipo), ' ', TRIM(nome)) AS name
+FROM endereco
+GROUP BY CONCAT(TRIM(tipo), ' ', TRIM(nome))
+ORDER BY name;
