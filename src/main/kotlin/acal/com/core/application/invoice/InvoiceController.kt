@@ -28,7 +28,6 @@ class InvoiceController(
     private val preViewInvoice: InvoicePreviewUseCase,
     private val invoiceCreate: InvoiceCreateUseCase,
     private val invoiceFindAll: InvoiceFindAllUseCase,
-    private val paginateUseCase: InvoicePaginateUseCase
 
 ) {
     @GetMapping

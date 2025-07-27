@@ -1,8 +1,7 @@
 curl --location 'http://localhost:8080/customer/all' \
 --header 'Content-Type: application/json' \
---header 'Cookie: SESSION=ZGQwNGY0MDYtZjllYy00MGUzLThhYjAtYWRkYmJkY2Q2ZDA2' \
 --data '[
-	{
+    {
 		"id" : "0eafad67-5f81-11f0-afe4-a20d12156e59",
 		"name" : "Abraão Moreira da Silva",
 		"identity_card" : "22388389334",
@@ -1767,12 +1766,6 @@ curl --location 'http://localhost:8080/customer/all' \
 		"voter" : "true"
 	},
 	{
-		"id" : "0eadd6a1-5f81-11f0-afe4-a20d12156e59",
-		"name" : "Banheiros Publicos Prefeitura Muncipal",
-		"identity_card" : "014197586000132",
-		"voter" : "true"
-	},
-	{
 		"id" : "0ea90da8-5f81-11f0-afe4-a20d12156e59",
 		"name" : "Basilio Ferreira de Lima",
 		"identity_card" : "42306221553",
@@ -2382,12 +2375,6 @@ curl --location 'http://localhost:8080/customer/all' \
 		"id" : "0eadef06-5f81-11f0-afe4-a20d12156e59",
 		"name" : "Cozinha Central Da Peti",
 		"identity_card" : "014197586000137",
-		"voter" : "true"
-	},
-	{
-		"id" : "0eade6d3-5f81-11f0-afe4-a20d12156e59",
-		"name" : "Cras Jose Ferreira",
-		"identity_card" : "014197586000133",
 		"voter" : "true"
 	},
 	{
@@ -3996,12 +3983,6 @@ curl --location 'http://localhost:8080/customer/all' \
 		"id" : "0eb47d1b-5f81-11f0-afe4-a20d12156e59",
 		"name" : "Estevão Laurenço dos Santos Neto Neto Neto Neto",
 		"identity_card" : "00023325560",
-		"voter" : "true"
-	},
-	{
-		"id" : "0eb06de4-5f81-11f0-afe4-a20d12156e59",
-		"name" : "Estrategia de Saúde da Familia Francisco Feliz da Costa",
-		"identity_card" : "014197586000133",
 		"voter" : "true"
 	},
 	{
@@ -7029,12 +7010,6 @@ curl --location 'http://localhost:8080/customer/all' \
 		"voter" : "true"
 	},
 	{
-		"id" : "0eaf0a89-5f81-11f0-afe4-a20d12156e59",
-		"name" : "Jose Pinto Filho",
-		"identity_card" : "",
-		"voter" : "true"
-	},
-	{
 		"id" : "0ea50071-5f81-11f0-afe4-a20d12156e59",
 		"name" : "Jose Pinto Xavier",
 		"identity_card" : "01122028539",
@@ -9597,12 +9572,6 @@ curl --location 'http://localhost:8080/customer/all' \
 		"voter" : "true"
 	},
 	{
-		"id" : "0eac1bf6-5f81-11f0-afe4-a20d12156e59",
-		"name" : "Maria Jose  de Jesus Rezende",
-		"identity_card" : "04212399563",
-		"voter" : "true"
-	},
-	{
 		"id" : "0ea575b7-5f81-11f0-afe4-a20d12156e59",
 		"name" : "Maria Jose Conceição dos Santos",
 		"identity_card" : "97074896500",
@@ -9630,12 +9599,6 @@ curl --location 'http://localhost:8080/customer/all' \
 		"id" : "0eafddcf-5f81-11f0-afe4-a20d12156e59",
 		"name" : "Maria José de Jesus",
 		"identity_card" : "25058935864",
-		"voter" : "true"
-	},
-	{
-		"id" : "0ea6f27e-5f81-11f0-afe4-a20d12156e59",
-		"name" : "Maria Jose de Jesus Resende",
-		"identity_card" : "04212399563",
 		"voter" : "true"
 	},
 	{
@@ -10569,12 +10532,6 @@ curl --location 'http://localhost:8080/customer/all' \
 		"voter" : "true"
 	},
 	{
-		"id" : "0eacfb85-5f81-11f0-afe4-a20d12156e59",
-		"name" : "MSS MARMORES LTDA ME",
-		"identity_card" : "",
-		"voter" : "true"
-	},
-	{
 		"id" : "0e95b322-5f81-11f0-afe4-a20d12156e59",
 		"name" : "Mudesto Dantas Bento",
 		"identity_card" : "56342110506",
@@ -11286,18 +11243,6 @@ curl --location 'http://localhost:8080/customer/all' \
 		"id" : "0eadf294-5f81-11f0-afe4-a20d12156e59",
 		"name" : "PPM Lages do Batata",
 		"identity_card" : "014197586000140",
-		"voter" : "true"
-	},
-	{
-		"id" : "0eb2b0ba-5f81-11f0-afe4-a20d12156e59",
-		"name" : "Praça Central de Lages Prefeitura Muncipal",
-		"identity_card" : "014197586000132",
-		"voter" : "true"
-	},
-	{
-		"id" : "0eb2b617-5f81-11f0-afe4-a20d12156e59",
-		"name" : "Prefeitura Municipal de Jacobina Praça Rinaldo Magalhães",
-		"identity_card" : "014197586000132",
 		"voter" : "true"
 	},
 	{

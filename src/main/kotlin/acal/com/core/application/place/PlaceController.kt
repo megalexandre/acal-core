@@ -5,8 +5,12 @@ import acal.com.core.application.place.data.`in`.PlaceUpdateRequest
 import acal.com.core.application.place.data.`in`.toDomain
 import acal.com.core.application.place.data.out.PlaceResponse
 import acal.com.core.application.place.data.out.placeResponse
+import acal.com.core.application.place.data.out.response
 import acal.com.core.domain.usecase.place.*
+import acal.com.core.domain.valueobject.PlaceFilter
 import acal.com.core.infrastructure.exception.DataNotFoundException
+import org.springframework.data.domain.Page
+import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.OK
 import org.springframework.web.bind.annotation.*
@@ -20,7 +24,8 @@ class PlaceController(
     private val saveAll: PlaceCreateAllUseCase,
     private val findById: PlaceByIdUseCase,
     private val findAll: PlaceFindAllUseCase,
-    private val delete: PlaceDeleteUseCase
+    private val delete: PlaceDeleteUseCase,
+    private val paginate: PlacePaginateUseCase,
 ) {
 
     @PostMapping
@@ -54,5 +59,10 @@ class PlaceController(
     @ResponseStatus(OK)
     fun getAll(): Collection<PlaceResponse> =
         findAll.execute().map { it.placeResponse() }
+
+    @PostMapping("/paginate")
+    @ResponseStatus(HttpStatus.OK)
+    fun paginate(@RequestBody filter: PlaceFilter): Page<PlaceResponse> =
+        paginate.execute(filter).response()
 
 }

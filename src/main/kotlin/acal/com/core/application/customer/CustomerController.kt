@@ -4,17 +4,17 @@ import CustomerResponse
 import acal.com.core.application.customer.data.`in`.CustomerCreateRequest
 import acal.com.core.application.customer.data.`in`.CustomerUpdateRequest
 import acal.com.core.application.customer.data.`in`.toDomain
-import acal.com.core.domain.usecase.customer.CustomerByIdUseCase
-import acal.com.core.domain.usecase.customer.CustomerCreateAllUseCase
-import acal.com.core.domain.usecase.customer.CustomerCreateUseCase
-import acal.com.core.domain.usecase.customer.CustomerDeleteUseCase
-import acal.com.core.domain.usecase.customer.CustomerFindAllUseCase
+import acal.com.core.domain.usecase.customer.*
+import acal.com.core.domain.valueobject.CustomerFilter
 import acal.com.core.infrastructure.exception.DataNotFoundException
 import customerResponse
 import org.slf4j.LoggerFactory
+import org.springframework.data.domain.Page
+import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.OK
 import org.springframework.web.bind.annotation.*
+import response
 
 @RestController
 @RequestMapping(
@@ -26,14 +26,19 @@ class CustomerController(
     private val findById: CustomerByIdUseCase,
     private val findAll: CustomerFindAllUseCase,
     private val delete: CustomerDeleteUseCase,
+    private val paginate: CustomerPaginateUseCase
 ) {
     private val logger = LoggerFactory.getLogger(CustomerController::class.java)
 
+    @PostMapping("/paginate")
+    @ResponseStatus(HttpStatus.OK)
+    fun paginate(@RequestBody filter: CustomerFilter): Page<CustomerResponse> =
+        paginate.execute(filter).response()
+
     @PostMapping
     @ResponseStatus(CREATED)
-    fun create(@RequestBody request: CustomerCreateRequest): CustomerResponse {
-        return create.execute(request.toDomain()).customerResponse()
-    }
+    fun create(@RequestBody request: CustomerCreateRequest): CustomerResponse =
+        create.execute(request.toDomain()).customerResponse()
 
     @PostMapping("all")
     @ResponseStatus(CREATED)
@@ -48,10 +53,8 @@ fun delete(@PathVariable id: String) {
 
     @PutMapping
     @ResponseStatus(OK)
-    fun update(@RequestBody request: CustomerUpdateRequest): CustomerResponse {
-        return create.execute(request.toDomain()).customerResponse()
-    }
-
+    fun update(@RequestBody request: CustomerUpdateRequest): CustomerResponse =
+        create.execute(request.toDomain()).customerResponse()
 
     @GetMapping("/{id}")
     @ResponseStatus(OK)

@@ -2,7 +2,6 @@ package acal.com.core.application.link
 
 import LinkResponse
 import acal.com.core.application.link.data.`in`.LinkCreateRequest
-import acal.com.core.domain.entity.Link
 import acal.com.core.domain.usecase.link.LinkByIdUseCase
 import acal.com.core.domain.usecase.link.LinkCreateUseCase
 import acal.com.core.domain.usecase.link.LinkPaginateUseCase
@@ -18,29 +17,32 @@ import org.springframework.web.bind.annotation.*
     value = ["/link"],
 )
 class LinkController(
-    private val linkCreateUseCase: LinkCreateUseCase,
-    private val linkByIdUseCase: LinkByIdUseCase,
-    private val linkPaginateUseCase: LinkPaginateUseCase,
+    private val create: LinkCreateUseCase,
+    private val findById: LinkByIdUseCase,
+    private val paginate: LinkPaginateUseCase,
 ) {
 
     @PostMapping("/paginate")
     @ResponseStatus(HttpStatus.OK)
     fun get(@RequestBody filter: LinkFilter): Page<LinkResponse> =
-        linkPaginateUseCase.execute(filter).response()
+        paginate.execute(filter).response()
 
     @PostMapping
     @ResponseStatus(CREATED)
     fun create(@RequestBody request: LinkCreateRequest): LinkResponse =
-        linkCreateUseCase.execute(request.toDomain()).response()
+        create.execute(request.toDomain()).response()
 
     @PostMapping("/all")
     @ResponseStatus(CREATED)
     fun create(@RequestBody request: Collection<LinkCreateRequest>): Collection<LinkResponse> =
-        request.map { linkCreateUseCase.execute(it.toDomain())}.response()
+        request.map { create.execute(it.toDomain())}.response()
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     fun get(@PathVariable id: String): LinkResponse? =
-        linkByIdUseCase.execute(id)?.response()
+        findById.execute(id)?.response()
+
+
+
 
 }

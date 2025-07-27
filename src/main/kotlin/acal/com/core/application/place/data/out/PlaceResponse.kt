@@ -1,6 +1,7 @@
 package acal.com.core.application.place.data.out
 
 import acal.com.core.domain.entity.Place
+import org.springframework.data.domain.Page
 
 data class PlaceResponse(
     val id: String,
@@ -18,3 +19,4 @@ fun Place.placeResponse() = PlaceResponse(
 
 fun List<Place>.placeResponse() = this.map { it.placeResponse() }
 fun Collection<Place>.placeResponse() = this.map { it.placeResponse() }
+fun Page<Place>.response() = this.map { it.placeResponse() }

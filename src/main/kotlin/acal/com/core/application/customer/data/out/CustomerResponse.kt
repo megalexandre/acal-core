@@ -1,5 +1,5 @@
 import acal.com.core.domain.entity.Customer
-import java.time.LocalDateTime
+import org.springframework.data.domain.Page
 
 data class CustomerResponse(
     val id: String,
@@ -21,3 +21,4 @@ fun Customer.customerResponse() = CustomerResponse(
 
 fun List<Customer>.customerResponse() = this.map { it.customerResponse() }
 fun Collection<Customer>.customerResponse() =  this.map { it.customerResponse() }
+fun Page<Customer>.response() = this.map { it.customerResponse() }
