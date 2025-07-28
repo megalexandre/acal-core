@@ -2,6 +2,7 @@ package acal.com.core.resouces.repository
 
 import acal.com.core.domain.datasource.LinkDataSource
 import acal.com.core.domain.entity.Link
+import acal.com.core.domain.entity.Place
 import acal.com.core.domain.entity.Reference
 import acal.com.core.domain.valueobject.LinkFilter
 import acal.com.core.infrastructure.event.CategoryEvent
@@ -47,6 +48,9 @@ class LinkRepositoryImp(
 
     override fun findActiveLinksWithoutReference(reference: Reference): Collection<Link> =
         linkRepository.findActiveLinksWithoutReference(reference.toString()).map { it.toDomain() }
+
+    override fun findActiveLinkByPlace(place: Place): Link? =
+        linkRepository.findByPlaceIdAndActiveTrue(place.id)?.toDomain()
 
     override fun save(t: Collection<Link>): Collection<Link> {
         return linkRepository.saveAll(t.map { it.toEntity() }).map { it.toDomain() }
@@ -107,6 +111,8 @@ interface LinkRepository: MongoRepository<LinkModel, String>{
     fun findByCategoryId(categoryId: String): Collection<LinkModel>
     fun findByPlaceId(placeId: String): Collection<LinkModel>
     fun findByCustomerId(customerId: String): Collection<LinkModel>
+
+    fun findByPlaceIdAndActiveTrue(placeId: String): LinkModel?
 
     @QueryAnnotation("{ 'active': true, 'references': { \$not: { \$in: [?0] } } }")
     fun findActiveLinksWithoutReference(reference: String): Collection<LinkModel>
