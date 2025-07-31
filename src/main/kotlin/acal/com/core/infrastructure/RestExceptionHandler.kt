@@ -1,6 +1,7 @@
 package acal.com.core.infrastructure
 
 import acal.com.core.infrastructure.exception.DataNotFoundException
+import acal.com.core.infrastructure.exception.InvalidOperationException
 import com.fasterxml.jackson.databind.exc.MismatchedInputException
 import org.springframework.dao.DuplicateKeyException
 import org.springframework.http.HttpStatus.BAD_REQUEST
@@ -43,6 +44,16 @@ class RestExceptionHandler {
             "name" to ErrorCode.DUPLICATE_KEY,
             "status" to BAD_REQUEST.value(),
             "error" to "Duplicate Key"
+        )
+        return ResponseEntity(errorResponse, BAD_REQUEST)
+    }
+
+
+    @ExceptionHandler(InvalidOperationException::class)
+    fun handleNotFoundException(ex: InvalidOperationException): ResponseEntity<Any> {
+        val errorResponse = mapOf(
+            "status" to NO_CONTENT.value(),
+            "message" to "resources not found",
         )
         return ResponseEntity(errorResponse, BAD_REQUEST)
     }
