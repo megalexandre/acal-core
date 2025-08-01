@@ -35,7 +35,8 @@ class InvoicePreviewUseCase(
                 place = it.place,
                 category = it.category,
                 dueDate = LocalDate.MIN,
-                paidAt = null
+                paidAt = null,
+                waterQuality = null
             )
         }.sortedWith(
             compareBy(

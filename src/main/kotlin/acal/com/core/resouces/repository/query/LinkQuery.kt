@@ -19,7 +19,7 @@ class LinkQuery {
         }
 
         filter.address?.takeIf { it.isNotBlank() }?.let {
-            criteria.and("place.address").`is`(it)
+            criteria.and("place.address.name").`is`(it)
         }
 
         filter.letter?.takeIf { it.isNotBlank() }?.let {

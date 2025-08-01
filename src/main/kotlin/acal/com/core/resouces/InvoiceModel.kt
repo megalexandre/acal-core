@@ -55,7 +55,8 @@ fun InvoiceModel.toDomain(): Invoice = Invoice(
     place = place.toDomain(),
     category = category.toDomain(),
     dueDate = dueDate,
-    paidAt = paidAt
+    paidAt = paidAt,
+    waterQuality = null,
 )
 
 fun Invoice.toEntity(): InvoiceModel = InvoiceModel(

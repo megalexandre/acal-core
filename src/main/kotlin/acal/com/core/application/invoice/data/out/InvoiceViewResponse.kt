@@ -9,6 +9,7 @@ import acal.com.core.domain.entity.Invoice
 import acal.com.core.domain.entity.InvoiceValue
 import acal.com.core.domain.entity.Reference
 import acal.com.core.domain.entity.WaterMeter
+import acal.com.core.domain.entity.WaterQuality
 import acal.com.core.domain.enums.InvoiceStatus
 import customerResponse
 import org.springframework.data.domain.Page
@@ -21,6 +22,7 @@ class InvoiceViewResponse (
     val reference: Reference,
     val number: String,
     val waterMeter: WaterMeter?,
+    val waterQuality: WaterQuality?,
     val customer: CustomerResponse,
     val category: CategoryResponse,
     val place: PlaceResponse,
@@ -48,7 +50,8 @@ fun Invoice.toView(): InvoiceViewResponse = InvoiceViewResponse(
     values = values,
     consumption = consumption,
     waterValue  = waterValue,
-    status = status
+    status = status,
+    waterQuality = waterQuality,
 )
 
 fun Collection<Invoice>.toView(): List<InvoiceViewResponse> = this.map { it.toView() }

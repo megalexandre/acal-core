@@ -19,7 +19,8 @@ class InvoiceCreateUseCase(
                 place = it.place,
                 category = it.category,
                 dueDate = it.dueDate,
-                paidAt = null
+                paidAt = null,
+                waterQuality = it.waterQuality,
             )
         })
     }

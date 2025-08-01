@@ -10,7 +10,7 @@ class Invoice (
     val reference: Reference,
     val number: String,
     val waterMeter: WaterMeter?,
-
+    var waterQuality: WaterQuality?,
     val customer: Customer,
     val place: Place,
     val category: Category,

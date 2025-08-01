@@ -1,6 +1,7 @@
 package acal.com.core.resouces.repository
 
 import acal.com.core.domain.datasource.WaterQualityDataSource
+import acal.com.core.domain.entity.Reference
 import acal.com.core.domain.entity.WaterQuality
 import acal.com.core.resouces.WaterQualityModel
 import acal.com.core.resouces.toDomain
@@ -46,6 +47,12 @@ class WaterQualityRepositoryImp(
     override fun deleteById(id: String) {
         repository.deleteById(id)
     }
+
+    override fun findByReferences(references: Collection<Reference>): Collection<WaterQuality> {
+        return repository.findByReferenceIn(references.map { it.toString() }).map { it.toDomain() }
+    }
 }
 
-interface WaterQualityRepository: MongoRepository<WaterQualityModel, String>
+interface WaterQualityRepository: MongoRepository<WaterQualityModel, String>{
+     fun findByReferenceIn(references: Collection<String>): Collection<WaterQualityModel>
+}

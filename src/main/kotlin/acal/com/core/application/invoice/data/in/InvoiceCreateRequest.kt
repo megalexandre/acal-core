@@ -42,6 +42,7 @@ data class InvoiceCreateRequest (
         customer = customer.toDomain(),
         place = place.toDomain(),
         paidAt = null,
+        waterQuality =  null,
     )
 
 }
