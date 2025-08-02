@@ -10,16 +10,20 @@ class LinkQuery {
     fun query(filter: LinkFilter): Query {
         val criteria = Criteria()
 
-        filter.name?.takeIf { it.isNotBlank() }?.let {
+        filter.normalized?.takeIf { it.isNotBlank() }?.let {
             criteria.and("customer.normalizedName").regex(it.trim(), "i")
         }
 
-        filter.category?.takeIf { it.isNotBlank() }?.let {
+        filter.groupName?.takeIf { it.isNotBlank() }?.let {
+            criteria.and("category.group").`is`(it)
+        }
+
+        filter.categoryId?.takeIf { it.isNotBlank() }?.let {
             criteria.and("category.id").`is`(it)
         }
 
-        filter.address?.takeIf { it.isNotBlank() }?.let {
-            criteria.and("place.address.name").`is`(it)
+        filter.addressId?.takeIf { it.isNotBlank() }?.let {
+            criteria.and("place.name").`is`(it)
         }
 
         filter.letter?.takeIf { it.isNotBlank() }?.let {

@@ -13,8 +13,8 @@ fun String.asPhoneNumber(): String = when (this.length) {
     else -> this
 }
 
-fun String.normalize(): String {
-    return Normalizer.normalize(this, Normalizer.Form.NFD)
-        .replace(Regex("\\p{InCombiningDiacriticalMarks}+"), "")
-}
-
+fun String?.normalize(): String? =
+    this?.let {
+        Normalizer.normalize(it, Normalizer.Form.NFD)
+            .replace(Regex("\\p{InCombiningDiacriticalMarks}+"), "")
+    }
