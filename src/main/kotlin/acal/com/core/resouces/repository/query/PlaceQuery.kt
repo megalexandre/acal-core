@@ -12,6 +12,10 @@ class PlaceQuery {
 
         val query = Query(criteria)
 
+        filter.name?.takeIf { it.isNotBlank() }?.let {
+            criteria.and("name").`is`(it)
+        }
+
         val sort = filter.sortOrders?.takeIf { it.isNotEmpty() }?.let {
             Sort.by(it.map { order ->
                 Sort.Order(Sort.Direction.fromString(order.direction), order.property)

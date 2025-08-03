@@ -5,11 +5,7 @@ import acal.com.core.application.category.data.out.CategoryResponse
 import acal.com.core.application.category.data.out.categoryResponse
 import acal.com.core.application.place.data.out.PlaceResponse
 import acal.com.core.application.place.data.out.placeResponse
-import acal.com.core.domain.entity.Invoice
-import acal.com.core.domain.entity.InvoiceValue
-import acal.com.core.domain.entity.Reference
-import acal.com.core.domain.entity.WaterMeter
-import acal.com.core.domain.entity.WaterQuality
+import acal.com.core.domain.entity.*
 import acal.com.core.domain.enums.InvoiceStatus
 import customerResponse
 import org.springframework.data.domain.Page

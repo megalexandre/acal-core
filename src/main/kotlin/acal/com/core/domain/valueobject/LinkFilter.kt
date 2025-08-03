@@ -9,8 +9,8 @@ data class SortOrder(
 )
 
 data class LinkFilter(
-    val page: Int,
-    val size: Int,
+    val page: Int = 0.coerceAtLeast(0),
+    val size: Int = 10.coerceAtLeast(1),
     val name: String? = null,
     val categoryId: String? = null,
     val addressId: String? = null,
@@ -22,5 +22,6 @@ data class LinkFilter(
     val total: BigDecimal? = null,
     val sortOrders: List<SortOrder>? = null
 ){
+
     val normalized = name.normalize()
 }

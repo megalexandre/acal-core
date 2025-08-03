@@ -42,7 +42,4 @@ class LinkController(
     fun get(@PathVariable id: String): LinkResponse? =
         findById.execute(id)?.response()
 
-
-
-
 }
