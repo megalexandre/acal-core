@@ -22,7 +22,7 @@ class InvoicePreviewUseCase(
 
         val waterMeter = WaterMeter(
             start = 0.0,
-            end = 1000.0,
+            end = 0.0,
             value = BigDecimal(0.04)
         )
         return findActiveLinksWithoutReference.map {

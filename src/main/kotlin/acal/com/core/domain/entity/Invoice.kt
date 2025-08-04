@@ -5,7 +5,7 @@ import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-class Invoice (
+data class Invoice (
     val id: String,
     val reference: Reference,
     val number: String,
