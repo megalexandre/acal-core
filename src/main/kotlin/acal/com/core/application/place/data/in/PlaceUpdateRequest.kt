@@ -1,5 +1,6 @@
 package acal.com.core.application.place.data.`in`
 
+import acal.com.core.application.address.data.`in`.AddressRequest
 import acal.com.core.domain.entity.Place
 import jakarta.validation.constraints.NotBlank
 
@@ -12,14 +13,12 @@ data class PlaceUpdateRequest(
 
     val letter: String,
 
-    @field:NotBlank(message = "Address is required.")
-    val name: String,
+    val address: AddressRequest,
 
 ) {
     fun toDomain() = Place(
         id = id,
         number = number.trim(),
-        letter = letter.trim(),
-        name = name,
+        address = address.toDomain(),
     )
 }

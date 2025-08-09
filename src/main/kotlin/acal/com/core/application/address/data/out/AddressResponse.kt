@@ -7,9 +7,9 @@ data class AddressResponse(
     val name: String
 )
 
-fun Address.addressResponse() = AddressResponse(
+fun Address.response() = AddressResponse(
     id = id,
     name = name
 )
 
-fun Collection<Address>.addressResponse(): Collection<AddressResponse> = map { it.addressResponse() }
+fun Collection<Address>.response(): Collection<AddressResponse> = map { it.response() }
