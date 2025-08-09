@@ -38,9 +38,8 @@ class InvoiceController(
 
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody request: Collection<InvoiceCreateRequest>){
+    fun create(@RequestBody request: Collection<InvoiceCreateRequest>) =
         invoiceCreate.execute(request.toDomain())
-    }
 
     @PostMapping("/paginate")
     @ResponseStatus(HttpStatus.OK)

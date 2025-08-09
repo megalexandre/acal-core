@@ -7,6 +7,7 @@ import acal.com.core.application.category.data.out.categoryResponse
 import acal.com.core.domain.datasource.CategoryDataSource
 import acal.com.core.domain.usecase.category.*
 import acal.com.core.infrastructure.exception.DataNotFoundException
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.OK
 import org.springframework.web.bind.annotation.*
@@ -32,9 +33,7 @@ class CategoryController(
     @PostMapping("/all")
     @ResponseStatus(CREATED)
     fun create(@RequestBody request: List<CategoryCreateRequest>)=
-        request.forEach {
-            create.execute(it.toDomain())
-        }
+        saveAll.execute(request.map { it.toDomain() })
 
     @DeleteMapping("/{id}")
     @ResponseStatus(OK)
@@ -43,7 +42,7 @@ class CategoryController(
 
     @PutMapping
     @ResponseStatus(OK)
-    fun update(@RequestBody request: CategoryUpdateRequest): CategoryResponse =
+    fun update(@RequestBody @Valid request: CategoryUpdateRequest): CategoryResponse =
         update.execute(request.toDomain()).categoryResponse()
 
     @GetMapping

@@ -71,15 +71,6 @@ class RestStep {
         assertEquals(status, sharedContext.response?.statusCode)
     }
 
-    @E("o corpo da resposta deve conter")
-    fun `o corpo da resposta deve conter`(expectedBody: String) {
-        val actualBody = sharedContext.response?.body?.asString()
-        val expectedJson = objectMapper.readTree(expectedBody)
-        val actualJson = objectMapper.readTree(actualBody)
-
-        assertJsonContains(expectedJson, actualJson)
-    }
-
     private fun assertJsonContains(expected: JsonNode, actual: JsonNode) {
         when {
             expected.isObject -> {
@@ -106,6 +97,15 @@ class RestStep {
                     "Valor esperado '${expected.asText()}' diferente do valor encontrado '${actual.asText()}'")
             }
         }
+    }
+
+    @E("o corpo da resposta deve conter")
+    fun `o corpo da resposta deve conter`(expectedBody: String) {
+        val actualBody = sharedContext.response?.body?.asString()
+        val expectedJson = objectMapper.readTree(expectedBody)
+        val actualJson = objectMapper.readTree(actualBody)
+
+        assertJsonContains(expectedJson, actualJson)
     }
 
     @E("o corpo da resposta deve conter as chaves")

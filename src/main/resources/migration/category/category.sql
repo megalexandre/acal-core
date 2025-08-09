@@ -22,7 +22,7 @@ SELECT
   t.valor AS water_value, 
   coalesce(t.valor_socio, 0) AS partner_value,
   CASE 
-    WHEN cs.nome COLLATE latin1_general_ci LIKE '%hidrometro%' THEN 'TRUE'
+    WHEN lower((cs.nome)) COLLATE latin1_general_ci LIKE lower('%hidr%') THEN 'TRUE'
     ELSE 'FALSE'
   END AS is_hydrometer	
 FROM categoriasocio cs 

@@ -13,7 +13,7 @@ Funcionalidade: Cadastro de Categorias
       "name": "Alexandre",
       "water_value": 10,
       "partner_value": 20,
-      "group": "FOUNDER",
+      "group": "EFFECTIVE",
       "is_hydrometer": true
     }
     """
