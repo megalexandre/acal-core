@@ -19,6 +19,7 @@ data class PlaceUpdateRequest(
     fun toDomain() = Place(
         id = id,
         number = number.trim(),
+        letter = letter.trim(),
         address = address.toDomain(),
     )
 }

@@ -9,17 +9,20 @@ data class PlaceModel(
     @Id
     val id: String,
     val number: String,
+    val letter: String,
     val address: AddressModel,
 )
 
 fun PlaceModel.toDomain() = Place(
     id = id,
     number = number,
+    letter  = letter,
     address = address.toDomain(),
 )
 
 fun Place.toEntity() = PlaceModel(
     id = id,
     number = number,
+    letter  = letter,
     address = address.toEntity()
 )
