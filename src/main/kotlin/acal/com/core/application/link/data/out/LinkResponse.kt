@@ -5,6 +5,7 @@ import acal.com.core.application.place.data.out.placeResponse
 import acal.com.core.domain.entity.Link
 import org.springframework.data.domain.Page
 import java.math.BigDecimal
+import java.time.LocalDateTime
 
 data class LinkResponse(
     val id: String,
@@ -14,7 +15,9 @@ data class LinkResponse(
     val place: PlaceResponse,
     val total: BigDecimal,
     val exclusiveMember: Boolean,
+    val deletedAt: LocalDateTime?,
     val active: Boolean,
+    val deleted: Boolean,
 )
 
 fun Link.response() = LinkResponse(
@@ -26,6 +29,8 @@ fun Link.response() = LinkResponse(
     total = total,
     exclusiveMember = exclusiveMember,
     active = active,
+    deletedAt = deletedAt,
+    deleted = deletedAt != null,
 )
 
 fun Page<Link>.response() = this.map { it.response() }

@@ -1,6 +1,7 @@
 package acal.com.core.domain.entity
 
 import java.math.BigDecimal
+import java.time.LocalDateTime
 
 data class Link (
 
@@ -12,6 +13,7 @@ data class Link (
      val exclusiveMember: Boolean,
      val references: Collection<Reference>?,
      val active: Boolean,
+     val deletedAt: LocalDateTime?
 ){
      val total: BigDecimal
           get() = category.total

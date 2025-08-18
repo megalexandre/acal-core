@@ -21,6 +21,7 @@ import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.query.Query
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
+import java.time.LocalDateTime
 import org.springframework.data.mongodb.repository.Query as QueryAnnotation
 
 @Repository
@@ -37,7 +38,8 @@ class LinkRepositoryImp(
 
         val total = mongoTemplate.count(
             Query.of(query)
-            .limit(-1).skip(-1), LinkModel::class.java)
+            .limit(-1)
+            .skip(-1), LinkModel::class.java)
 
         query.with(pageable)
 
@@ -61,7 +63,22 @@ class LinkRepositoryImp(
 
     override fun deleteById(id: String) {
         findById(id)?.let {
+            save(it.copy(
+                active = false,
+                deletedAt = LocalDateTime.now()
+            ))
+        }
+    }
+
+    override fun inactivate(id: String) {
+        findById(id)?.let {
             save(it.copy(active = false))
+        }
+    }
+
+    override fun activate(id: String) {
+        findById(id)?.let {
+            save(it.copy(active = true))
         }
     }
 

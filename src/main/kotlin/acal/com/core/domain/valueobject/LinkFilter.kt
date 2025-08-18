@@ -16,6 +16,9 @@ data class LinkFilter(
     val addressId: String? = null,
     val groupName: String? = null,
 
+    val active: Boolean? = null,
+    val deleted: Boolean? = null,
+
     val letter: String? = null,
     val number: String? = null,
 

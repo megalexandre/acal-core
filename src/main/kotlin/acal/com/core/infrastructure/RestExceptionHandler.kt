@@ -54,7 +54,7 @@ class RestExceptionHandler {
     fun handleNotFoundException(ex: InvalidOperationException): ResponseEntity<Any> {
         val errorResponse = mapOf(
             "status" to NO_CONTENT.value(),
-            "message" to "resources not found",
+            "message" to ex.message
         )
         return ResponseEntity(errorResponse, BAD_REQUEST)
     }

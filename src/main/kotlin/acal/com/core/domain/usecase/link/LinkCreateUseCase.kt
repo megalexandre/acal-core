@@ -8,6 +8,7 @@ import acal.com.core.domain.usecase.category.CategoryByIdUseCase
 import acal.com.core.domain.usecase.customer.CustomerByIdUseCase
 import acal.com.core.domain.usecase.place.PlaceByIdUseCase
 import acal.com.core.domain.valueobject.LinkCreate
+import acal.com.core.infrastructure.ErrorCode
 import acal.com.core.infrastructure.exception.DataNotFoundException
 import acal.com.core.infrastructure.exception.InvalidOperationException
 import org.springframework.stereotype.Component
@@ -25,7 +26,7 @@ class LinkCreateUseCase(
         val place = placeByIdUseCase.execute(placeId) ?:
             throw DataNotFoundException("place not found: $placeId")
 
-        //canSave(place)
+        canSave(place)
 
         val customer = customerByIdUseCase.execute(customerId) ?:
             throw DataNotFoundException("customer not found: $customerId")
@@ -44,6 +45,7 @@ class LinkCreateUseCase(
             exclusiveMember = linkCreate.exclusiveMember,
             active = linkCreate.active,
             references = null,
+            deletedAt = null,
         )
 
 
@@ -55,7 +57,7 @@ class LinkCreateUseCase(
         val place = linkDataSource.findActiveLinkByPlace(place)
 
         place?.let {
-            throw InvalidOperationException( "PLACE ERROR")
+            throw InvalidOperationException(ErrorCode.DUPLICATE_LINK.name)
         }
     }
 }

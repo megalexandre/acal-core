@@ -4,6 +4,7 @@ import acal.com.core.domain.entity.Link
 import acal.com.core.domain.entity.Reference
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
+import java.time.LocalDateTime
 
 @Document("link")
 data class LinkModel(
@@ -17,6 +18,7 @@ data class LinkModel(
     val place: PlaceModel,
     val category: CategoryModel,
     val active: Boolean,
+    val deletedAt: LocalDateTime?
 )
 
 fun LinkModel.toDomain(): Link = Link(
@@ -27,7 +29,8 @@ fun LinkModel.toDomain(): Link = Link(
     place = place.toDomain(),
     category = category.toDomain(),
     exclusiveMember = exclusiveMember,
-    active = active
+    active = active,
+    deletedAt = deletedAt
 )
 
 fun Link.toEntity(): LinkModel = LinkModel(
@@ -38,5 +41,6 @@ fun Link.toEntity(): LinkModel = LinkModel(
     place = place.toEntity(),
     category = category.toEntity(),
     exclusiveMember = exclusiveMember,
-    active = active
+    active = active,
+    deletedAt = deletedAt
 )

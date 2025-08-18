@@ -11,6 +11,8 @@ interface LinkDataSource {
     fun save(t: Collection<Link>): Collection<Link>
     fun save(t: Link): Link
     fun deleteById(id: String)
+    fun inactivate(id: String)
+    fun activate(id: String)
     fun findById(id: String): Link?
     fun paginate(filter: LinkFilter): Page<Link>
     fun findActiveLinksWithoutReference(reference: Reference): Collection<Link>
