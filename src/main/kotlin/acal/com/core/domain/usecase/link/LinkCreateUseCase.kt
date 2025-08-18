@@ -25,7 +25,7 @@ class LinkCreateUseCase(
         val place = placeByIdUseCase.execute(placeId) ?:
             throw DataNotFoundException("place not found: $placeId")
 
-        canSave(place)
+        //canSave(place)
 
         val customer = customerByIdUseCase.execute(customerId) ?:
             throw DataNotFoundException("customer not found: $customerId")

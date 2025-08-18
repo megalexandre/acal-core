@@ -4,12 +4,7 @@ import acal.com.core.application.auth.data.`in`.Login
 import acal.com.core.application.auth.data.out.UserDataResponse
 import acal.com.core.application.auth.data.out.UserResponse
 import org.springframework.http.HttpStatus
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseStatus
-import org.springframework.web.bind.annotation.RestController
-import kotlin.math.log
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping(
@@ -18,7 +13,7 @@ import kotlin.math.log
 class AuthController {
 
     private val logins: Array<String> = arrayOf(
-        "alexandre@acal.com",
+        "alexandre",
         "edvaldo@acal.com",
         "alzenir@acal.com"
     )
