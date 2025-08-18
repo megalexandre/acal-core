@@ -2,6 +2,7 @@ package acal.com.core.infrastructure
 
 import acal.com.core.infrastructure.exception.DataNotFoundException
 import acal.com.core.infrastructure.exception.InvalidOperationException
+import acal.com.core.infrastructure.exception.LoginNotFoundException
 import com.fasterxml.jackson.databind.exc.MismatchedInputException
 import org.springframework.dao.DuplicateKeyException
 import org.springframework.http.HttpStatus.BAD_REQUEST
@@ -65,6 +66,15 @@ class RestExceptionHandler {
             "message" to "resources not found",
         )
         return ResponseEntity(errorResponse, NO_CONTENT)
+    }
+
+    @ExceptionHandler(LoginNotFoundException::class)
+    fun handleLoginError(ex: LoginNotFoundException): ResponseEntity<Any> {
+        val errorResponse = mapOf(
+            "status" to NO_CONTENT.value(),
+            "message" to "user not found",
+        )
+        return ResponseEntity(errorResponse, BAD_REQUEST)
     }
 
 

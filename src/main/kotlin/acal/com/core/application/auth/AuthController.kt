@@ -3,6 +3,7 @@ package acal.com.core.application.auth
 import acal.com.core.application.auth.data.`in`.Login
 import acal.com.core.application.auth.data.out.UserDataResponse
 import acal.com.core.application.auth.data.out.UserResponse
+import acal.com.core.infrastructure.exception.LoginNotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
@@ -14,8 +15,8 @@ class AuthController {
 
     private val logins: Array<String> = arrayOf(
         "alexandre",
-        "edvaldo@acal.com",
-        "alzenir@acal.com"
+        "edvaldo",
+        "alzenir"
     )
 
     @PostMapping("/login")
@@ -23,9 +24,9 @@ class AuthController {
     fun login(@RequestBody login: Login): UserResponse {
 
         if (!logins.contains(login.name)) {
-            throw RuntimeException("Invalid login")
+            throw LoginNotFoundException("Invalid login")
         }
-        return UserResponse(
+            return UserResponse(
             status = "success",
             data = UserDataResponse(
                 id = "1",
