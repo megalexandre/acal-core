@@ -7,9 +7,11 @@ import acal.com.core.application.invoice.data.out.response
 import acal.com.core.application.invoice.data.out.toView
 import acal.com.core.domain.entity.Invoice
 import acal.com.core.domain.entity.Reference
+import acal.com.core.domain.usecase.invoice.InvoiceCancelPaymentUseCase
 import acal.com.core.domain.usecase.invoice.InvoiceCreateUseCase
 import acal.com.core.domain.usecase.invoice.InvoiceFindAllUseCase
 import acal.com.core.domain.usecase.invoice.InvoicePaginateUseCase
+import acal.com.core.domain.usecase.invoice.InvoicePayUseCase
 import acal.com.core.domain.usecase.invoice.InvoicePreviewUseCase
 import acal.com.core.domain.valueobject.InvoiceFilter
 import org.springframework.data.domain.Page
@@ -25,7 +27,8 @@ class InvoiceController(
     private val preViewInvoice: InvoicePreviewUseCase,
     private val invoiceCreate: InvoiceCreateUseCase,
     private val invoiceFindAll: InvoiceFindAllUseCase,
-
+    private val pay: InvoicePayUseCase,
+    private val cancelPayment: InvoiceCancelPaymentUseCase
 ) {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -45,5 +48,16 @@ class InvoiceController(
     @ResponseStatus(HttpStatus.OK)
     fun paginate(@RequestBody filter: InvoiceFilter): Page<InvoiceViewResponse> =
         paginate.execute(filter).response()
+
+
+    @PostMapping("/pay/{id}")
+    @ResponseStatus(HttpStatus.OK)
+fun pay(@PathVariable id: String) =
+        pay.execute(id)
+
+    @PostMapping("/cancel-payment/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    fun cancelPayment(@PathVariable id: String) =
+        cancelPayment.execute(id)
 
 }

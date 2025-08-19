@@ -24,7 +24,7 @@ class InvoiceViewResponse (
     val place: PlaceResponse,
     val dueDate: LocalDate,
     val paidAt: LocalDateTime?,
-
+    val paid: Boolean = paidAt != null,
     val total: BigDecimal,
     val values: List<InvoiceValue>,
     val consumption: Double,

@@ -15,6 +15,7 @@ import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.query.Query
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
+import java.time.LocalDateTime
 
 @Repository
 class InvoiceRepositoryImp(
@@ -37,6 +38,21 @@ class InvoiceRepositoryImp(
     override fun deleteById(id: String) {
         repository.deleteById(id)
     }
+
+    override fun pay(id: String) {
+        val invoice = repository.findById(id).orElseThrow().copy(
+            paidAt = LocalDateTime.now()
+        )
+        repository.save(invoice)
+    }
+
+    override fun cancelPayment(id: String) {
+        val invoice = repository.findById(id).orElseThrow().copy(
+            paidAt = null
+        )
+        repository.save(invoice)
+    }
+
 
     override fun findById(id: String): Invoice? =
         repository.findById(id).orElse(null)?.toDomain()

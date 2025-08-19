@@ -10,6 +10,15 @@ class InvoiceQuery {
     fun query(filter: InvoiceFilter): Query {
         val criteria = Criteria()
 
+        when {
+            filter.paid -> criteria.and("paid_at").ne(null)
+            filter.notPaid -> criteria.and("paid_at").`is`(null)
+        }
+
+        filter.number?.takeIf { it.isNotBlank() }?.let {
+            criteria.and("number").regex(it.trim())
+        }
+
         val query = Query(criteria)
 
         val sort = filter.sortOrders?.takeIf { it.isNotEmpty() }?.let {
