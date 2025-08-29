@@ -23,7 +23,10 @@ import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.text.format
+import kotlin.text.set
 
 @RestController
 @RequestMapping(
@@ -54,44 +57,28 @@ class InvoiceController(
     fun paginate(@RequestBody filter: InvoiceFilter): Page<InvoiceViewResponse> =
         paginate.execute(filter).response()
 
-    @PostMapping("/print", produces = [MediaType.APPLICATION_PDF_VALUE])
+    @PostMapping("/print", produces = [MediaType.APPLICATION_PDF_VALUE, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"])
     @ResponseStatus(HttpStatus.OK)
-    fun print(@RequestBody filter: InvoiceFilter): ResponseEntity<ByteArray> {
+    fun print(
+        @RequestBody filter: InvoiceFilter,
+        @RequestParam(defaultValue = "PDF") format: ReportType = ReportType.PDF
+    ): ResponseEntity<ByteArray> {
         val invoices = findAll.execute(filter)
 
         val reportBytes = reportService.generateReport(
             reportName = "invoice",
             reportData = invoices,
-            parameters = mapOf()
+            parameters = mapOf(),
+            reportType = format
         )
 
-        val headers = HttpHeaders()
-        headers.contentType = MediaType.APPLICATION_PDF
-        headers[HttpHeaders.CONTENT_DISPOSITION] = "attachment; filename=invoice_report.pdf"
-        return ResponseEntity(reportBytes, headers, HttpStatus.OK)
-    }
+        val headers = HttpHeaders().apply {
+            contentType = MediaType.APPLICATION_PDF
+        }
 
-    @PostMapping("/print/excel", produces = ["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"])
-    @ResponseStatus(HttpStatus.OK)
-    fun printExcel(@RequestBody filter: InvoiceFilter): ResponseEntity<ByteArray> {
-        val invoices = findAll.execute(filter)
-
-        val parameters = mapOf(
-            "REPORT_TITLE" to "Relatório de Faturas",
-            "GENERATED_DATE" to LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-            "COMPANY_NAME" to "ACAL"
-        )
-
-        val reportBytes = reportService.generateReport(
-            reportName = "invoice",
-            reportData = invoices,
-            parameters = parameters,
-            reportType = ReportType.XLSX
-        )
-
-        val headers = HttpHeaders()
-        headers.contentType = MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-        headers.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=invoice_report.xlsx")
+        val currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))
+        val fileName = if (format == ReportType.PDF) "invoice_report_$currentTime.pdf" else "invoice_report_$currentTime.xlsx"
+        headers[HttpHeaders.CONTENT_DISPOSITION] = "attachment; filename=$fileName$currentTime"
 
         return ResponseEntity(reportBytes, headers, HttpStatus.OK)
     }
