@@ -53,6 +53,9 @@ class InvoiceRepositoryImp(
         repository.save(invoice)
     }
 
+    override fun delete(id: String) {
+        repository.deleteById(id)
+    }
 
     override fun findById(id: String): Invoice? =
         repository.findById(id).orElse(null)?.toDomain()
@@ -71,6 +74,11 @@ class InvoiceRepositoryImp(
         val content = mongoTemplate.find(query, InvoiceModel::class.java).map { it.toDomain() }
 
         return PageImpl(content, pageable, total)
+    }
+
+    override fun findAll(filter: InvoiceFilter): Collection<Invoice> {
+        val query = InvoiceQuery().query(filter)
+        return mongoTemplate.find(query, InvoiceModel::class.java).map { it.toDomain() }
     }
 
     override fun countByReferencesContaining(reference: Reference): Long {

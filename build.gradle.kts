@@ -25,6 +25,7 @@ val uuidVersion = "5.1.0"
 val cucumberVersion = "7.15.0"
 val mapstructVersion = "1.5.3.Final"
 val springdocVersion = "2.8.5"
+val jasperReportsVersion = "6.21.5"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -39,6 +40,12 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.mapstruct:mapstruct:$mapstructVersion")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
+
+    // JasperReports dependencies
+    implementation("net.sf.jasperreports:jasperreports:$jasperReportsVersion")
+    implementation("net.sf.jasperreports:jasperreports-fonts:$jasperReportsVersion")
+    implementation("org.apache.poi:poi:5.2.5")
+    implementation("org.apache.poi:poi-ooxml:5.2.5")
 
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
