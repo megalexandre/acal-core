@@ -44,6 +44,7 @@ dependencies {
     // JasperReports dependencies
     implementation("net.sf.jasperreports:jasperreports:$jasperReportsVersion")
     implementation("net.sf.jasperreports:jasperreports-fonts:$jasperReportsVersion")
+    implementation("org.mozilla:rhino:1.7.14")
     implementation("org.apache.poi:poi:5.2.5")
     implementation("org.apache.poi:poi-ooxml:5.2.5")
 

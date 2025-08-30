@@ -9,13 +9,13 @@ class WaterMeter(
     val freeTier: Double = 1000.0
 ) {
 
-    val calculatedConsumption: Double
+    val paidUsageValue: Double
         get() = maxOf(0.0, (end - start) - freeTier )
 
     val consumptionTotal: Double
         get() = maxOf(0.0, end - start )
 
     val total: BigDecimal
-        get() = value.multiply(BigDecimal.valueOf(calculatedConsumption))
+        get() = value.multiply(BigDecimal.valueOf(paidUsageValue))
 
 }
