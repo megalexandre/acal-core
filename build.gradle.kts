@@ -47,6 +47,12 @@ dependencies {
     implementation("org.mozilla:rhino:1.7.14")
     implementation("org.apache.poi:poi:5.2.5")
     implementation("org.apache.poi:poi-ooxml:5.2.5")
+    implementation("net.sf.barcode4j:barcode4j:2.1")
+    implementation("com.google.zxing:core:3.5.1")
+    implementation("com.google.zxing:javase:3.5.1")
+    implementation("org.apache.xmlgraphics:batik-transcoder:1.16")
+    implementation("org.apache.xmlgraphics:batik-codec:1.16")
+    implementation("org.apache.xmlgraphics:batik-bridge:1.16")
 
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
