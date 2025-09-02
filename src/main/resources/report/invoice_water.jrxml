@@ -182,23 +182,34 @@
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="70">
+		<band height="85">
 			<staticText>
-				<reportElement stretchType="ContainerHeight" x="0" y="0" width="555" height="70" uuid="7bda7080-f510-470d-8fa9-6b0d008bace0">
+				<reportElement stretchType="ContainerHeight" x="0" y="15" width="555" height="70" uuid="7bda7080-f510-470d-8fa9-6b0d008bace0">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle" markup="html">
 					<font size="8"/>
+					<paragraph leftIndent="5"/>
 				</textElement>
-				<text><![CDATA[ <bold><strong>Parâmetros de Qualidade da Água</strong></bold><br />
-  <ul>
-    <li>Coliformes Totais: Indicador que mensura contaminação bacteriológica do tipo: bacilos gram-negativos, aeróbios ou anaeróbios facultativos não esporogênicos, oxidase-negativos.</li>
-    <li>E. coli: Indicador que mensura contaminação bacteriológica de origem fecal.</li>
-    <li>Cloro Residual: Indicador do Poder Desinfetante oriundo do Cloro (Agente de Desinfecção).</li>
-    <li>Turbidez: Indicador do espalhamento de luz produzido pela presença de partículas em suspensão ou coloidais.</li>
-    <li>Cor Aparente: Indicador que mensura a cor em amostras com turbidez.</li>
-  </ul>]]></text>
+				<text><![CDATA[  * Coliformes Totais: Indicador que mensura contaminação bacteriológica do tipo: bacilos gram-negativos, aeróbios ou anaeróbios facultativos não esporogênicos, oxidase-negativos.
+* E. coli: Indicador que mensura contaminação bacteriológica de origem fecal.
+* Cloro Residual: Indicador do Poder Desinfetante oriundo do Cloro (Agente de Desinfecção).
+* Turbidez: Indicador do espalhamento de luz produzido pela presença de partículas em suspensão ou coloidais.
+* Cor Aparente: Indicador que mensura a cor em amostras com turbidez.
+ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ContainerHeight" x="0" y="0" width="555" height="15" uuid="8555171f-4a5a-4e32-95ba-f8fbe00e5008">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Parâmetros de Qualidade da Água  ]]></text>
 			</staticText>
 		</band>
 	</pageFooter>
