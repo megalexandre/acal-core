@@ -2,6 +2,7 @@ package acal.com.core.application.invoice.data.out
 
 import acal.com.core.comons.currency
 import acal.com.core.comons.current
+import acal.com.core.comons.currentDate
 import acal.com.core.domain.entity.Invoice
 import acal.com.core.domain.entity.WaterAnalysis
 import java.time.LocalDateTime
@@ -51,8 +52,8 @@ fun Invoice.toPDF(): InvoicePDFResponse = InvoicePDFResponse(
         partnerNumber = customer.partnerNumber ?: "0",
         reference = reference.toString(),
         number = number,
-        paidAt = paidAt?.current(),
-        paidAtLabel = paidAt?.let { "Pago em: ${paidAt.current()}" },
+        paidAt = paidAt?.currentDate(),
+        paidAtLabel = paidAt?.let { "Pago em: ${paidAt.currentDate()}" },
         total = totalValue.currency(),
         category = "Categoria: ${category.group.description} ${category.name}",
         address = "Endereço: ${place.address.name} ${place.number}/${place.letter}",

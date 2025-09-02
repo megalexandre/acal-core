@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.21.5.final using JasperReports Library version 6.21.5-74d586df47b25dbd05bd0957999819196e59934a  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="67c9e145-7949-4088-8d32-84f00c4d67f5">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="67c9e145-7949-4088-8d32-84f00c4d67f5">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<property name="com.jaspersoft.studio.unit." value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="logo" class="java.awt.image.BufferedImage"/>
 	<queryString>
 		<![CDATA[]]>
@@ -18,14 +9,13 @@
 	<detail>
 		<band height="70">
 			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
-				<reportElement x="0" y="0" width="80" height="70" uuid="67dccca4-3401-4fec-8069-7d2692ad7067"/>
+				<reportElement x="0" y="0" width="70" height="70" uuid="67dccca4-3401-4fec-8069-7d2692ad7067">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
-			<line>
-				<reportElement x="0" y="69" width="555" height="1" uuid="3083aa0f-eaad-4747-a3a1-aeb028c6b6fe"/>
-			</line>
 			<staticText>
-				<reportElement x="100" y="0" width="400" height="70" uuid="34a7b003-17ab-4d98-a130-bc2717bbfbc3"/>
+				<reportElement x="80" y="0" width="400" height="70" uuid="34a7b003-17ab-4d98-a130-bc2717bbfbc3"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -38,6 +28,26 @@ Lages do Batata - Jacobina, BA.
 Email : acallages@hotmail.com.
             ]]></text>
 			</staticText>
+			<componentElement>
+				<reportElement x="485" y="0" width="70" height="70" uuid="f10104b0-e4eb-434f-9a94-7d34098d5f75">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA["123456789"]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+		</band>
+		<band height="1">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="3083aa0f-eaad-4747-a3a1-aeb028c6b6fe">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
 		</band>
 		<band height="41">
 			<staticText>
