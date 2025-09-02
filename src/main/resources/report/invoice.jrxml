@@ -2,68 +2,21 @@
 <!-- Created with Jaspersoft Studio version 6.21.5.final using JasperReports Library version 6.21.5-74d586df47b25dbd05bd0957999819196e59934a  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="67c9e145-7949-4088-8d32-84f00c4d67f5">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="logo" class="java.awt.image.BufferedImage"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
 	<field name="detail" class="acal.com.core.application.invoice.data.out.DetailInvoicePDFResponse"/>
 	<detail>
-		<band height="71" splitType="Stretch">
-			<staticText>
-				<reportElement stretchType="ContainerHeight" x="100" y="0" width="400" height="70" uuid="36132ede-6811-4ecf-a780-f37104319665">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[CNPJ - 13.228.119/0001-68
-Publicação do estatuto no Diário Oficial de 22-06-1983.
-Reconhecido como Órgão de utilidade publica Municipal - conf.lei N 7 de 27-10-1983.
-Reconhecido como Órgão de utilidade publica Estadual - conf.lei N 7049 de 16-04-1997.
-Rua Morro do Chapéu, CEP 44700-000,  S/N - Tel (74) 3674-2165.
-Lages do Batata - Jacobina, BA.
-Email : acallages@hotmail.com.]]></text>
-			</staticText>
-			<line>
-				<reportElement x="0" y="0" width="555" height="1" uuid="8c24ded7-1d5b-4ed8-bf97-7c147fe4f605">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-			</line>
-			<line>
-				<reportElement x="0" y="70" width="555" height="1" uuid="4cf521e4-e887-4ec3-9bf6-94231351abe6">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-			</line>
-		</band>
-		<band height="40">
-			<staticText>
-				<reportElement stretchType="ContainerHeight" x="0" y="0" width="555" height="25" uuid="de6b6f05-d04f-4e75-be58-bfb358d5f8f9">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="16" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ACAL - Associação Comunitária e Assistêncial de Lages]]></text>
-			</staticText>
-			<staticText>
-				<reportElement stretchType="ContainerHeight" x="0" y="20" width="555" height="20" uuid="7815c41e-36a9-4e8a-b9a4-a6f9f6572242">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[ECONOMIZAR ÁGUA É UM DEVER DE TODO SER HUMANO.]]></text>
-			</staticText>
+		<band height="60" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="60"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA["report/invoice_title.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 		<band height="60">
 			<subreport>

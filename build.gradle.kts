@@ -17,6 +17,7 @@ java {
 
 repositories {
     mavenCentral()
+    google()
 }
 
 extra["snippetsDir"] = file("build/generated-snippets")
@@ -26,6 +27,11 @@ val cucumberVersion = "7.15.0"
 val mapstructVersion = "1.5.3.Final"
 val springdocVersion = "2.8.5"
 val jasperReportsVersion = "6.21.5"
+val logVersion = "2.0.16"
+
+configurations.all {
+    exclude(group = "commons-logging", module = "commons-logging")
+}
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -41,6 +47,7 @@ dependencies {
     implementation("org.mapstruct:mapstruct:$mapstructVersion")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
 
+    implementation("org.slf4j:jcl-over-slf4j:$logVersion")
     // JasperReports dependencies
     implementation("net.sf.jasperreports:jasperreports:$jasperReportsVersion")
     implementation("net.sf.jasperreports:jasperreports-fonts:$jasperReportsVersion")
@@ -93,4 +100,33 @@ tasks.test {
 tasks.asciidoctor {
     inputs.dir(project.extra["snippetsDir"]!!)
     dependsOn(tasks.test)
+}
+
+
+
+tasks.register<JavaExec>("compileJasperReports") {
+    group = "build"
+
+    val reportsDir = file("src/main/resources/report")
+    val outputDir = layout.buildDirectory.dir("generated-resources/jasper").get().asFile
+
+    inputs.dir(reportsDir)
+    outputs.dir(outputDir)
+
+    doFirst {
+        if (!outputDir.exists()) {
+            outputDir.mkdirs()
+        }
+    }
+
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("acal.com.core.infrastructure.CompileReports")
+}
+
+tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
+    mainClass.set("acal.com.core.CoreApplicationKt")
+}
+
+springBoot {
+    mainClass.set("acal.com.core.CoreApplicationKt")
 }

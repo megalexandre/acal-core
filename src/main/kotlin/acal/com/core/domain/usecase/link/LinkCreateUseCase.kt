@@ -53,10 +53,7 @@ class LinkCreateUseCase(
     }
 
     fun canSave(place: Place) {
-
-        val place = linkDataSource.findActiveLinkByPlace(place)
-
-        place?.let {
+        linkDataSource.findActiveLinkByPlace(place)?.let {
             throw InvalidOperationException(ErrorCode.DUPLICATE_LINK.name)
         }
     }

@@ -117,6 +117,7 @@
 				<reportElement x="0" y="0" width="255" height="20" uuid="533fc284-5cc0-4626-8570-996dbbd51c60">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72bc191d-5558-46f9-b2e9-cdc5e98bc1cd"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<box>
 					<topPen lineWidth="0.25"/>
@@ -124,7 +125,9 @@
 					<bottomPen lineWidth="0.25"/>
 					<rightPen lineWidth="0.25"/>
 				</box>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField>

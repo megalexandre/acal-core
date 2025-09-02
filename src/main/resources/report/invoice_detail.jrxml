@@ -26,14 +26,6 @@
 	<field name="paidUsageValue" class="java.lang.String"/>
 	<detail>
 		<band height="56">
-			<line>
-				<reportElement x="0" y="0" width="555" height="1" uuid="a2b9d502-a7f3-472f-92e0-c7fced278792">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-			</line>
 			<rectangle radius="10">
 				<reportElement x="190" y="10" width="180" height="35" uuid="4b6c7b34-010a-465d-ad9c-286c62e42d65">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -55,13 +47,15 @@
 				</reportElement>
 			</rectangle>
 			<staticText>
-				<reportElement mode="Opaque" x="10" y="5" width="90" height="12" uuid="933046b4-6936-4fd2-9ac4-9a349a9f4905">
+				<reportElement mode="Opaque" x="10" y="5" width="100" height="12" uuid="933046b4-6936-4fd2-9ac4-9a349a9f4905">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Número da Residência:]]></text>
 			</staticText>
@@ -78,15 +72,11 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.0"/>
-					<rightPen lineWidth="0.0"/>
-				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Registro número:]]></text>
 			</staticText>
@@ -95,9 +85,11 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Referência:]]></text>
 			</staticText>
@@ -309,7 +301,7 @@
 				<textFieldExpression><![CDATA[$F{paidUsageValue}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="200" y="20" width="160" height="120" uuid="53cbe757-247c-4ca7-a36f-aba3dfacb0ec"/>
+				<reportElement x="190" y="10" width="180" height="140" uuid="53cbe757-247c-4ca7-a36f-aba3dfacb0ec"/>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<jr:codeExpression><![CDATA[$F{number}]]></jr:codeExpression>
 				</jr:QRCode>
