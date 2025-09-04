@@ -2,10 +2,8 @@ package acal.com.core.resouces
 
 import acal.com.core.domain.entity.Invoice
 import acal.com.core.domain.entity.Reference
-import acal.com.core.domain.entity.WaterMeter
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
-import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
 

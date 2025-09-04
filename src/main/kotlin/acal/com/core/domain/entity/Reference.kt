@@ -24,15 +24,14 @@ data class Reference(
         }
 
         private fun parseYear(value: String): Year {
-
             val parts = value.split("-")
-            if (parts.size != 2) throw IllegalArgumentException("Invalid reference format. Expected 'YYYY-MM'.")
+            require(parts.size == 2) { "Invalid reference format. Expected 'YYYY-MM'." }
             return Year.of(parts[0].toInt())
         }
 
         private fun parseMonth(value: String): Month {
             val parts = value.split("-")
-            if (parts.size != 2) throw IllegalArgumentException("Invalid reference format. Expected 'YYYY-MM'.")
+            require(parts.size == 2) { "Invalid reference format. Expected 'YYYY-MM'." }
             return Month.of(parts[1].toInt())
         }
     }

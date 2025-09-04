@@ -13,7 +13,6 @@ import org.springframework.core.io.ClassPathResource
 import org.springframework.stereotype.Service
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
-import kotlin.io.inputStream
 
 enum class ReportType {
     PDF, XLSX
@@ -43,11 +42,11 @@ private fun generateReport(
         val mutableParams = HashMap(parameters)
         mutableParams.put("Logo", "")
 
-        try {
+        runCatching {
             val logoStream = ClassPathResource("assets/logo.jpg").inputStream
             val logo = javax.imageio.ImageIO.read(logoStream)
             mutableParams.put("logo", logo)
-        } catch (ignored: Exception){}
+        }
 
         val reportStream = ClassPathResource("report/$reportName.jrxml").inputStream
         val jasperReport = compileReport(reportStream)

@@ -1,6 +1,5 @@
 package acal.com.core.infrastructure.config
 
-import acal.com.core.resouces.CustomerModel
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.annotation.Bean

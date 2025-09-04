@@ -1,7 +1,5 @@
 package acal.com.core.application.auth.data.out
 
-import acal.com.core.domain.entity.Address
-
 data class UserResponse (
     val status: String,
     val token: String,

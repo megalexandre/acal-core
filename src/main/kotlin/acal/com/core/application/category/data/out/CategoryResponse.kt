@@ -3,7 +3,6 @@ package acal.com.core.application.category.data.out
 import acal.com.core.domain.entity.Category
 import acal.com.core.domain.enums.Group
 import java.math.BigDecimal
-import java.time.LocalDateTime
 
 data class CategoryResponse(
     val id: String,

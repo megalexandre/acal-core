@@ -6,7 +6,6 @@ import acal.com.core.comons.currentDate
 import acal.com.core.domain.entity.Invoice
 import acal.com.core.domain.entity.WaterAnalysis
 import java.time.LocalDateTime
-import kotlin.String
 
 class InvoicePDFResponse (
     val id: String,
