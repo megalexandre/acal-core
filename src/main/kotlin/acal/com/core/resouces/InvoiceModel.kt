@@ -27,24 +27,6 @@ data class InvoiceModel (
     val paidAt: LocalDateTime?,
 )
 
-@Document("water_meter")
-data class WaterMeterModel(
-    val start: Double,
-    val end: Double,
-    val value: BigDecimal
-)
-
-fun WaterMeterModel.toDomain(): WaterMeter = WaterMeter(
-    start = start,
-    end = end,
-    value = value
-)
-
-fun WaterMeter.toEntity(): WaterMeterModel = WaterMeterModel(
-    start = start,
-    end = end,
-    value = value
-)
 
 fun InvoiceModel.toDomain(): Invoice = Invoice(
     id = id,

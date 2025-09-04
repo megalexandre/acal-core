@@ -21,6 +21,9 @@ class InvoicePreviewUseCase(
         var countByReferencesContaining = dataSource.countByReferencesContaining(reference)
 
         val waterMeter = WaterMeter(
+            id = Id.random(),
+            reference = reference,
+            linkId = "",
             start = 0.0,
             end = 0.0,
             value = BigDecimal(0.04)

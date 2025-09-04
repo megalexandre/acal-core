@@ -46,8 +46,6 @@ data class Invoice (
     val waterValue: BigDecimal
         get() = waterMeter?.total ?: BigDecimal.ZERO
 
-
-
 }
 
 class InvoiceValue(

@@ -4,7 +4,6 @@ import java.math.BigDecimal
 import java.time.LocalDateTime
 
 data class Link (
-
      val id: String,
      val number: String,
      val customer: Customer,
@@ -17,5 +16,4 @@ data class Link (
 ){
      val total: BigDecimal
           get() = category.total
-
 }

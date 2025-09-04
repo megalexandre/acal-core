@@ -1,12 +1,12 @@
 ALTER TABLE pessoa
-ADD COLUMN uuid CHAR(36);
+ADD COLUMN uuid VARCHAR(36);
 
 UPDATE pessoa
 SET uuid = UUID()
 WHERE uuid IS NULL;
 
 ALTER TABLE pessoa
-MODIFY uuid CHAR(36) NOT NULL;
+MODIFY uuid VARCHAR(36) NOT NULL;
 
 ALTER TABLE pessoa
 ADD CONSTRAINT unique_uuid UNIQUE (uuid);
@@ -15,7 +15,7 @@ WITH dados AS (
     uuid,
     MIN(TRIM(nome)) AS name,
     CASE
-      WHEN COALESCE(REPLACE(REPLACE(REPLACE(cpf, '.', ''), '-', ''), ' ', ''), '') = ''
+      WHEN COALESCE(REPLACE(REPLACE(REPLACE(cpf, '.', ''), '-', ''), ' ', ''), '') is null
       THEN COALESCE(REPLACE(REPLACE(REPLACE(REPLACE(cnpj, '.', ''), '-', ''), ' ', ''), '/',''),'')
       ELSE COALESCE(REPLACE(REPLACE(REPLACE(cpf, '.', ''), '-', ''), ' ', ''), '')
     END AS identity_card
