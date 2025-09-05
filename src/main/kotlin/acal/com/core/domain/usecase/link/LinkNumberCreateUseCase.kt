@@ -1,7 +1,7 @@
 package acal.com.core.domain.usecase.link
 
 import acal.com.core.domain.entity.LinkNumber
-import acal.com.core.resouces.repository.SequenceRepositoryImpl
+import acal.com.core.resources.repository.SequenceRepositoryImpl
 import org.springframework.stereotype.Service
 import java.time.Year
 

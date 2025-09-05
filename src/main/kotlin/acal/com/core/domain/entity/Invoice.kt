@@ -6,9 +6,9 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 data class Invoice (
-    val id: String,
+    override val id: String,
     val reference: Reference,
-    val number: String,
+    override val number: String,
     val waterMeter: WaterMeter?,
     var waterQuality: WaterQuality?,
     val customer: Customer,
@@ -18,7 +18,14 @@ data class Invoice (
     val dueDate: LocalDate,
     val paidAt: LocalDateTime?,
 
-    ){
+    ): FinancialRecordItem(
+        id = id,
+        number = number,
+        total = BigDecimal.ZERO
+    ) {
+
+    override val total: BigDecimal
+        get() = totalValue
 
     val status: InvoiceStatus
         get() = when {

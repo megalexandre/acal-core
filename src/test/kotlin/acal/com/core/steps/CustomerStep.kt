@@ -1,8 +1,8 @@
 package acal.com.core.steps
 
 import acal.com.core.configuration.CucumberSpringConfiguration
-import acal.com.core.resouces.CustomerModel
-import acal.com.core.resouces.repository.CustomerRepository
+import acal.com.core.resources.CustomerModel
+import acal.com.core.resources.repository.CustomerRepository
 import io.cucumber.java.pt.Dado
 import io.cucumber.java.pt.E
 import org.junit.jupiter.api.Assertions.assertEquals

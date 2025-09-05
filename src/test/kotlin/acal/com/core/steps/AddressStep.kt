@@ -1,8 +1,8 @@
 package acal.com.core.steps
 
 import acal.com.core.configuration.CucumberSpringConfiguration
-import acal.com.core.resouces.AddressModel
-import acal.com.core.resouces.repository.AddressRepository
+import acal.com.core.resources.AddressModel
+import acal.com.core.resources.repository.AddressRepository
 import io.cucumber.java.pt.Dado
 import org.junit.jupiter.api.Assertions
 import org.springframework.beans.factory.annotation.Autowired

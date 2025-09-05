@@ -1,8 +1,8 @@
 package acal.com.core.steps
 
 import acal.com.core.configuration.CucumberSpringConfiguration
-import acal.com.core.resouces.CategoryModel
-import acal.com.core.resouces.repository.CategoryRepository
+import acal.com.core.resources.CategoryModel
+import acal.com.core.resources.repository.CategoryRepository
 import io.cucumber.java.pt.Dado
 import io.cucumber.java.pt.Então
 import org.junit.jupiter.api.Assertions.assertEquals

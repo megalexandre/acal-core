@@ -1,7 +1,7 @@
 package acal.com.core.steps
 
 import acal.com.core.configuration.CucumberSpringConfiguration
-import acal.com.core.resouces.repository.CustomerRepository
+import acal.com.core.resources.repository.CustomerRepository
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.cucumber.java.Before

@@ -2,9 +2,9 @@ package acal.com.core.steps.types
 
 import acal.com.core.comons.normalize
 import acal.com.core.domain.enums.Group
-import acal.com.core.resouces.AddressModel
-import acal.com.core.resouces.CategoryModel
-import acal.com.core.resouces.CustomerModel
+import acal.com.core.resources.AddressModel
+import acal.com.core.resources.CategoryModel
+import acal.com.core.resources.CustomerModel
 import io.cucumber.java.DataTableType
 import java.math.BigDecimal
 import java.time.LocalDateTime
