@@ -40,6 +40,11 @@ class FinancialRecordRepositoryImp(
         return PageImpl(content, pageable, total)
     }
 
+    override fun findAll(filter: FinancialRecordFilter): Collection<FinancialRecord> {
+        val query = FinancialRecordQuery().query(filter)
+        return mongoTemplate.find(query, FinancialRecordModel::class.java).map { it.toDomain() }
+    }
+
 }
 
 interface FinancialRecordRepository: MongoRepository<FinancialRecordModel, String>

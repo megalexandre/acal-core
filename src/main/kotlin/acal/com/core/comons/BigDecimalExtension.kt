@@ -5,4 +5,7 @@ import java.text.NumberFormat
 import java.util.*
 
 
-fun BigDecimal.currency(): String  = NumberFormat.getCurrencyInstance(Locale.of("pt", "BR")).format(this)
+fun BigDecimal.currency(): String  =
+    NumberFormat
+        .getCurrencyInstance(Locale.of("pt", "BR"))
+        .format(this)

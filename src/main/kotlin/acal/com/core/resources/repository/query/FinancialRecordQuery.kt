@@ -26,6 +26,7 @@ class FinancialRecordQuery {
                 criteria.and("created_at").lte(filter.dateEnd)
             }
         }
+
         val sort = filter.sortOrders?.takeIf { it.isNotEmpty() }?.let {
             Sort.by(it.map { order ->
                 Sort.Order(Sort.Direction.fromString(order.direction), order.property)

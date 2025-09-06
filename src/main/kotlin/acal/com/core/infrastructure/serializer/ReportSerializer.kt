@@ -19,7 +19,8 @@ enum class ReportType {
 }
 
 enum class Report(val value: String){
-    INVOICE("invoice")
+    INVOICE("invoice"),
+    FINANCIAL_RECORD("financial_record")
 }
 
 @Service

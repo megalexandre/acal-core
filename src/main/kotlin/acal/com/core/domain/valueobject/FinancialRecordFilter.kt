@@ -1,5 +1,6 @@
 package acal.com.core.domain.valueobject
 
+import acal.com.core.domain.entity.Address
 import java.time.LocalDate
 
 data class FinancialRecordFilter(

@@ -19,6 +19,10 @@ class InvoiceQuery {
             criteria.and("number").regex(it.trim())
         }
 
+        filter.address?.let {
+            criteria.and("place.address.id").`is`(it.id)
+        }
+
         val query = Query(criteria)
 
         val sort = filter.sortOrders?.takeIf { it.isNotEmpty() }?.let {

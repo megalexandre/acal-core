@@ -7,4 +7,5 @@ import org.springframework.data.domain.Page
 interface FinancialRecordDataSource {
     fun save(financialRecord: FinancialRecord): FinancialRecord
     fun paginate(filter: FinancialRecordFilter): Page<FinancialRecord>
+    fun findAll(filter: FinancialRecordFilter): Collection<FinancialRecord>
 }
