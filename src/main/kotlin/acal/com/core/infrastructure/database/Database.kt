@@ -35,7 +35,6 @@ class Database(
         val backupData = mutableMapOf<String, Any>()
 
         try {
-            // Obter todas as collections do banco
             val collections = mongoTemplate.collectionNames
 
             collections.forEach { collectionName ->
@@ -43,7 +42,6 @@ class Database(
                 backupData[collectionName] = documents
             }
 
-            // Adicionar metadados do backup
             backupData["backup_metadata"] = mapOf(
                 "created_at" to System.currentTimeMillis(),
                 "version" to "1.0",
@@ -184,7 +182,6 @@ class Database(
             val dbName = matchResult.groupValues[3]
             Triple(host, port, dbName)
         } else {
-            // Fallback para valores padrão
             Triple("localhost", "27017", "acal")
         }
     }
