@@ -14,9 +14,8 @@ class InvoiceCancelPaymentUseCase(
     fun execute(id: String) {
 
         dataSource.findById(id)?.let {
-            it.copy(paidAt = null)
             financial.execute( FinancialRecordCreate(financialRecord = it, reason = INVOICE_REFUND) )
-            dataSource.save(it)
+            dataSource.save(it.copy(paidAt = null))
         }
     }
 

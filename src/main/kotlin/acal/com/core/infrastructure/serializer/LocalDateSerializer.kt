@@ -20,9 +20,12 @@ class LocalDateDeserializer : JsonDeserializer<LocalDate>() {
     override fun deserialize(p: JsonParser, ctxt: DeserializationContext): LocalDate =
         runCatching {
             LocalDate.parse(p.text, DateTimeFormatter.ISO_LOCAL_DATE)
-        }.getOrElse {
+        }.runCatching {
+            val dateText = p.text.split("T").firstOrNull() ?: p.text
+            LocalDate.parse(dateText, DateTimeFormatter.ISO_LOCAL_DATE)
+        }.recoverCatching {
             val odt = OffsetDateTime.parse(p.text)
             odt.toLocalDate()
-        }
+        }.getOrThrow()
 }
 

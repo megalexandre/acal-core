@@ -12,6 +12,7 @@ class FinancialRecord(
 )
 
 class FinancialRecordDetail(
+    val id: String,
     val number: String,
     val total: BigDecimal,
     val reason: FinancialRecordReason

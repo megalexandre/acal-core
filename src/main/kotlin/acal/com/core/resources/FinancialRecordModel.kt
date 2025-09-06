@@ -14,6 +14,7 @@ data class FinancialRecordModel(
     val id: String,
     val createdAt: LocalDateTime,
     val createdBy: String,
+    val itemId: String,
     val number: String,
     val total: BigDecimal,
     val reason: String,
@@ -24,6 +25,7 @@ fun FinancialRecordModel.toDomain(): FinancialRecord = FinancialRecord(
     createdAt = createdAt,
     createdBy = createdBy,
     detail = FinancialRecordDetail(
+      id = itemId,
       number = number,
       total = total,
         reason = FinancialRecordReason.valueOf(reason)
@@ -37,5 +39,6 @@ fun FinancialRecord.toEntity(): FinancialRecordModel = FinancialRecordModel(
     number = detail.number,
     total = detail.total,
     reason = detail.reason.name,
+    itemId = detail.id
 )
 
