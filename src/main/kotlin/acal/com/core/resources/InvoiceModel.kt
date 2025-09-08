@@ -15,7 +15,7 @@ data class InvoiceModel (
     val reference: String,
     val number: String,
 
-    val waterMeter: WaterMeterModel?,
+    val waterMeter: WaterMeterModel,
 
     val customer: CustomerModel,
     val place: PlaceModel,
@@ -30,7 +30,7 @@ fun InvoiceModel.toDomain(): Invoice = Invoice(
     id = id,
     reference = Reference.of(reference),
     number = number,
-    waterMeter = waterMeter?.toDomain(),
+    waterMeter = waterMeter.toDomain(),
     customer = customer.toDomain(),
     place = place.toDomain(),
     category = category.toDomain(),
@@ -43,7 +43,7 @@ fun Invoice.toEntity(): InvoiceModel = InvoiceModel(
     id = id,
     number = number,
     reference = reference.toString(),
-    waterMeter = waterMeter?.toEntity(),
+    waterMeter = waterMeter.toEntity(),
     customer = customer.toEntity(),
     place = place.toEntity(),
     category = category.toEntity(),

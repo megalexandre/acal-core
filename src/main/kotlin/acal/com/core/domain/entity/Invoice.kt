@@ -9,7 +9,7 @@ data class Invoice (
     override val id: String,
     val reference: Reference,
     override val number: String,
-    val waterMeter: WaterMeter?,
+    val waterMeter: WaterMeter,
     var waterQuality: WaterQuality?,
     val customer: Customer,
     val place: Place,

@@ -18,7 +18,7 @@ data class InvoiceCreateRequest (
     @field:NotBlank(message = " Number is required.")
     val number: String,
 
-    val waterMeter: WaterMeter?,
+    val waterMeter: WaterMeter,
 
     @field:NotBlank
     val dueDate: LocalDate,

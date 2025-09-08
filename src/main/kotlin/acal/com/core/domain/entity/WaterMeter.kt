@@ -9,7 +9,7 @@ class WaterMeter(
     val start: Double,
     val end: Double,
     val value: BigDecimal,
-    val freeTier: Double = 1000.0
+    val freeTier: Double
 ) {
 
     val paidUsageValue: Double

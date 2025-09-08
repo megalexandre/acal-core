@@ -38,3 +38,8 @@ management:
       enabled: true
     info:
       enabled: true
+
+prices:
+  water:
+    free-tier: 1000.0
+    price-per-unit: 0.004

@@ -21,4 +21,5 @@ class InvoiceCreateUseCase(
                     ).also { invoiceNumber = invoiceNumber.next }
                 }
             })
+
 }
