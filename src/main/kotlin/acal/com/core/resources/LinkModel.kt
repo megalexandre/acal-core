@@ -20,7 +20,6 @@ data class LinkModel(
     val active: Boolean,
     val deletedAt: LocalDateTime?
 )
-
 fun LinkModel.toDomain(): Link = Link(
     id = id,
     number = number,

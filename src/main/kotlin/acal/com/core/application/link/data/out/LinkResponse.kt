@@ -10,6 +10,7 @@ import java.time.LocalDateTime
 data class LinkResponse(
     val id: String,
     val number: String,
+    val name: String,
     val customer: CustomerResponse,
     val category: CategoryResponse,
     val place: PlaceResponse,
@@ -18,10 +19,12 @@ data class LinkResponse(
     val deletedAt: LocalDateTime?,
     val active: Boolean,
     val deleted: Boolean,
+
 )
 
 fun Link.response() = LinkResponse(
     id = id,
+    name = name,
     number = number,
     customer = customer.customerResponse(),
     category = category.categoryResponse(),

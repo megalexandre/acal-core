@@ -14,6 +14,10 @@ data class Link (
      val active: Boolean,
      val deletedAt: LocalDateTime?
 ){
+     val name: String
+          get() = place.name
+
      val total: BigDecimal
           get() = category.total
+
 }

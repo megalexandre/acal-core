@@ -5,4 +5,7 @@ data class Place (
     val number: String,
     val letter: String,
     val address: Address,
-)
+){
+    val name: String
+        get() = "$number $letter, ${address.name}"
+}
