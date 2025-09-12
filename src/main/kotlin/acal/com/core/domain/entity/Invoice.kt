@@ -48,10 +48,10 @@ data class Invoice (
         )
 
     val consumption: Double
-        get() = waterMeter?.paidUsageValue ?: 0.0
+        get() = waterMeter.paidUsageValue
 
     val waterValue: BigDecimal
-        get() = waterMeter?.total ?: BigDecimal.ZERO
+        get() = waterMeter.total
 
 }
 

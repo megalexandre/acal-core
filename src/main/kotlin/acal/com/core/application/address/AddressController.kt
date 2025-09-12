@@ -39,10 +39,12 @@ class AddressController(
     fun getById(@PathVariable id: String): AddressResponse =
         findById.execute(id)
             ?.response()
-            ?.also { logger.info("Address found successfully: {}", it) }
+            ?.also {
+                logger.info("Address found successfully")
+            }
             ?: run {
-                logger.error("Address not found with ID: {}", id)
-                throw DataNotFoundException("Address not found with ID: $id")
+                logger.error("Address not found")
+                throw DataNotFoundException("Address not found")
             }
 
     @ResponseStatus(OK)

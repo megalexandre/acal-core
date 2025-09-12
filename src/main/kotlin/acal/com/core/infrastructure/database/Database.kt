@@ -15,7 +15,6 @@ import java.util.zip.ZipOutputStream
 class Database(
     @Autowired private val mongoTemplate: MongoTemplate,
     @Value("\${spring.data.mongodb.uri}") private val mongoUri: String,
-    @Value("\${backup.output.dir:/tmp/backup}") private val backupOutputDir: String
 ) {
 
     private val objectMapper = ObjectMapper().registerKotlinModule()
@@ -35,10 +34,10 @@ class Database(
         val backupData = mutableMapOf<String, Any>()
 
         try {
-            val collections = mongoTemplate.collectionNames
+            val collections: Set<String> = mongoTemplate.collectionNames
 
             collections.forEach { collectionName ->
-                val documents = mongoTemplate.findAll(Map::class.java, collectionName)
+                val documents: List<*> = mongoTemplate.findAll(Map::class.java, collectionName)
                 backupData[collectionName] = documents
             }
 
@@ -60,12 +59,12 @@ class Database(
         val indexesData = mutableMapOf<String, Any>()
 
         try {
-            val collections = mongoTemplate.collectionNames
+            val collections: Set<String> = mongoTemplate.collectionNames
 
             collections.forEach { collectionName ->
                 try {
                     val collection = mongoTemplate.getCollection(collectionName)
-                    val indexes = collection.listIndexes().into(mutableListOf())
+                    val indexes: List<*>  = collection.listIndexes().into(mutableListOf())
                     indexesData[collectionName] = indexes
                 } catch (e: Exception) {
                     println("Aviso: Não foi possível obter índices da collection '$collectionName': ${e.message}")
@@ -84,13 +83,11 @@ class Database(
         val byteArrayOutputStream = ByteArrayOutputStream()
 
         ZipOutputStream(byteArrayOutputStream).use { zipOut ->
-            // Criar arquivo JSON principal com todos os dados
             val mainJsonEntry = ZipEntry("backup_data.json")
             zipOut.putNextEntry(mainJsonEntry)
             zipOut.write(objectMapper.writeValueAsBytes(backupData))
             zipOut.closeEntry()
 
-            // Criar arquivos separados por collection
             backupData.forEach { (collectionName, data) ->
                 if (collectionName != "backup_metadata") {
                     val collectionEntry = ZipEntry("collections/$collectionName.json")
@@ -100,13 +97,11 @@ class Database(
                 }
             }
 
-            // Criar arquivo com todos os índices
             val allIndexesEntry = ZipEntry("indexes.json")
             zipOut.putNextEntry(allIndexesEntry)
             zipOut.write(objectMapper.writeValueAsBytes(indexesData))
             zipOut.closeEntry()
 
-            // Criar arquivos separados de índices por collection
             indexesData.forEach { (collectionName, indexes) ->
                 val indexEntry = ZipEntry("indexes/$collectionName.json")
                 zipOut.putNextEntry(indexEntry)
@@ -114,13 +109,11 @@ class Database(
                 zipOut.closeEntry()
             }
 
-            // Criar arquivo de metadados
             val metadataEntry = ZipEntry("metadata.json")
             zipOut.putNextEntry(metadataEntry)
             zipOut.write(objectMapper.writeValueAsBytes(backupData["backup_metadata"]))
             zipOut.closeEntry()
 
-            // Criar script de restauração
             val restoreScriptEntry = ZipEntry("restore_script.js")
             zipOut.putNextEntry(restoreScriptEntry)
             zipOut.write(createRestoreScript(backupData, indexesData).toByteArray())
@@ -140,14 +133,12 @@ class Database(
         script.appendLine("use $dbName;")
         script.appendLine()
 
-        // Drop collections existentes (opcional)
         script.appendLine("// Remover collections existentes (descomente se necessário)")
         backupData.keys.filter { it != "backup_metadata" }.forEach { collectionName ->
             script.appendLine("// db.$collectionName.drop();")
         }
         script.appendLine()
 
-        // Recriar índices
         script.appendLine("// Recriar índices")
         indexesData.forEach { (collectionName, indexes) ->
             script.appendLine("// Índices para collection: $collectionName")
@@ -156,7 +147,7 @@ class Database(
                     if (index is Map<*, *>) {
                         val name = index["name"] as? String
                         val key = index["key"]
-                        if (name != "_id_" && key != null) { // Pula o índice automático do _id
+                        if (name != "_id_" && key != null) {
                             script.appendLine("db.$collectionName.createIndex($key);")
                         }
                     }
