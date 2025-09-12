@@ -2,7 +2,6 @@ package acal.com.core.domain.usecase.invoice
 
 import acal.com.core.domain.datasource.InvoiceDataSource
 import acal.com.core.domain.enums.FinancialRecordReason.INVOICE_DELETE
-import acal.com.core.domain.enums.FinancialRecordReason.INVOICE_REFUND
 import acal.com.core.domain.usecase.financialrecord.FinancialRecordCreateUseCase
 import acal.com.core.domain.valueobject.FinancialRecordCreate
 import org.springframework.stereotype.Component

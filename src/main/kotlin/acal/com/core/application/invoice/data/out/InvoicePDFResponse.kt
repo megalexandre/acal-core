@@ -57,15 +57,15 @@ fun Invoice.toPDF(): InvoicePDFResponse = InvoicePDFResponse(
         category = "Categoria: ${category.group.description} ${category.name}",
         address = "Endereço: ${place.address.name} ${place.number}/${place.letter}",
         addressNumber = "${place.number}/${place.letter}",
-        consumptionStart = "Litros Anterior: ${ waterMeter?.start}" ,
-        consumptionEnd = "Litros Atual: ${waterMeter?.end.toString()}",
-        waterValue = "Total Litros: ${waterMeter?.paidUsageValue}",
-        freeTier = "Gratuidade: ${waterMeter?.freeTier}",
+        consumptionStart = "Litros Anterior: ${ waterMeter.start}" ,
+        consumptionEnd = "Litros Atual: ${waterMeter.end}",
+        waterValue = "Total Litros: ${waterMeter.paidUsageValue}",
+        freeTier = "Gratuidade: ${waterMeter.freeTier}",
+        paidUsageValue = waterMeter.total.currency(),
 
         currentDate = LocalDateTime.now().current(),
         categoryValue = category.price.partnerValue.currency(),
         waterTotalValue = category.price.waterValue.currency(),
-        paidUsageValue = waterMeter?.total?.currency() ?: "R$ 0,00",
         analysis = waterQuality?.analysis?.toWaterPDF() ?: emptyList()
     )
 )

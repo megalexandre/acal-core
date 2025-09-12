@@ -1,12 +1,12 @@
 ALTER TABLE categoriasocio
-ADD COLUMN uuid VARCHAR(36);
+ADD COLUMN uuid VARCHAR2(36);
 
 UPDATE categoriasocio
 SET uuid = UUID()
 WHERE uuid IS NULL;
 
 ALTER TABLE categoriasocio
-MODIFY uuid VARCHAR(36) NOT NULL;
+MODIFY uuid VARCHAR2(36) NOT NULL;
 
 ALTER TABLE categoriasocio
 ADD CONSTRAINT unique_uuid UNIQUE (uuid);

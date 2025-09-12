@@ -19,6 +19,6 @@ SELECT
   number,
   CONCAT(letter, REPEAT('A', rn - 1)) AS letter
 FROM numerados
-ORDER BY name, number, letter;
+ORDER BY name asc, number asc, letter asc;
 
 

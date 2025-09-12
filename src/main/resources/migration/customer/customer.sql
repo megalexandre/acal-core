@@ -1,12 +1,12 @@
 ALTER TABLE pessoa
-ADD COLUMN uuid VARCHAR(36);
+ADD COLUMN uuid VARCHAR2(36);
 
 UPDATE pessoa
 SET uuid = UUID()
 WHERE uuid IS NULL;
 
 ALTER TABLE pessoa
-MODIFY uuid VARCHAR(36) NOT NULL;
+MODIFY uuid VARCHAR2(36) NOT NULL;
 
 ALTER TABLE pessoa
 ADD CONSTRAINT unique_uuid UNIQUE (uuid);
@@ -35,4 +35,4 @@ SELECT
   'true' AS voter
 FROM dados d
 JOIN duplicados dup ON d.identity_card = dup.identity_card
-ORDER BY d.name;
+ORDER BY d.name asc;

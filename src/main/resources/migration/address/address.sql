@@ -6,7 +6,7 @@ SET uuid = UUID()
 WHERE uuid IS NULL;
 
 ALTER TABLE endereco
-MODIFY uuid VARCHAR(36) NOT NULL;
+MODIFY uuid VARCHAR2(36) NOT NULL;
 
 ALTER TABLE endereco
 ADD CONSTRAINT unique_uuid UNIQUE (uuid);
@@ -16,4 +16,4 @@ SELECT
   CONCAT(TRIM(tipo), ' ', TRIM(nome)) AS name
 FROM endereco
 GROUP BY CONCAT(TRIM(tipo), ' ', TRIM(nome))
-ORDER BY name;
+ORDER BY name asc;
