@@ -7,6 +7,8 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -27,8 +29,11 @@ class SystemController(
         val resource = ByteArrayResource(backupBytes)
 
         return ResponseEntity.ok()
-            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"$filename\"")
-            .contentType(MediaType.APPLICATION_OCTET_STREAM)
+            .header(
+                HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"$filename\"; filename*=UTF-8''${URLEncoder.encode(filename, StandardCharsets.UTF_8)}"
+            )
+            .contentType(MediaType.valueOf("application/zip"))
             .contentLength(resource.contentLength())
             .body(resource)
     }
