@@ -1,10 +1,14 @@
 package acal.com.core.application.waterMeter
 
 import acal.com.core.application.waterMeter.data.`in`.WaterMeterCreateRequest
+import acal.com.core.application.waterMeter.data.`in`.WaterMeterPreviewResponse
+import acal.com.core.application.waterMeter.data.`in`.response
+import acal.com.core.domain.entity.Reference
 import acal.com.core.domain.entity.WaterMeter
 import acal.com.core.domain.usecase.watermeter.WaterMeterCreateUseCase
 import acal.com.core.domain.usecase.watermeter.WaterMeterDeleteUseCase
 import acal.com.core.domain.usecase.watermeter.WaterMeterPaginateUseCase
+import acal.com.core.domain.usecase.watermeter.WaterMeterPreviewUseCase
 import acal.com.core.domain.valueobject.WaterMeterFilter
 import org.springframework.data.domain.Page
 import org.springframework.http.HttpStatus
@@ -20,19 +24,24 @@ class WaterMeterController(
     private val create: WaterMeterCreateUseCase,
     private val paginate: WaterMeterPaginateUseCase,
     private val delete: WaterMeterDeleteUseCase,
+    private val preView: WaterMeterPreviewUseCase
 
     ) {
 
-    @PostMapping("/paginate")
-    @ResponseStatus(HttpStatus.OK)
-    fun paginate(@RequestBody filter: WaterMeterFilter): Page<WaterMeter> =
-        paginate.execute(filter)
+    @GetMapping("/preview/{reference}")
+    fun preview(@PathVariable reference: Reference): Collection<WaterMeterPreviewResponse> =
+        preView.execute(reference).response()
 
     @PostMapping
     @ResponseStatus(CREATED)
     fun create(@RequestBody request: WaterMeterCreateRequest){
         create.execute(request.toDomain())
     }
+
+    @PostMapping("/paginate")
+    @ResponseStatus(HttpStatus.OK)
+    fun paginate(@RequestBody filter: WaterMeterFilter): Page<WaterMeter> =
+        paginate.execute(filter)
 
     @PostMapping("/all")
     @ResponseStatus(CREATED)

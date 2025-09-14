@@ -16,6 +16,6 @@ interface LinkDataSource {
     fun findById(id: String): Link?
     fun paginate(filter: LinkFilter): Page<Link>
     fun findActiveLinksWithoutReference(reference: Reference): Collection<Link>
-
+    fun findActive(): Collection<Link>
     fun findActiveLinkByPlace(place: Place): Link?
 }

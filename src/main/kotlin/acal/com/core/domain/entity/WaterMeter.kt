@@ -6,9 +6,10 @@ class WaterMeter(
     val id:String,
     val reference: Reference,
     val linkId: String,
+    val linkName: String,
     val start: Double,
     val end: Double,
-    val value: BigDecimal,
+    val pricePerUnit: BigDecimal,
     val freeTier: Double
 ) {
 
@@ -19,6 +20,6 @@ class WaterMeter(
         get() = maxOf(0.0, end - start )
 
     val total: BigDecimal
-        get() = value.multiply(BigDecimal.valueOf(paidUsageValue))
+        get() = pricePerUnit.multiply(BigDecimal.valueOf(paidUsageValue))
 
 }

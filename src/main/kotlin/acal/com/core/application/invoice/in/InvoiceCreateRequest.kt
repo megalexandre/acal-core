@@ -1,4 +1,4 @@
-package acal.com.core.application.invoice.data.`in`
+package acal.com.core.application.invoice.`in`
 
 import acal.com.core.application.category.data.`in`.CategoryRequest
 import acal.com.core.application.customer.data.`in`.CustomerRequest

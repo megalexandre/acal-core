@@ -10,9 +10,10 @@ data class WaterMeterModel(
     val id: String,
     val reference: String,
     val linkId: String,
+    val linkName: String,
     val start: Double,
     val end: Double,
-    val value: BigDecimal,
+    val pricePerUnit: BigDecimal,
     val freeTier: Double,
 )
 
@@ -20,9 +21,10 @@ fun WaterMeterModel.toDomain(): WaterMeter = WaterMeter(
     id = id,
     reference  = Reference.of(reference),
     linkId = linkId,
+    linkName = linkName,
     start = start,
     end = end,
-    value = value,
+    pricePerUnit = pricePerUnit,
     freeTier = freeTier
 )
 
@@ -30,9 +32,10 @@ fun WaterMeter.toEntity(): WaterMeterModel = WaterMeterModel(
     id = id,
     reference = reference.toString(),
     linkId = linkId,
+    linkName = linkName,
     start = start,
     end = end,
-    value = value,
+    pricePerUnit = pricePerUnit,
     freeTier = freeTier
 )
 

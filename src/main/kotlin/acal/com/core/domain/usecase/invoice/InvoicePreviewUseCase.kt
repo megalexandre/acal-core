@@ -53,10 +53,11 @@ class InvoicePreviewUseCase(
         return waterMeterMap[link.id] ?: WaterMeter(
             id = Id.random(),
             linkId = link.id,
+            linkName = link.name,
             reference = reference,
             start = 0.0,
             end = 0.0,
-            value = BigDecimal.valueOf(pricePerUnit),
+            pricePerUnit = BigDecimal.valueOf(pricePerUnit),
             freeTier = freeTier
         )
     }

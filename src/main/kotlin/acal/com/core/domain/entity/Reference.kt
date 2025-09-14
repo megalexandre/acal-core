@@ -8,6 +8,12 @@ data class Reference(
     val month: Month,
 ) {
 
+    fun lastMonth(): Reference {
+        val lastMonth = month.minus(1)
+        val lastYear = if (lastMonth == Month.DECEMBER) year.minusYears(1) else year
+        return Reference(lastYear, lastMonth)
+    }
+
     private constructor(value: String) : this(
         parseYear(value),
         parseMonth(value)

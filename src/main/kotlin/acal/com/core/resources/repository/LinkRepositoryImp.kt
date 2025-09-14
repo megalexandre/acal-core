@@ -51,6 +51,10 @@ class LinkRepositoryImp(
     override fun findActiveLinksWithoutReference(reference: Reference): Collection<Link> =
         linkRepository.findActiveLinksWithoutReference(reference.toString()).map { it.toDomain() }
 
+    override fun findActive(): Collection<Link> {
+        return linkRepository.findByActiveTrue().map { it.toDomain() }
+    }
+
     override fun findActiveLinkByPlace(place: Place): Link? =
         linkRepository.findByPlaceIdAndActiveTrue(place.id)?.toDomain()
 
@@ -130,7 +134,7 @@ interface LinkRepository: MongoRepository<LinkModel, String>{
     fun findByCustomerId(customerId: String): Collection<LinkModel>
 
     fun findByPlaceIdAndActiveTrue(placeId: String): LinkModel?
-
+    fun findByActiveTrue(): Collection<LinkModel>
     @QueryAnnotation("{ 'active': true, 'references': { \$not: { \$in: [?0] } } }")
     fun findActiveLinksWithoutReference(reference: String): Collection<LinkModel>
 }

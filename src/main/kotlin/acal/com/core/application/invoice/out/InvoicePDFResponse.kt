@@ -1,4 +1,4 @@
-package acal.com.core.application.invoice.data.out
+package acal.com.core.application.invoice.out
 
 import acal.com.core.comons.currency
 import acal.com.core.comons.current

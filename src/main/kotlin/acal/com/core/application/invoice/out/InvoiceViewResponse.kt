@@ -1,4 +1,4 @@
-package acal.com.core.application.invoice.data.out
+package acal.com.core.application.invoice.out
 
 import CustomerResponse
 import acal.com.core.application.category.data.out.CategoryResponse

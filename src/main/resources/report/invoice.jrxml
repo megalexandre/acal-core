@@ -6,7 +6,7 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="detail" class="acal.com.core.application.invoice.data.out.DetailInvoicePDFResponse"/>
+	<field name="detail" class="acal.com.core.application.invoice.out.DetailInvoicePDFResponse"/>
 	<detail>
 		<band height="60" splitType="Stretch">
 			<subreport>
