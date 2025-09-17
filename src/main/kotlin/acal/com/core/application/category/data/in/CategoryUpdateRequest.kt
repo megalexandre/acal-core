@@ -16,11 +16,9 @@ data class CategoryUpdateRequest(
     val name: String,
 
     @field:NotNull(message = "Water Value is required.")
-    @field:DecimalMin(value = "0.00", inclusive = false, message = "Water values must be greater than zero")
     val waterValue: BigDecimal,
 
     @field:NotNull(message = "Parter Value is required.")
-    @field:DecimalMin(value = "0.00", inclusive = false, message = "Partner values must be greater than zero")
     val partnerValue: BigDecimal,
 
     @field:NotNull(message = "Group is required.")
