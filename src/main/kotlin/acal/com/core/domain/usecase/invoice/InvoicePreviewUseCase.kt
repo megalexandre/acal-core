@@ -23,10 +23,15 @@ class InvoicePreviewUseCase(
     @Value("\${prices.water.price-per-unit}") private val pricePerUnit: Double
 ) {
     fun execute(reference: Reference): Collection<Invoice> {
-        val findActiveLinksWithoutReference = linkDataSource.findActiveLinksWithoutReference(reference)
+        val invoices = dataSource.findByReference(reference)
+
+        val findActiveLinksWithoutReference = linkDataSource
+            .findActiveLinksWithoutReference(reference)
+            .filter { it.id !in invoices.map { invoice -> invoice.waterMeter.linkId } }
 
         var countByReferencesContaining = dataSource.countByReferencesContaining(reference)
         val waterMeterMap = waterMeterDataSource.findAll(reference).associateBy { it.linkId }
+
 
         return findActiveLinksWithoutReference.map {
             Invoice(
@@ -39,7 +44,8 @@ class InvoicePreviewUseCase(
                 category = it.category,
                 dueDate = LocalDate.MIN,
                 paidAt = null,
-                waterQuality = null
+                waterQuality = null,
+                linkId = it.id,
             )
         }.sortedWith(
             compareBy(

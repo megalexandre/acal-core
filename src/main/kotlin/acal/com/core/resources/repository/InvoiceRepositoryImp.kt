@@ -66,6 +66,10 @@ class InvoiceRepositoryImp(
         return mongoTemplate.find(query, InvoiceModel::class.java).map { it.toDomain() }
     }
 
+    override fun findByReference(reference: Reference): Collection<Invoice> {
+        return repository.findByReference(reference.toString()).map { it.toDomain() }
+    }
+
     override fun countByReferencesContaining(reference: Reference): Long {
         return repository.countByReferenceContaining(reference.toString())
     }
@@ -74,4 +78,5 @@ class InvoiceRepositoryImp(
 
 interface InvoiceRepository: MongoRepository<InvoiceModel, String>{
     fun countByReferenceContaining(reference: String): Long
+    fun findByReference(reference: String): List<InvoiceModel>
 }

@@ -4,7 +4,9 @@ import acal.com.core.application.category.data.`in`.CategoryRequest
 import acal.com.core.application.customer.data.`in`.CustomerRequest
 import acal.com.core.application.place.data.`in`.PlaceRequest
 import acal.com.core.comons.Id
-import acal.com.core.domain.entity.*
+import acal.com.core.domain.entity.Invoice
+import acal.com.core.domain.entity.Reference
+import acal.com.core.domain.entity.WaterMeter
 import jakarta.validation.constraints.NotBlank
 import java.time.LocalDate
 
@@ -31,6 +33,9 @@ data class InvoiceCreateRequest (
 
     @field:NotBlank
     val place: PlaceRequest,
+
+    @field:NotBlank
+    val linkId: String,
 ){
     fun toDomain() = Invoice(
         id = id ?: Id.random(),
@@ -43,6 +48,7 @@ data class InvoiceCreateRequest (
         place = place.toDomain(),
         paidAt = null,
         waterQuality =  null,
+        linkId = linkId,
     )
 
 }

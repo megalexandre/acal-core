@@ -17,6 +17,7 @@ data class Invoice (
 
     val dueDate: LocalDate,
     val paidAt: LocalDateTime?,
+    val linkId: String,
 
     ): FinancialRecordItem(
         id = id,

@@ -15,6 +15,7 @@ data class InvoiceModel (
     val reference: String,
     val number: String,
 
+    val linkId: String,
     val waterMeter: WaterMeterModel,
 
     val customer: CustomerModel,
@@ -37,6 +38,7 @@ fun InvoiceModel.toDomain(): Invoice = Invoice(
     dueDate = dueDate,
     paidAt = paidAt,
     waterQuality = null,
+    linkId = linkId
 )
 
 fun Invoice.toEntity(): InvoiceModel = InvoiceModel(
@@ -48,5 +50,6 @@ fun Invoice.toEntity(): InvoiceModel = InvoiceModel(
     place = place.toEntity(),
     category = category.toEntity(),
     dueDate = dueDate,
-    paidAt = paidAt
+    paidAt = paidAt,
+    linkId = linkId
 )

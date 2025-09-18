@@ -9,5 +9,6 @@ interface InvoiceDataSource : DefaultDataSource<Invoice>{
     fun delete(id: String)
     fun paginate(filter: InvoiceFilter): Page<Invoice>
     fun findAll(filter: InvoiceFilter): Collection<Invoice>
+    fun findByReference(reference: Reference): Collection<Invoice>
     fun countByReferencesContaining(reference: Reference): Long
 }

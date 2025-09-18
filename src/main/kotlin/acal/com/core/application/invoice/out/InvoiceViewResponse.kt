@@ -29,7 +29,8 @@ class InvoiceViewResponse (
     val values: List<InvoiceValue>,
     val consumption: Double,
     val waterValue: BigDecimal,
-    val status: InvoiceStatus
+    val status: InvoiceStatus,
+    val linkId: String,
 )
 
 fun Invoice.toView(): InvoiceViewResponse = InvoiceViewResponse(
@@ -48,6 +49,7 @@ fun Invoice.toView(): InvoiceViewResponse = InvoiceViewResponse(
     waterValue  = waterValue,
     status = status,
     waterQuality = waterQuality,
+    linkId = linkId,
 )
 
 fun Collection<Invoice>.toView(): List<InvoiceViewResponse> = this.map { it.toView() }
