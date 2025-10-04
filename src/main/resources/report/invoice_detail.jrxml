@@ -15,6 +15,7 @@
 	<field name="total" class="java.lang.String"/>
 	<field name="category" class="java.lang.String"/>
 	<field name="address" class="java.lang.String"/>
+	<field name="addressDetail" class="java.lang.String"/>
 	<field name="consumptionStart" class="java.lang.String"/>
 	<field name="consumptionEnd" class="java.lang.String"/>
 	<field name="freeTier" class="java.lang.String"/>
@@ -140,7 +141,7 @@
 		</band>
 		<band height="160">
 			<textField textAdjust="ScaleFont">
-				<reportElement x="0" y="10" width="180" height="50" isPrintWhenDetailOverflows="true" uuid="7490f86f-6bbb-4f78-aa26-782f491f27ec">
+				<reportElement x="0" y="10" width="180" height="30" isPrintWhenDetailOverflows="true" uuid="7490f86f-6bbb-4f78-aa26-782f491f27ec">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -154,7 +155,7 @@
 				<textFieldExpression><![CDATA[$F{partnerName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="60" width="180" height="20" uuid="c379136e-1c16-436d-b64c-0acaef0a8a72">
+				<reportElement x="0" y="80" width="180" height="20" uuid="c379136e-1c16-436d-b64c-0acaef0a8a72">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -184,7 +185,7 @@
 				<textFieldExpression><![CDATA[$F{consumptionEnd}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont">
-				<reportElement stretchType="ContainerHeight" x="0" y="80" width="180" height="20" uuid="320c5323-afed-4a48-9376-76079f522c65">
+				<reportElement stretchType="ContainerHeight" x="0" y="40" width="180" height="20" uuid="320c5323-afed-4a48-9376-76079f522c65">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -326,6 +327,16 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{paidUsageValue}]]></textFieldExpression>
 			</textField>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="0" y="60" width="180" height="20" uuid="88062550-2c08-4e2d-bafa-d4a1ed428f62">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{addressDetail}]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="1"/>
 		<band height="11">
@@ -335,6 +346,6 @@
 				</reportElement>
 			</line>
 		</band>
-		<band height="1"/>
+		<band height="3"/>
 	</detail>
 </jasperReport>

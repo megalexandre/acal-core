@@ -23,6 +23,7 @@ class DetailInvoicePDFResponse (
     val total: String,
     val category: String,
     val address: String,
+    val addressDetail: String = "CEP: 44709-000, Lages do Batata - Jacobina BA",
     val addressNumber: String,
     val consumptionStart: String,
     val consumptionEnd: String,
