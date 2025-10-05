@@ -9,6 +9,7 @@ import io.cucumber.java.pt.E
 import io.cucumber.java.pt.Entao
 import io.cucumber.java.pt.Quando
 import io.restassured.RestAssured
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.springframework.beans.factory.annotation.Autowired
