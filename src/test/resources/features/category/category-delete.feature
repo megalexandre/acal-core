@@ -1,6 +1,6 @@
 # language: pt
 
-Funcionalidade: Cadastro de Categorias
+Funcionalidade: Deleção de Categorias
 
   Contexto:
     Dado o banco de dados está vazio

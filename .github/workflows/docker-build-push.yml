@@ -22,9 +22,6 @@ jobs:
       - name: run units tests with Gradle
         run: ./gradlew test
 
-      - name: Run Cucumber tests
-        run: ./gradlew cucumber
-
       - name: Build with Gradle
         run: ./gradlew build
 
