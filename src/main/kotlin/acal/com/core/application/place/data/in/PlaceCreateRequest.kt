@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotEmpty
 
 data class PlaceCreateRequest(
+
     val id: String?,
 
     @field:NotEmpty
@@ -14,17 +15,18 @@ data class PlaceCreateRequest(
     val number: String,
 
     @field:NotEmpty
-    @field:NotBlank(message = "Number is required.")
-    val letter: String,
-
-    @field:NotEmpty
     @field:NotBlank(message = "Address is required.")
     val address: AddressRequest,
+
+    val name: String?,
+
+    val letter: String?,
 
     ) {
     fun toDomain() = Place(
         id = id ?: Id.random(),
-        letter = letter.trim(),
+        name = name?.trim(),
+        letter = letter?.trim(),
         number = number.trim(),
         address = address.toDomain(),
     )

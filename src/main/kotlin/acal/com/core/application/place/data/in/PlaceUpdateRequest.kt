@@ -11,15 +11,18 @@ data class PlaceUpdateRequest(
     @field:NotBlank(message = "Number is required.")
     val number: String,
 
-    val letter: String,
+    val name: String,
+
+    val letter: String?,
 
     val address: AddressRequest,
 
 ) {
     fun toDomain() = Place(
         id = id,
+        name= name.trim(),
         number = number.trim(),
-        letter = letter.trim(),
+        letter = letter?.trim(),
         address = address.toDomain(),
     )
 }
