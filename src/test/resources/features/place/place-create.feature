@@ -3,7 +3,7 @@
 Funcionalidade: Cadastro de Residencia
 
   Contexto:
-    zo banco de dados está vazio
+    o banco de dados está vazio
 
   Cenário: Criar um novo Residencia com o minimo de informações
 
